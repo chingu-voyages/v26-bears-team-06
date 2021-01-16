@@ -1,5 +1,6 @@
 {
   "name": "craigs-second-list",
+  "authors": "Marie Otaki, Sean Parker, Angus Chang, Lewis Shepard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
