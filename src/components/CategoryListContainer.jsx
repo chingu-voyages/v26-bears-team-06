@@ -4,11 +4,15 @@ import CategoryLink from './CategoryLink';
 import { makeStyles, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
-  categoryContainer: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
-    gridTemplateRows: '320px',
-    gridTemplateAreas: 'category1 category2 category3',
+  // categoryContainer: {
+  //   display: 'grid',
+  //   gridTemplateColumns: '1fr 1fr 1fr',
+  //   gridTemplateRows: '320px',
+  //   gridTemplateAreas: 'category1 category2 category3',
+  // },
+  root: {
+    flexGrow: 1,
+    height: '320px',
   },
 });
 
@@ -25,11 +29,11 @@ const CategoryListContainer = () => {
   return (
     <div>
       <Headline2 headline="San Francisco, CA" />
-      <div className={classes.categoryContainer}>
+      <Grid container className={classes.root}>
         <CategoryLink category="community" imageURL={communityImageURL} />
         <CategoryLink category="for sale" imageURL={saleImageURL} />
         <CategoryLink category="jobs" imageURL={jobsImageURL} />
-      </div>
+      </Grid>
     </div>
   );
 };
