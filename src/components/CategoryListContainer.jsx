@@ -4,12 +4,6 @@ import CategoryLink from './CategoryLink';
 import { makeStyles, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
-  // categoryContainer: {
-  //   display: 'grid',
-  //   gridTemplateColumns: '1fr 1fr 1fr',
-  //   gridTemplateRows: '320px',
-  //   gridTemplateAreas: 'category1 category2 category3',
-  // },
   root: {
     flexGrow: 1,
     height: '320px',
