@@ -53,7 +53,7 @@ export const useStyles = makeStyles({
   categoriesDropDownList: {
     display: 'flex',
     listStyle: 'none',
-    width: '15%',
+    width: '25%',
     justifyContent: 'space-between',
     padding: '0'
   },
