@@ -24,7 +24,7 @@ const CategoryLink = ({ category, imageURL }) => {
   console.log(imageURL);
   return (
     <Link className={classes.categoryLink}>
-      <p className={classes.categoryLink}>{category}</p>
+      <p className={classes.categorTitle}>{category}</p>
     </Link>
   );
 };
