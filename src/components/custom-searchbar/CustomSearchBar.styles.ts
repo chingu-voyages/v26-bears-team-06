@@ -38,7 +38,6 @@ export const useStyles = makeStyles({
     borderRadius: '35px',
     backgroundColor: 'rgba(213, 216, 216, 1)',
     outline: 'none',
-    transition: 'transform 0.15s ease',
     '&:hover': {
       cursor: 'pointer'
     },
@@ -51,7 +50,6 @@ export const useStyles = makeStyles({
     height: '83.3%',
     border: 'none',
     padding: '0 10px',
-    width: '20%',
     backgroundColor: '#EBEEEE',
     color: '#666868',
     outline: 'none',
