@@ -1,4 +1,5 @@
 import React from 'react';
+// Styles:
 import { useStyles } from '../hero-image/HeroImage.styles';
 
 const HeroImage: React.FC = () => {

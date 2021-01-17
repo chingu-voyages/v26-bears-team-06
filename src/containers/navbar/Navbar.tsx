@@ -1,15 +1,34 @@
 import React from 'react';
+// Components:
 import CustomSearchBar from '../../components/custom-searchbar/CustomSearchBar';
 import CustomDrawer from '../../components/custom-drawer/CustomDrawer';
-import { Category } from '../../seed/seedData';
-import { useStyles } from './Navbar.styles';
 import CreatePostingButton from '../../components/create-posting-button/CreatePostingButton';
+// Styles:
+import { useStyles } from './Navbar.styles';
+// Seed Data: 
+import { Category } from '../../seed/seedData';
+// State Management (REDUX):
+import { useSelector, useDispatch } from 'react-redux';
+import { drawerState } from '../../store/reducers/drawerReducer';
+import MenuListComposition from '../../components/drop-down-menu/DropDownMenu';
 
 interface Props {
   categories: Category[]
-}
+};
 
 const Navbar:React.FC<Props> = ({categories}) => {
+  // Using Redux hooks to dispatch actions to open/close drawer and pulldown menus.
+  const drawerOpen = useSelector<any, drawerState['open']>((state) => state.drawer.open);
+  const dispatch = useDispatch();
+  // Functions for drawer state (Possibly refactor to useState hooks, redux a little overkill for this)
+  const handleDrawerOpen = () => {
+    dispatch({type: "OPEN"});
+  };
+
+  const handleDrawerClose = () => {
+    dispatch({type: "CLOSE"});
+  }
+ 
   const classes = useStyles();
 
   return (
@@ -17,7 +36,7 @@ const Navbar:React.FC<Props> = ({categories}) => {
       <div className={classes.topRow}>
         <div className={classes.rightSide}>
           <span className={classes.logo}>Craigs2ndList</span>
-          <CustomSearchBar />
+          <CustomSearchBar handleOpen={handleDrawerOpen}/>
         </div>
         <div className={classes.leftSide}>
           <div className={classes.authLinksContainer}>
@@ -30,12 +49,15 @@ const Navbar:React.FC<Props> = ({categories}) => {
       </div>
       <div className={classes.bottomRow}>
         <ul className={classes.categoriesDropDownList}>
-          {categories.map(({name, id}) => (
-            <li key={id}>{name}</li>
+          {categories.map(category => (
+              <MenuListComposition category={category} />
           ))}
         </ul>
       </div>
-      <CustomDrawer />
+      <CustomDrawer 
+        open={drawerOpen}
+        handleClose={handleDrawerClose}
+        />
     </div>
 
   )
