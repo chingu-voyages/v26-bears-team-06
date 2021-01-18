@@ -4,7 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
   header2: {
     color: 'black',
-    fontSize: '24px',
+    fontSize: '1.6em',
+    marginBottom: '2em',
   },
 });
 
