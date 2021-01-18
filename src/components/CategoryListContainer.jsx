@@ -4,6 +4,9 @@ import CategoryLink from './CategoryLink';
 import { makeStyles, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
+  section: {
+    marginBottom: '4em',
+  },
   root: {
     flexGrow: 1,
     height: '320px',
@@ -22,7 +25,7 @@ const CategoryListContainer = () => {
     'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80';
 
   return (
-    <div>
+    <div className={classes.section}>
       <Headline2 headline="San Francisco, CA" />
       <Grid container className={classes.root}>
         <CategoryLink category="community" imageURL={communityImageURL} />
