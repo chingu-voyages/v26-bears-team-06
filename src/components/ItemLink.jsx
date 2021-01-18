@@ -6,14 +6,12 @@ const ItemLink = ({ url, name, price }) => {
   const useStyles = makeStyles({
     root: {
       height: '100%',
-
-      // margin: '24px',
     },
     linkContainer: {
       backgroundImage: `url(${url})`,
       backgroundSize: 'cover',
       height: '100%',
-      marginBottom: '16px',
+      marginBottom: '1em',
     },
     link: {
       display: 'block',
@@ -22,12 +20,12 @@ const ItemLink = ({ url, name, price }) => {
       width: '100%',
     },
     name: {
-      fontSize: '14px',
+      fontSize: '0.875em',
       padding: 0,
       margin: '0 0 8px 0',
     },
     price: {
-      fontSize: '16px',
+      fontSize: '1em',
       padding: 0,
       margin: 0,
     },
