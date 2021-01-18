@@ -19,12 +19,12 @@ const ItemListContainer = () => {
     <div>
       <Headline2 headline="Recently posted in your area" />
       <Grid container spacing={3} className={classes.root}>
-        <ItemLink item="item" imageURL={imageURL} />
-        <ItemLink item="item" imageURL={imageURL} />
-        <ItemLink item="item" imageURL={imageURL} />
-        <ItemLink item="item" imageURL={imageURL} />
-        <ItemLink item="item" imageURL={imageURL} />
-        <ItemLink item="item" imageURL={imageURL} />
+        <ItemLink url={imageURL} name="item name" price="$50" />
+        <ItemLink url={imageURL} name="item name" price="$50" />
+        <ItemLink url={imageURL} name="item name" price="$50" />
+        <ItemLink url={imageURL} name="item name" price="$50" />
+        <ItemLink url={imageURL} name="item name" price="$50" />
+        <ItemLink url={imageURL} name="item name" price="$50" />
       </Grid>
     </div>
   );
