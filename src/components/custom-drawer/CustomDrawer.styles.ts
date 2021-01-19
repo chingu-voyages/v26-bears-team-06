@@ -3,23 +3,6 @@ import { makeStyles } from '@material-ui/core';
 const drawerWidth = 340;
 
 export const useStyles = makeStyles((theme) => ({
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   hide: {
     display: 'none',
   },
@@ -36,7 +19,7 @@ export const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
   },
   content: {
     flexGrow: 1,
@@ -53,5 +36,30 @@ export const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginLeft: 0,
+  },
+  filterCategories: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginLeft: '2rem',
+    width: '80%',
+  },
+  searchButton: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '50px',
+    width: '80%',
+    border: 'none',
+    fontSize: '18px',
+    borderRadius: '35px',
+    backgroundColor: 'rgba(213, 216, 216, 1)',
+    outline: 'none',
+    marginTop: '2rem',
+    '&:hover': {
+      cursor: 'pointer'
+    },
+    '&:active': {
+      transform: 'scale(0.975)'
+    }
   },  
 }));

@@ -44,7 +44,6 @@ export const useStyles = makeStyles({
     '&:active': {
       transform: 'scale(0.975)'
     }
-
   },
   filterButton: {
     height: '83.3%',
