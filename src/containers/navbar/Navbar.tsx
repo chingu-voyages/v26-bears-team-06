@@ -11,6 +11,7 @@ import { Category } from '../../seed/seedData';
 import { useSelector, useDispatch } from 'react-redux';
 import { drawerState } from '../../store/reducers/drawerReducer';
 import MenuListComposition from '../../components/drop-down-menu/DropDownMenu';
+import SignInSignUp from '../../components/signin-signup/SignInSignUp';
 
 interface Props {
   categories: Category[]
@@ -40,9 +41,7 @@ const Navbar:React.FC<Props> = ({categories}) => {
         </div>
         <div className={classes.leftSide}>
           <div className={classes.authLinksContainer}>
-            <a className={classes.authLink} href='/'>Login</a>
-            <span>/</span>
-            <a className={classes.authLink} href='/'>Sign Up</a>
+            <SignInSignUp />
           </div>
           <CreatePostingButton />
         </div>
