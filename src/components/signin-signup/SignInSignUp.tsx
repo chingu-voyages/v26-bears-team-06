@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // Material UI Components:
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -8,34 +8,42 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
+// Material UI Form Validator:
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 // Styles:
 import { useStyles } from './SignInSignUp.styles';
 // Redux State Management:
 import { registerNewUser } from '../../redux/user/userActions';
 import { useSelector, useDispatch } from 'react-redux';
 import { userState } from '../../redux/user/userReducer';
+import { User } from '../../seed/seedData';
 
-interface Props {
-  
-}
-
-const SignInSignUp:React.FC<Props> = () => {
+const SignInSignUp:React.FC = () => {
   const classes = useStyles();
   const users = useSelector<any, userState["users"]>((state) => state.user.users);
   const dispatch = useDispatch();
 
-  const [openNameForm, setOpenNameForm] = useState(false);
-  const [user, setUser] = useState({
+  useEffect(() => {
+    ValidatorForm.addValidationRule('isEmailUnique', (value: string) => 
+      users.every(({email}) => email.toLocaleLowerCase() !== value.toLowerCase())
+    );
+    ValidatorForm.addValidationRule('passwordsMustMatch', () => 
+      password === passwordConfirmation 
+    )
+  })
+
+  const [openNameForm, setOpenNameForm] = useState<boolean>(false);
+  const [user, setUser] = useState<User>({
     name: '',
     email: '',
     password: '',
-    passwordConfirmation: '',
     city: '',
     state: '',
     zip: ''
-  });
+  }); 
+  const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
 
-  const { name, email, password, passwordConfirmation, city, state, zip } = user;
+  const { name, email, password, city, state, zip } = user;
 
   const handleOpenNameForm = () => {
     setOpenNameForm(true);
@@ -49,7 +57,7 @@ const SignInSignUp:React.FC<Props> = () => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
     password === passwordConfirmation ? dispatch(registerNewUser(user)) : alert('passwords dont match!');
     console.log(users);
@@ -57,11 +65,11 @@ const SignInSignUp:React.FC<Props> = () => {
       name: '',
       email: '',
       password: '',
-      passwordConfirmation: '',
       city: '',
       state: '',
       zip: '',
     });
+    setPasswordConfirmation('');
   };
 
   return (
@@ -94,9 +102,9 @@ const SignInSignUp:React.FC<Props> = () => {
               </DialogActions>
             </form>
             <Divider variant='middle' orientation='vertical' flexItem/>
-            <form className={classes.signUp} onSubmit={handleSubmit}>
+            <ValidatorForm className={classes.signUp} onSubmit={handleSubmit}>
               <DialogTitle id="form-dialog-title">Sign Up</DialogTitle>
-              <TextField 
+              <TextValidator 
                 className={classes.input} 
                 id="outlined-basic" 
                 label="Name" 
@@ -104,9 +112,10 @@ const SignInSignUp:React.FC<Props> = () => {
                 variant="outlined"
                 value={name}
                 onChange={handleChange}
-                required
+                validators={['required']}
+                errorMessages={['Name required']}
                />
-              <TextField 
+              <TextValidator 
                 className={classes.input} 
                 id="outlined-basic" 
                 label="Email" 
@@ -115,9 +124,10 @@ const SignInSignUp:React.FC<Props> = () => {
                 type="email"
                 value={email}
                 onChange={handleChange}
-                required 
+                validators={['required', 'isEmailUnique']}
+                errorMessages={['Email Required', 'This email is already in use, please sign in']}
                 />
-              <TextField 
+              <TextValidator 
                 className={classes.input} 
                 id="outlined-basic" 
                 label="Password" 
@@ -126,9 +136,10 @@ const SignInSignUp:React.FC<Props> = () => {
                 variant="outlined"
                 value={password}
                 onChange={handleChange} 
-                required
+                validators={['required']}
+                errorMessages={['Password Required']}
                 />
-              <TextField 
+              <TextValidator 
                 className={classes.input} 
                 id="outlined-basic" 
                 label="Confirm Password" 
@@ -136,10 +147,11 @@ const SignInSignUp:React.FC<Props> = () => {
                 type='password' 
                 variant="outlined"
                 value={passwordConfirmation}
-                onChange={handleChange}
-                required
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPasswordConfirmation(e.target.value)}
+                validators={['required', 'passwordsMustMatch']}
+                errorMessages={['Confirm Password', 'Passwords must match']}
                 />
-              <TextField 
+              <TextValidator 
                 className={classes.input} 
                 id="outlined-basic" 
                 label="City" 
@@ -147,9 +159,8 @@ const SignInSignUp:React.FC<Props> = () => {
                 variant="outlined"
                 value={city}
                 onChange={handleChange}
-                required
                  />
-              <TextField 
+              <TextValidator 
                 className={classes.input} 
                 id="outlined-basic" 
                 label="State" 
@@ -157,9 +168,8 @@ const SignInSignUp:React.FC<Props> = () => {
                 variant="outlined"
                 value={state}
                 onChange={handleChange}
-                required
                 />
-              <TextField 
+              <TextValidator 
                 className={classes.input} 
                 id="outlined-basic" 
                 label="Zip Code" 
@@ -167,14 +177,13 @@ const SignInSignUp:React.FC<Props> = () => {
                 variant="outlined"
                 value={zip}
                 onChange={handleChange}
-                required
                 />
               <DialogActions>
                 <Button type='submit' color="primary" variant='contained'>
                   Join now!
                 </Button>
               </DialogActions>
-            </form>
+            </ValidatorForm>
           </div>
       </Dialog>
     </div>
