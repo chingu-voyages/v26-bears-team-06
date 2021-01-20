@@ -17,8 +17,6 @@ export interface User {
   name: string,
   email: string,
   password: string,
-  phoneNumber: string,
-  address: string,
   city: string,
   state: string,
   zip: string
@@ -29,8 +27,6 @@ export const seedUsers: User[] = [
     name: 'Alicia D. Macomber', 
     email: 'AliciaDMacomber@rhyta.com', 
     password: 'mypassword',
-    phoneNumber: '856-672-5718',
-    address: '4892 Prospect Street',
     city: 'Haddonfield',
     state: 'NJ',
     zip: '08033'
@@ -39,8 +35,6 @@ export const seedUsers: User[] = [
     name: 'David M. Motley', 
     email: 'DavidMMotley@teleworm.us', 
     password: 'mypassword',
-    phoneNumber: '213-333-0527',
-    address: '4038 Brannon Street',
     city: 'Los Angeles',
     state: 'CA',
     zip: '90071'
@@ -70,8 +64,6 @@ export const seedPosts: Post[] = [
         name: 'Alicia D. Macomber', 
         email: 'AliciaDMacomber@rhyta.com', 
         password: 'mypassword',
-        phoneNumber: '856-672-5718',
-        address: '4892 Prospect Street',
         city: 'Haddonfield',
         state: 'NJ',
         zip: '08033'
@@ -90,8 +82,6 @@ export const seedPosts: Post[] = [
         name: 'David M. Motley', 
         email: 'DavidMMotley@teleworm.us', 
         password: 'mypassword',
-        phoneNumber: '213-333-0527',
-        address: '4038 Brannon Street',
         city: 'Los Angeles',
         state: 'CA',
         zip: '90071'
@@ -110,8 +100,6 @@ export const seedPosts: Post[] = [
         name: 'Alicia D. Macomber', 
         email: 'AliciaDMacomber@rhyta.com', 
         password: 'mypassword',
-        phoneNumber: '856-672-5718',
-        address: '4892 Prospect Street',
         city: 'Haddonfield',
         state: 'NJ',
         zip: '08033'
@@ -130,8 +118,6 @@ export const seedPosts: Post[] = [
         name: 'David M. Motley', 
         email: 'DavidMMotley@teleworm.us', 
         password: 'mypassword',
-        phoneNumber: '213-333-0527',
-        address: '4038 Brannon Street',
         city: 'Los Angeles',
         state: 'CA',
         zip: '90071'
@@ -150,8 +136,6 @@ export const seedPosts: Post[] = [
         name: 'Alicia D. Macomber', 
         email: 'AliciaDMacomber@rhyta.com', 
         password: 'mypassword',
-        phoneNumber: '856-672-5718',
-        address: '4892 Prospect Street',
         city: 'Haddonfield',
         state: 'NJ',
         zip: '08033'
@@ -170,8 +154,6 @@ export const seedPosts: Post[] = [
         name: 'David M. Motley', 
         email: 'DavidMMotley@teleworm.us', 
         password: 'mypassword',
-        phoneNumber: '213-333-0527',
-        address: '4038 Brannon Street',
         city: 'Los Angeles',
         state: 'CA',
         zip: '90071'

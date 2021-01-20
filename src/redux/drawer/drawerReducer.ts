@@ -1,4 +1,4 @@
-import { Actions } from '../actions/drawerActions';
+import { Actions } from './drawerActions';
 
 export interface drawerState {
   open: boolean,
