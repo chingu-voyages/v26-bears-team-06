@@ -1,4 +1,3 @@
-
 import React from 'react';
 // Containers:
 import HeroImage from '../../containers/hero-image/HeroImage';
