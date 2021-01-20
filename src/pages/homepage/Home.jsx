@@ -1,6 +1,6 @@
 import React from 'react';
-import CategoryListContainer from '../components/CategoryListContainer';
-import ItemListContainer from '../components/ItemListContainer';
+import CategoryListContainer from '../../containers/category-list/CategoryListContainer';
+import ItemListContainer from '../../containers/post-list/PostListContainer';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({

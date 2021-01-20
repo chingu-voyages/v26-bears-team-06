@@ -1,18 +1,10 @@
 import React from 'react';
-import Headline2 from './Headline2';
-import ItemLink from './ItemLink';
-import { makeStyles, Grid } from '@material-ui/core';
+import ItemLink from '../../components/item-link/ItemLink';
+import { Grid } from '@material-ui/core';
+import { useStyles } from './PostListContainer.styles';
+import ReusableHeader from '../../components/reusable-header/ReusableHeader';
 
-const ItemListContainer = () => {
-  const useStyles = makeStyles({
-    section: {
-      marginBottom: '4em',
-    },
-    root: {
-      flexGrow: 1,
-      height: '240px',
-    },
-  });
+const ItemListContainer:React.FC = () => {
 
   const classes = useStyles();
   const imageURL =
@@ -20,7 +12,7 @@ const ItemListContainer = () => {
 
   return (
     <div className={classes.section}>
-      <Headline2 headline="Recently posted in your area" />
+      <ReusableHeader text="Recently posted in your area" />
       <Grid container spacing={3} className={classes.root}>
         <ItemLink url={imageURL} name="item name" price="$50" />
         <ItemLink url={imageURL} name="item name" price="$50" />

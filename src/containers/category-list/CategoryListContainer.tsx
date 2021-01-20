@@ -1,19 +1,11 @@
 import React from 'react';
-import Headline2 from './Headline2';
-import CategoryLink from './CategoryLink';
-import { makeStyles, Grid } from '@material-ui/core';
+import CategoryLink from '../../components/category-link/CategoryLink';
+import { Grid } from '@material-ui/core';
+import { useStyles } from './CategoryListContainer.styles';
+import ReusableHeader from '../../components/reusable-header/ReusableHeader';
 
-const useStyles = makeStyles({
-  section: {
-    marginBottom: '4em',
-  },
-  root: {
-    flexGrow: 1,
-    height: '320px',
-  },
-});
 
-const CategoryListContainer = () => {
+const CategoryListContainer:React.FC = () => {
   const classes = useStyles();
 
   const communityImageURL =
@@ -26,7 +18,7 @@ const CategoryListContainer = () => {
 
   return (
     <div className={classes.section}>
-      <Headline2 headline="San Francisco, CA" />
+      <ReusableHeader text="San Francisco, CA" />
       <Grid container className={classes.root}>
         <CategoryLink category="community" imageURL={communityImageURL} />
         <CategoryLink category="for sale" imageURL={saleImageURL} />
