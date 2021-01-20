@@ -9,7 +9,7 @@ import { useStyles } from './Navbar.styles';
 import { Category } from '../../seed/seedData';
 // State Management (REDUX):
 import { useSelector, useDispatch } from 'react-redux';
-import { drawerState } from '../../store/reducers/drawerReducer';
+import { drawerState } from '../../redux/drawer/drawerReducer';
 import MenuListComposition from '../../components/drop-down-menu/DropDownMenu';
 import SignInSignUp from '../../components/signin-signup/SignInSignUp';
 
@@ -21,14 +21,14 @@ const Navbar:React.FC<Props> = ({categories}) => {
   // Using Redux hooks to dispatch actions to open/close drawer and pulldown menus.
   const drawerOpen = useSelector<any, drawerState['open']>((state) => state.drawer.open);
   const dispatch = useDispatch();
-  // Functions for drawer state (Possibly refactor to useState hooks, redux a little overkill for this)
+  // Functions for drawer state (Refactor to useState hooks, redux is overkill for this)
   const handleDrawerOpen = () => {
     dispatch({type: "OPEN"});
   };
 
   const handleDrawerClose = () => {
     dispatch({type: "CLOSE"});
-  }
+  };
  
   const classes = useStyles();
 
