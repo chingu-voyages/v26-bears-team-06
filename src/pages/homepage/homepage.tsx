@@ -4,7 +4,7 @@ import React from 'react';
 import CategoryListContainer from '../../containers/category-list/CategoryListContainer';
 import PostListContainer from '../../containers/post-list/PostListContainer';
 
-const Homepage:React.FC = () => {
+const Homepage = () => {
   return (
     <div>
       <CategoryListContainer />
