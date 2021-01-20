@@ -11,7 +11,6 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
     menuButton: {
       fontSize: '16px',
-      fontWeight: 'bold',
     }
   }),
 );
