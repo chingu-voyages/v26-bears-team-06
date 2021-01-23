@@ -5,10 +5,9 @@ import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 // Styles:
 import { useStyles } from './CategoryLink.styles';
-
 interface Props {
   category: string,
-  imageURL: string
+  imageURL: string,
 }
 
 const CategoryLink:React.FC<Props> = ({ category, imageURL }) => {
@@ -23,3 +22,4 @@ const CategoryLink:React.FC<Props> = ({ category, imageURL }) => {
 };
 
 export default CategoryLink;
+

@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles({
   section: {
-    marginBottom: '4em',
+    margin: '4em 0',
   },
   root: {
     flexGrow: 1,

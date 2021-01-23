@@ -9,7 +9,7 @@ export const INITIAL_STATE = {
   users: seedUsers
 };
 
-const userReducer = (state = INITIAL_STATE, action: Actions) => {
+const userReducer = (state:userState = INITIAL_STATE, action: Actions) => {
   switch (action.type) {
     case "REGISTER_NEW_USER":
       return {
