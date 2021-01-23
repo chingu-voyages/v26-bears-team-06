@@ -18,7 +18,7 @@ interface Props {
 }
 
 // This components was copied from Material UI:
-const MenuListComposition:React.FC<Props> = ({category}) => {
+const DropDownMenu:React.FC<Props> = ({category}) => {
   const { name, subCategories } = category;
 
   const classes = useStyles();
@@ -90,4 +90,4 @@ const MenuListComposition:React.FC<Props> = ({category}) => {
   );
 };
 
-export default MenuListComposition;
+export default DropDownMenu;

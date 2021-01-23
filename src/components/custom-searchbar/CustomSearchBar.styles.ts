@@ -11,7 +11,7 @@ export const useStyles = makeStyles({
   },
   searchInput: {
     height: '80%',
-    width: '100%',
+    width: '90%',
     backgroundColor: '#EBEEEE',
     border: 'none',
     outline: 'none',
@@ -26,6 +26,7 @@ export const useStyles = makeStyles({
   },
   searchBar: {
     borderRadius: '35px 0 0 35px',
+    width: '100%'
   },
   searchButton: {
     display: 'flex',

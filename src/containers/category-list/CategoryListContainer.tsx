@@ -2,8 +2,6 @@ import React from 'react';
 import CategoryLink from '../../components/category-link/CategoryLink';
 import { Grid } from '@material-ui/core';
 import { useStyles } from './CategoryListContainer.styles';
-import ReusableHeader from '../../components/reusable-header/ReusableHeader';
-
 
 const CategoryListContainer:React.FC = () => {
   const classes = useStyles();
@@ -18,7 +16,6 @@ const CategoryListContainer:React.FC = () => {
 
   return (
     <div className={classes.section}>
-      <ReusableHeader text="San Francisco, CA" />
       <Grid container className={classes.root}>
         <CategoryLink category="community" imageURL={communityImageURL} />
         <CategoryLink category="for sale" imageURL={saleImageURL} />

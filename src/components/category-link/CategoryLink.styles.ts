@@ -3,8 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles({
   root: {
     height: '100%',
-    border: '1px solid #757373',
+    border: 'none',
     backgroundSize: 'cover',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   linkContainer: {
     width: '100%',
@@ -14,11 +17,11 @@ export const useStyles = makeStyles({
     display: 'block',
     textAlign: 'center',
     textDecoration: 'none',
-    height: '100%',
     width: '100%',
     lineHeight: '100%',
-    fontSize: '1.5em',
+    fontSize: '2.5em',
     fontWeight: 'bold',
+    textTransform: 'uppercase',
     color: '#000',
   },
 });

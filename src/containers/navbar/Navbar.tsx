@@ -10,9 +10,8 @@ import { Category } from '../../seed/seedData';
 // State Management (REDUX):
 import { useSelector, useDispatch } from 'react-redux';
 import { drawerState } from '../../redux/drawer/drawerReducer';
-import MenuListComposition from '../../components/drop-down-menu/DropDownMenu';
+import DropDownMenu from '../../components/drop-down-menu/DropDownMenu';
 import SignInSignUp from '../../components/signin-signup/SignInSignUp';
-
 interface Props {
   categories: Category[]
 };
@@ -36,7 +35,7 @@ const Navbar:React.FC<Props> = ({categories}) => {
     <div className={classes.root}>
       <div className={classes.topRow}>
         <div className={classes.rightSide}>
-          <span className={classes.logo}>Craigs2ndList</span>
+          <div className={classes.logo}></div>
           <CustomSearchBar handleOpen={handleDrawerOpen}/>
         </div>
         <div className={classes.leftSide}>
@@ -49,7 +48,7 @@ const Navbar:React.FC<Props> = ({categories}) => {
       <div className={classes.bottomRow}>
         <ul className={classes.categoriesDropDownList}>
           {categories.map(category => (
-              <MenuListComposition category={category} />
+              <DropDownMenu category={category} />
           ))}
         </ul>
       </div>
