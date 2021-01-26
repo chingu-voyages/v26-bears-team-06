@@ -6,17 +6,15 @@ import CreatePostingButton from '../../components/create-posting-button/CreatePo
 // Styles:
 import { useStyles } from './Navbar.styles';
 // Seed Data: 
-import { Category } from '../../seed/seedData';
+import { Category, seedCategories } from '../../seed/seedData';
 // State Management (REDUX):
 import { useSelector, useDispatch } from 'react-redux';
 import { drawerState } from '../../redux/drawer/drawerReducer';
 import DropDownMenu from '../../components/drop-down-menu/DropDownMenu';
 import SignInSignUp from '../../components/signin-signup/SignInSignUp';
-interface Props {
-  categories: Category[]
-};
+import { Link } from 'react-router-dom';
 
-const Navbar:React.FC<Props> = ({categories}) => {
+const Navbar:React.FC = () => {
   // Using Redux hooks to dispatch actions to open/close drawer and pulldown menus.
   const drawerOpen = useSelector<any, drawerState['open']>((state) => state.drawer.open);
   const dispatch = useDispatch();
@@ -35,19 +33,19 @@ const Navbar:React.FC<Props> = ({categories}) => {
     <div className={classes.root}>
       <div className={classes.topRow}>
         <div className={classes.rightSide}>
-          <div className={classes.logo}></div>
+          <Link to='/' className={classes.logo}></Link>
           <CustomSearchBar handleOpen={handleDrawerOpen}/>
         </div>
         <div className={classes.leftSide}>
+          <CreatePostingButton />
           <div className={classes.authLinksContainer}>
             <SignInSignUp />
           </div>
-          <CreatePostingButton />
         </div>
       </div>
       <div className={classes.bottomRow}>
         <ul className={classes.categoriesDropDownList}>
-          {categories.map(category => (
+          {seedCategories.map(category => (
               <DropDownMenu category={category} />
           ))}
         </ul>

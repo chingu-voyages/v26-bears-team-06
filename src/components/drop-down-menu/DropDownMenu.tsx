@@ -12,6 +12,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import { useStyles } from './DropDownMenu.styles';
 // Seed Data interface:
 import { Category } from '../../seed/seedData';
+import { Link } from 'react-router-dom';
 
 interface Props {
   category: Category;
@@ -76,8 +77,10 @@ const DropDownMenu:React.FC<Props> = ({category}) => {
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                    {subCategories.map(({name}) => (
-                      <MenuItem onClick={handleClose}>{name}</MenuItem>
+                    {subCategories.map(({name, id}) => (
+                      <Link to={`/${category.id}/${id}`} className={classes.link}>
+                        <MenuItem onClick={handleClose}>{name}</MenuItem>
+                      </Link>
                     ))}
                   </MenuList>
                 </ClickAwayListener>

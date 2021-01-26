@@ -5,14 +5,13 @@ import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 // Styles:
 import { useStyles } from './ItemLink.styles';
-
 interface Props {
-  url: string,
+  imageUrl: string,
   name: string,
   price: string,
-}
+};
 
-const ItemLink:React.FC<Props> = ({ url, name, price }) => {
+const ItemLink:React.FC<Props> = ({ imageUrl, name, price }) => {
 
   const classes = useStyles();
 
@@ -20,12 +19,15 @@ const ItemLink:React.FC<Props> = ({ url, name, price }) => {
     <Grid item xs={2} className={classes.root}>
       <div 
         className={classes.linkContainer} 
-        style={{backgroundImage: `url(${url})`}}
+        style={{backgroundImage: `url(${imageUrl})`}}
         >
         <Link to='/' className={classes.link}></Link>
       </div>
-      <p className={classes.name}>{name}</p>
-      <p className={classes.price}>{price}</p>
+      <div className={classes.itemInfo}>
+        <p className={classes.name}>{name}</p>
+        <p className={classes.price}>${price}</p>
+      </div>
+
     </Grid>
   );
 };

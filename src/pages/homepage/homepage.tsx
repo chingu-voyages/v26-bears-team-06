@@ -4,14 +4,17 @@ import Navbar from '../../containers/navbar/Navbar';
 import CategoryListContainer from '../../containers/category-list/CategoryListContainer';
 import PostListContainer from '../../containers/post-list/PostListContainer';
 // Seed Data:
-import { seedCategories } from '../../seed/seedData';
+import { seedPosts } from '../../seed/seedData';
 
 const Homepage = () => {
   return (
     <div>
-      <Navbar categories={seedCategories}/>
+      <Navbar />
       <CategoryListContainer />
-      <PostListContainer />
+      <PostListContainer 
+        posts={seedPosts} 
+        header="Recently Uploaded"
+        seeAllLink="/1" />
     </div>
   )
 }

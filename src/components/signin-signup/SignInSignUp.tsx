@@ -40,7 +40,7 @@ const SignInSignUp:React.FC = () => {
     password: '',
     city: '',
     state: '',
-    zip: ''
+    zip: '',
   }); 
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
 

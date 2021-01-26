@@ -2,11 +2,13 @@ import { seedUsers, User } from '../../seed/seedData';
 import { Actions } from './userActions';
 
 export interface userState {
-  users: User[]
+  users: User[],
+  currentUser: User | null,
 }
 
 export const INITIAL_STATE = {
-  users: seedUsers
+  users: seedUsers,
+  currentUser: null,
 };
 
 const userReducer = (state:userState = INITIAL_STATE, action: Actions) => {
