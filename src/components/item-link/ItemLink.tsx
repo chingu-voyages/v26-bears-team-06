@@ -16,7 +16,7 @@ const ItemLink:React.FC<Props> = ({ imageUrl, name, price }) => {
   const classes = useStyles();
 
   return (
-    <Grid item xs={2} className={classes.root}>
+    <Grid item lg={2} md={3} sm={6} xs={12} className={classes.root}>
       <div 
         className={classes.linkContainer} 
         style={{backgroundImage: `url(${imageUrl})`}}
@@ -27,7 +27,6 @@ const ItemLink:React.FC<Props> = ({ imageUrl, name, price }) => {
         <p className={classes.name}>{name}</p>
         <p className={classes.price}>${price}</p>
       </div>
-
     </Grid>
   );
 };

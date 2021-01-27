@@ -1,4 +1,5 @@
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import sizes from '../../styles/constants/MediaQueries';
 
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -6,6 +7,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       alignItems: 'center',
       zIndex: 1,
+      fontFamily: 'Varela Round',
     },
     paper: {
       marginRight: theme.spacing(2),
@@ -13,6 +15,11 @@ export const useStyles = makeStyles((theme: Theme) =>
     menuButton: {
       fontSize: '16px',
       padding: '5px',
+      fontFamily: 'Varela Round',
+
+      [sizes.down('lg')]: {
+        marginRight: theme.spacing(3),
+      },
     },
     link: {
       textDecoration: 'none',

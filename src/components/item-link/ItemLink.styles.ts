@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles({
   root: {
     height: '100%',
-    marginBottom: '4em',
+    marginBottom: '1.5em',
+    paddingBottom: '40px !important'
   },
   linkContainer: {
     backgroundSize: 'cover',

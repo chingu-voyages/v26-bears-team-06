@@ -15,7 +15,7 @@ const CategoryLink:React.FC<Props> = ({ category }) => {
   const classes = useStyles();
 
   return (
-    <Grid item xs={4} className={classes.root} style={{backgroundImage: `url(${category.imageURL})`}}>
+    <Grid item xs={12} md={4} className={classes.root} style={{backgroundImage: `url(${category.imageURL})`}}>
       <Link to={`/${category.id}`} className={classes.link}>{category.name}</Link>
     </Grid>
   );

@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core";
+import sizes from '../../styles/constants/MediaQueries';
 
 export const useStyles = makeStyles({
   root: {
@@ -13,7 +14,11 @@ export const useStyles = makeStyles({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: '20px',
-    height: '70%'
+    height: '70%',
+
+    [sizes.down('sm')]: {
+      flexDirection: 'column'
+    }
   },
   bottomRow: {
     display: 'flex',
@@ -24,24 +29,54 @@ export const useStyles = makeStyles({
     padding: '5px 0',
     height: '30%'
   },
-  rightSide: {
+  leftSide: {
     display: 'flex',
     width: '78%',
     justifyContent: 'space-between',
     alignItems: 'center',
+    [sizes.down('lg')]: {
+      width: '72%'
+    },
+    [sizes.down('md')]: {
+      width: '75%',
+    },
+    [sizes.down('sm')]: {
+      width: '100%',
+      justifyContent: 'center',
+      marginBottom: '0.65em',
+    }
   },
-  leftSide: {
+  rightSide: {
     display: 'flex',
     width: '18%',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+
+    [sizes.down('lg')]: {
+      width: '28%'
+    },
+    [sizes.down('md')]: {
+      width: '25%',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'space-between'
+    },
+    [sizes.down('sm')]: {
+      flexDirection: 'row',
+      justifyContent:'space-around',
+      width: '100%',
+    }
   },
   logo: {
     backgroundImage: 'url(https://cdn.discordapp.com/attachments/795654989481377794/802002681568690246/M_rket_2.png)',
     backgroundPosition: 'center',
     width: '280px',
     height: '60px',
-    borderRadius: '10px'
+    borderRadius: '10px',
+
+    [sizes.down('lg')]: {
+      display: 'none',
+    }
   },
   authLinksContainer: {
     display: 'flex',

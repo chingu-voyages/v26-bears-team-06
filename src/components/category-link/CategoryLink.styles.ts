@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import sizes from '../../styles/constants/MediaQueries';
 
 export const useStyles = makeStyles({
   root: {
@@ -10,7 +11,17 @@ export const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'center',
     opacity: '0.85',
-    zIndex: 0
+    zIndex: 0,
+    filter: 'grayscale(30%)',
+    transition: 'all 0.3s ease',
+
+    '&:hover': {
+      opacity: '1',
+      filter: 'grayscale(0%)',
+    },
+    [sizes.down('md')]: {
+      height: '100px'
+    },
   },
   link: {
     display: 'flex',
@@ -23,5 +34,7 @@ export const useStyles = makeStyles({
     fontWeight: 'bold',
     textTransform: 'uppercase',
     color: 'black',
+
+
   },
 });
