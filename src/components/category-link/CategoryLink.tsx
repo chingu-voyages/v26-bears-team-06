@@ -5,21 +5,20 @@ import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 // Styles:
 import { useStyles } from './CategoryLink.styles';
+import { Category } from '../../seed/seedData';
 interface Props {
-  category: string,
-  imageURL: string,
+  category: Category,
 }
 
-const CategoryLink:React.FC<Props> = ({ category, imageURL }) => {
+const CategoryLink:React.FC<Props> = ({ category }) => {
 
   const classes = useStyles();
 
   return (
-    <Grid item xs={4} className={classes.root} style={{backgroundImage: `url(${imageURL})`}}>
-      <Link to='/' className={classes.link}>{category}</Link>
+    <Grid item xs={4} className={classes.root} style={{backgroundImage: `url(${category.imageURL})`}}>
+      <Link to={`/${category.id}`} className={classes.link}>{category.name}</Link>
     </Grid>
   );
 };
 
 export default CategoryLink;
-

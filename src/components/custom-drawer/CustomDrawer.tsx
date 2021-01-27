@@ -6,7 +6,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
+import Checkbox from '@material-ui/core/Checkbox';
 import SearchIcon from '@material-ui/icons/Search';
 // Styles: 
 import { useStyles } from './CustomDrawer.styles';
@@ -46,6 +46,7 @@ const CustomDrawer:React.FC<Props> = ({ open, handleClose}) => {
         <h2>{Goods.name}</h2>
         {Goods.subCategories.map(subCategory => (
                 <FormControlLabel
+                key={subCategory.id}
                 control={
                   <Checkbox
                     name="checkedB"
@@ -59,12 +60,13 @@ const CustomDrawer:React.FC<Props> = ({ open, handleClose}) => {
         <h2>{Housing.name}</h2>
         {Housing.subCategories.map(subCategory => (
                 <FormControlLabel
-                control={
-                  <Checkbox
-                    name="checkedB"
-                    color="primary"
-                    value='Housing/id'
-                  />
+                  key={subCategory.id}
+                  control={
+                    <Checkbox
+                      name="checkedB"
+                      color="primary"
+                      value='Housing/id'
+                    />
                 }
                 label={subCategory.name}
               />
@@ -72,14 +74,15 @@ const CustomDrawer:React.FC<Props> = ({ open, handleClose}) => {
         <h2>{Jobs.name}</h2>
         {Jobs.subCategories.map(subCategory => (
                 <FormControlLabel
-                control={
-                  <Checkbox
-                    name="checkedB"
-                    color="primary"
-                    value='Jobs/id'
-                  />
-                }
-                label={subCategory.name}
+                  key={subCategory.id}
+                  control={
+                    <Checkbox
+                      name="checkedB"
+                      color="primary"
+                      value='Jobs/id'
+                    />
+                  }
+                  label={subCategory.name}
               />
         ))}
         <button className={classes.searchButton}><SearchIcon/>Search</button>

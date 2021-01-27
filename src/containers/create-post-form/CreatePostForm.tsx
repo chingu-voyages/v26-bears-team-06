@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import { useStyles } from './CreatePostForm.styles';
 // Material UI:
 import FormControl from '@material-ui/core/FormControl';
+
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormLabel from '@material-ui/core/FormLabel';
+import { Post, seedCategories } from '../../seed/seedData';
 import CategoryRadioButtons from '../../components/category-radio-buttons/CategoryRadioButtons';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import { Button, TextField } from '@material-ui/core';
@@ -14,12 +16,9 @@ import { Link } from 'react-router-dom';
 import { createNewPost } from '../../redux/post/postActions';
 import { useSelector, useDispatch } from 'react-redux';
 import { postState } from '../../redux/post/postReducer';
-import { Post, seedCategories } from '../../seed/seedData';
 
 const CreatePostForm: React.FC = () => {
   const classes = useStyles();
-
-  const posts = useSelector<any, postState["posts"]>((state) => state.post.posts);
   const dispatch = useDispatch();
 
   const [radioValue, setRadioValue] = useState<string>('');
@@ -30,7 +29,8 @@ const CreatePostForm: React.FC = () => {
     location: '',
     category: '',
     subCategory: '',
-    description: ''
+    description: '',
+    imageUrl: '',
   })
 
   const { name, price, location, description, category} = post;
@@ -69,7 +69,8 @@ const CreatePostForm: React.FC = () => {
       location: '',
       category: '',
       subCategory: '',
-      description: ''
+      description: '',
+      imageUrl: ''
     })
   };
 
@@ -91,6 +92,10 @@ const CreatePostForm: React.FC = () => {
           </RadioGroup>
         </FormControl>
       </div>
+      {category === 'Housing' && 
+      <div>
+        <h1>Housing</h1>
+      </div>}
       <div className={classes.textInputs}>
       <FormLabel component="legend">Fill out the fields below:</FormLabel>
       <div className={classes.topRowContainer}>
@@ -153,7 +158,7 @@ const CreatePostForm: React.FC = () => {
           >
             Submit Post
           </Button>
-        <Link to='/'>
+        <Link to='/' className={classes.link}>
           <Button 
             variant='contained'
             color='default'
@@ -162,7 +167,6 @@ const CreatePostForm: React.FC = () => {
             Go to Homepage
           </Button>
         </Link>
-
       </div>
     </ValidatorForm>
   )

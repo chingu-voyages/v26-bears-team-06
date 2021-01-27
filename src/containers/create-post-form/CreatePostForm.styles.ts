@@ -49,5 +49,9 @@ export const useStyles = makeStyles({
     margin: '0.25em',
     marginLeft: '0',
     marginRight: '0.5em'
+  },
+  link: {
+    textDecoration: 'none',
+    color: 'black',
   }
 });

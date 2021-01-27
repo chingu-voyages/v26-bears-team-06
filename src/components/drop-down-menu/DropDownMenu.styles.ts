@@ -5,6 +5,7 @@ export const useStyles = makeStyles((theme: Theme) =>
     root: {
       display: 'flex',
       alignItems: 'center',
+      zIndex: 1,
     },
     paper: {
       marginRight: theme.spacing(2),
@@ -12,6 +13,10 @@ export const useStyles = makeStyles((theme: Theme) =>
     menuButton: {
       fontSize: '16px',
       padding: '5px',
+    },
+    link: {
+      textDecoration: 'none',
+      color: 'black'
     }
   }),
 );
