@@ -1,5 +1,5 @@
 import React from "react";
-import Homepage from "./pages/homepage/Homepage";
+import Homepage from "./pages/homepage/homepage";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CreatePostPage from "./pages/create-post-page/CreatePostPage";

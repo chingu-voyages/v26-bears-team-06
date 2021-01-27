@@ -6,7 +6,7 @@ import CreatePostingButton from '../../components/create-posting-button/CreatePo
 // Styles:
 import { useStyles } from './Navbar.styles';
 // Seed Data: 
-import { Category, seedCategories } from '../../seed/seedData';
+import { seedCategories } from '../../seed/seedData';
 // State Management (REDUX):
 import { useSelector, useDispatch } from 'react-redux';
 import { drawerState } from '../../redux/drawer/drawerReducer';
@@ -46,7 +46,7 @@ const Navbar:React.FC = () => {
       <div className={classes.bottomRow}>
         <ul className={classes.categoriesDropDownList}>
           {seedCategories.map(category => (
-              <DropDownMenu category={category} />
+              <DropDownMenu category={category} key={category.id}/>
           ))}
         </ul>
       </div>

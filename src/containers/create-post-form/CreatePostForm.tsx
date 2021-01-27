@@ -19,8 +19,6 @@ import { postState } from '../../redux/post/postReducer';
 
 const CreatePostForm: React.FC = () => {
   const classes = useStyles();
-
-  const posts = useSelector<any, postState["posts"]>((state) => state.post.posts);
   const dispatch = useDispatch();
 
   const [radioValue, setRadioValue] = useState<string>('');

@@ -26,10 +26,20 @@ const ItemListContainer:React.FC<Props> = ({header, posts, seeAllLink}) => {
       <Grid container spacing={3} className={classes.root}>
         { seeAllLink.length > 0 ?
           posts.slice(0, 6).map(post => (
-            <ItemLink imageUrl={post.imageUrl} name={post.name} price={post.price} />
+            <ItemLink 
+              imageUrl={post.imageUrl} 
+              name={post.name} 
+              price={post.price}
+              key={post.id} 
+            />
           )) : 
           posts.map(post => (
-            <ItemLink imageUrl={post.imageUrl} name={post.name} price={post.price} />
+            <ItemLink 
+              imageUrl={post.imageUrl} 
+              name={post.name} 
+              price={post.price}
+              key={post.id} 
+            />
           ))
         }
       </Grid>
