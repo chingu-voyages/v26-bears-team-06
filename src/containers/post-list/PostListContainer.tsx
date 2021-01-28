@@ -35,6 +35,7 @@ const ItemListContainer:React.FC<Props> = ({header, posts, seeAllLink}) => {
               name={post.name} 
               price={post.price}
               key={post.id} 
+              id={post.id}
             />
           )) : 
           posts.map(post => (
@@ -43,6 +44,7 @@ const ItemListContainer:React.FC<Props> = ({header, posts, seeAllLink}) => {
               name={post.name} 
               price={post.price}
               key={post.id} 
+              id={post.id}
             />
           ))
         }

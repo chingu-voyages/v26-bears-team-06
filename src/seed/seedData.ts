@@ -41,7 +41,7 @@ export interface Post {
 export const seedPosts: Post[] = [
   {
     name: "Something",
-    id: "1",
+    id: "A",
     price: "100",
     location: "Boston, MA",
     category: "Goods",
@@ -51,7 +51,7 @@ export const seedPosts: Post[] = [
   },
   {
     name: "Hoodie",
-    id: "2",
+    id: "B",
     price: "100",
     location: "Boston, MA",
     category: "Goods",
@@ -61,7 +61,7 @@ export const seedPosts: Post[] = [
   },
   {
     name: "Laptop",
-    id: "3",
+    id: "C",
     price: "100",
     location: "Boston, MA",
     category: "Goods",
@@ -71,7 +71,7 @@ export const seedPosts: Post[] = [
   },
   {
     name: "Kitchen",
-    id: "4",
+    id: "D",
     price: "100",
     location: "Boston, MA",
     category: "Goods",
@@ -81,7 +81,7 @@ export const seedPosts: Post[] = [
   },
   {
     name: "Desk",
-    id: "5",
+    id: "E",
     price: "100",
     location: "Boston, MA",
     category: "Goods",
@@ -91,7 +91,7 @@ export const seedPosts: Post[] = [
   },
   {
     name: "Bulb",
-    id: "6",
+    id: "F",
     price: "100",
     location: "Boston, MA",
     category: "Goods",
@@ -101,7 +101,7 @@ export const seedPosts: Post[] = [
   },
   {
     name: "Bulb",
-    id: "6",
+    id: "G",
     price: "100",
     location: "Boston, MA",
     category: "Goods",
@@ -111,7 +111,7 @@ export const seedPosts: Post[] = [
   },
   {
     name: "Bulb",
-    id: "6",
+    id: "H",
     price: "100",
     location: "Boston, MA",
     category: "Goods",

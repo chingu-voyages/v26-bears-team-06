@@ -86,11 +86,9 @@ const SignInSignUp:React.FC = () => {
         fullWidth={true}
         maxWidth='lg'
         >
-          <DialogContent>
-            <DialogContentText>
-              Please fill out one of the forms below: 
-            </DialogContentText>
-          </DialogContent>
+          <DialogContentText className={classes.dialogContentText}>
+            Please fill out one of the forms below: 
+          </DialogContentText>
           <div className={classes.dialogForms}>
             <form className={classes.signIn}>
               <DialogTitle id="form-dialog-title">Sign In</DialogTitle>
