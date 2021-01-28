@@ -35,7 +35,7 @@ const CustomDrawer:React.FC<Props> = ({ open, handleClose}) => {
         }}
       >
       <div className={classes.drawerHeader}>
-        <Typography variant="h4">Select Filters</Typography>
+        <Typography variant="h5">Select Filters</Typography>
         <IconButton onClick={handleClose}>
           <ChevronLeftIcon />
           Close

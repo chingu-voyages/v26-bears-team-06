@@ -32,11 +32,11 @@ const Navbar:React.FC = () => {
   return (
     <div className={classes.root}>
       <div className={classes.topRow}>
-        <div className={classes.rightSide}>
+        <div className={classes.leftSide}>
           <Link to='/' className={classes.logo}></Link>
           <CustomSearchBar handleOpen={handleDrawerOpen}/>
         </div>
-        <div className={classes.leftSide}>
+        <div className={classes.rightSide}>
           <CreatePostingButton />
           <div className={classes.authLinksContainer}>
             <SignInSignUp />

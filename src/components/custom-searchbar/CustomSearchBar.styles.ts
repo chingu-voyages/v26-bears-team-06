@@ -1,13 +1,21 @@
 import { makeStyles } from "@material-ui/core";
+import sizes from '../../styles/constants/MediaQueries';
 
 export const useStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center',
-    width: '75%',
+    width: '70%',
     backgroundColor: '#EBEEEE',
     borderRadius: '35px',
     height: '40px',
+
+    [sizes.down('lg')]: {
+      width: '80%',
+    },
+    [sizes.down('md')]: {
+      width: '90%',
+    },
   },
   searchInput: {
     height: '80%',
