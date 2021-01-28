@@ -14,8 +14,7 @@ import { Button, TextField } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 // Redux State Management:
 import { createNewPost } from '../../redux/post/postActions';
-import { useSelector, useDispatch } from 'react-redux';
-import { postState } from '../../redux/post/postReducer';
+import { useDispatch } from 'react-redux';
 
 const CreatePostForm: React.FC = () => {
   const classes = useStyles();

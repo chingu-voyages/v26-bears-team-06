@@ -5,7 +5,6 @@ import { useStyles } from './PostListContainer.styles';
 import ReusableHeader from '../../components/reusable-header/ReusableHeader';
 import { Link } from 'react-router-dom';
 import { Post } from '../../seed/seedData';
-import sizes from '../../styles/constants/MediaQueries';
 interface Props {
   header: string,
   posts: Post[],
