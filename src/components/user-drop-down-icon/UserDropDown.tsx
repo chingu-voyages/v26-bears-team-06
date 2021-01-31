@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function UserDropDown() {
-  const currentUser = useSelector<any, userState["currentUser"]>((state) => state.user.currentUser);
+  
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
