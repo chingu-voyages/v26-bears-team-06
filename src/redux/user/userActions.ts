@@ -1,7 +1,6 @@
 import { User } from "../../seed/seedData"
-
 export interface Actions {
-  type: "REGISTER_NEW_USER" | "SET_CURRENT_USER",
+  type: "REGISTER_NEW_USER" | "SET_CURRENT_USER" ,
   payload: User
 }
 
