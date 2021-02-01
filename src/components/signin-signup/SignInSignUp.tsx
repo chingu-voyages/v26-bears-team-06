@@ -13,7 +13,7 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 // Styles:
 import { useStyles } from './SignInSignUp.styles';
 // Redux State Management:
-import { registerNewUser } from '../../redux/user/userActions';
+import { registerNewUser, setCurrentUser } from '../../redux/user/userActions';
 import { useSelector, useDispatch } from 'react-redux';
 import { userState } from '../../redux/user/userReducer';
 import { User } from '../../seed/seedData';
@@ -60,7 +60,8 @@ const SignInSignUp:React.FC = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    password === passwordConfirmation ? dispatch(registerNewUser(user)) : alert('passwords dont match!');
+    dispatch(registerNewUser(user));
+    dispatch(setCurrentUser(user)); 
     console.log(users);
     setUser({
       name: '',
