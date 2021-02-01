@@ -10,7 +10,12 @@ export const useStyles = makeStyles({
     backgroundSize: 'cover',
     height: '100%',
     marginBottom: '1em',
-    borderRadius: '10px'
+    borderRadius: '10px',
+    transition: 'all 0.3s ease',
+
+    '&:hover': {
+      transform: 'scale(1.025)'
+    }
   },
   link: {
     display: 'block',

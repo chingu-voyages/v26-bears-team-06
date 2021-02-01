@@ -9,9 +9,10 @@ interface Props {
   imageUrl: string,
   name: string,
   price: string,
+  id: string
 };
 
-const ItemLink:React.FC<Props> = ({ imageUrl, name, price }) => {
+const ItemLink:React.FC<Props> = ({ imageUrl, name, price, id }) => {
 
   const classes = useStyles();
 
@@ -21,7 +22,7 @@ const ItemLink:React.FC<Props> = ({ imageUrl, name, price }) => {
         className={classes.linkContainer} 
         style={{backgroundImage: `url(${imageUrl})`}}
         >
-        <Link to='/' className={classes.link}></Link>
+        <Link to={`/posts/${id}`} className={classes.link}></Link>
       </div>
       <div className={classes.itemInfo}>
         <p className={classes.name}>{name}</p>

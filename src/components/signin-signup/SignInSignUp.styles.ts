@@ -4,11 +4,14 @@ export const useStyles = makeStyles({
   root: {
     display: 'flex',
     justifyContent:'center',
-    width: 'fit-content'
+    width: 'fit-content',
   },
   dialogContainer: {
     display: 'flex',
     flexDirection: 'column',
+  },
+  dialogContentText: {
+    padding: '1em 2em 0 2em'
   },
   dialogForms: {
     display: 'flex',
@@ -17,15 +20,15 @@ export const useStyles = makeStyles({
   signIn: {
     display: 'flex',
     flexDirection: 'column',
-    padding: '2rem 3rem'
+    padding: '1rem 2rem'
   },
   signUp: {
     display: 'flex',
     flexDirection: 'column',
-    padding: '2rem 3rem'
+    padding: '1rem 2rem'
   },
   input: {
     width: '480px',
-    marginBottom: '1rem'
+    marginBottom: '0.5em'
   }
 })

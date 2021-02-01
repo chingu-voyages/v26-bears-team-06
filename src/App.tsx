@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CreatePostPage from "./pages/create-post-page/CreatePostPage";
 import CategoryResultsPage from "./pages/search-results-page/CategoryResultsPage";
 import SubCategoryResultsPage from './pages/search-results-page/SubCategoryResultsPage';
-import { Category, seedCategories } from "./seed/seedData";
+import { Category, seedCategories, seedPosts } from "./seed/seedData";
+import PostPage from "./pages/post-page/PostPage";
 
 function App() {
   
@@ -40,6 +41,27 @@ function App() {
         posts: [],
       }
     }
+  };
+
+  const findPost = (id: string) => {
+    const foundPost = seedPosts.find(function(post){
+      return post.id === id;
+    });
+
+    if(foundPost) {
+      return foundPost
+    } else {
+      return {
+        name: 'Sorry this post was not found',
+        id: '',
+        price: '',
+        location: '',
+        category: '',
+        subCategory: '',
+        description: '',
+        imageUrl: '',
+      }
+    }
   }
 
   return (
@@ -47,6 +69,15 @@ function App() {
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/posts/new" component={CreatePostPage} />
+        <Route 
+            exact 
+            path='/posts/:postId' 
+            render={({match}) => 
+            <PostPage 
+              post={findPost(match.params.postId)}
+            />
+          }
+            />
         <Route 
           exact path="/:categoryId/"
           render={(routeProps) => 
