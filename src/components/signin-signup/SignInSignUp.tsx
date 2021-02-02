@@ -13,16 +13,20 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 // Styles:
 import { useStyles } from './SignInSignUp.styles';
 // Redux State Management:
-import { registerNewUser, setCurrentUser } from '../../redux/user/userActions';
+import { getAllUsers, registerAndSetNewUser, setCurrentUser } from '../../redux/user/userActions';
+import { User } from '../../redux/user/userTypes';
 import { useSelector, useDispatch } from 'react-redux';
 import { userState } from '../../redux/user/userReducer';
-import { User } from '../../seed/seedData';
+import { RootStore } from '../../redux/store';
+
 
 const SignInSignUp:React.FC = () => {
   const classes = useStyles();
-  
-  const users = useSelector<any, userState["users"]>((state) => state.user.users);
   const dispatch = useDispatch();
+  
+  const users = useSelector<RootStore, userState["users"]>((state) => state.user.users);
+  console.log('USERS:', users);
+  
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isEmailUnique', (value: string) => 
@@ -30,11 +34,12 @@ const SignInSignUp:React.FC = () => {
     );
     ValidatorForm.addValidationRule('passwordsMustMatch', () => 
       password === passwordConfirmation 
-    )
-  })
+    );
+  }, []);
 
   const [openNameForm, setOpenNameForm] = useState<boolean>(false);
   const [user, setUser] = useState<User>({
+    user_id: 1,
     name: '',
     email: '',
     password: '',
@@ -60,10 +65,11 @@ const SignInSignUp:React.FC = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    dispatch(registerNewUser(user));
+    dispatch(registerAndSetNewUser(user));
     dispatch(setCurrentUser(user)); 
-    console.log(users);
+    console.log(user);
     setUser({
+      user_id: 1,
       name: '',
       email: '',
       password: '',

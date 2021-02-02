@@ -10,10 +10,6 @@ import MenuList from '@material-ui/core/MenuList';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 // Redux:
-import { useSelector } from 'react-redux';
-import { userState } from '../../redux/user/userReducer';
-
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

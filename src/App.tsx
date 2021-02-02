@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Homepage from "./pages/homepage/homepage";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -7,9 +7,22 @@ import CategoryResultsPage from "./pages/search-results-page/CategoryResultsPage
 import SubCategoryResultsPage from './pages/search-results-page/SubCategoryResultsPage';
 import { Category, seedCategories, seedPosts } from "./seed/seedData";
 import PostPage from "./pages/post-page/PostPage";
+import { getCategories } from "./redux/category/categoryActions";
+import { categoryState } from "./redux/category/categoryReducer";
+import { useSelector, useDispatch } from 'react-redux';
+import { RootStore } from "./redux/store";
+import { getAllUsers } from "./redux/user/userActions";
 
 function App() {
-  
+  const dispatch = useDispatch();
+  const categories = useSelector<RootStore, categoryState["categories"]>(state => state.category.categories);
+  console.log('CATEGORIES:', categories);
+
+  useEffect(() => {
+    dispatch(getCategories());
+    dispatch(getAllUsers());
+  }, []);
+
   const findCategory = (id: string) => {
     const foundCategory = seedCategories.find(function(category){
       return category.id === id;
@@ -62,7 +75,7 @@ function App() {
         imageUrl: '',
       }
     }
-  }
+  };
 
   return (
     <Router>

@@ -15,12 +15,13 @@ import { userState } from '../../redux/user/userReducer';
 import DropDownMenu from '../../components/drop-down-menu/DropDownMenu';
 import SignInSignUp from '../../components/signin-signup/SignInSignUp';
 import { Link } from 'react-router-dom';
+import { RootStore } from '../../redux/store';
 
 const Navbar:React.FC = () => {
   // Using Redux hooks to dispatch actions to open/close drawer and pulldown menus.
-  const drawerOpen = useSelector<any, drawerState['open']>((state) => state.drawer.open);
-  const currentUser = useSelector<any, userState["currentUser"]>((state) => state.user.currentUser);
-  console.log(currentUser)
+  const drawerOpen = useSelector<RootStore, drawerState['open']>((state) => state.drawer.open);
+  const currentUser = useSelector<RootStore, userState["currentUser"]>((state) => state.user.currentUser);
+  console.log('CURRENT_USER:', currentUser)
   const dispatch = useDispatch();
   // Functions for drawer state (Refactor to useState hooks, redux is overkill for this)
   const handleDrawerOpen = () => {
