@@ -1,5 +1,3 @@
-import { useDispatch } from 'react-redux';
-import { getAllUsers } from './userActions';
 import { 
   REGISTRATION_FAILED, 
   REGISTRATION_START, 
@@ -9,7 +7,11 @@ import {
   USERS_LOADING, 
   USERS_SUCCESS,
   USERS_FAILED,
-  User 
+  User, 
+  LOGOUT_CURRENT_USER,
+  LOGIN_LOADING,
+  LOGIN_SUCCESS,
+  LOGIN_FAILED
 } from './userTypes';
 
 
@@ -18,7 +20,8 @@ export interface userState {
   currentUser: User | null,
   loading: boolean,
   successMsg?: string,
-  errorMsg?: string
+  errorMsg?: string,
+  token?: string,
 };
 
 export const INITIAL_STATE = {
@@ -44,6 +47,12 @@ const userReducer = (state:userState = INITIAL_STATE, action: UserDispatchTypes)
         ...state,
         currentUser: action.payload
       }
+    case LOGOUT_CURRENT_USER:
+      return {
+        ...state,
+        currentUser: null,
+        token: '',
+      }
     case REGISTRATION_FAILED:
       return {
         ...state,
@@ -57,12 +66,30 @@ const userReducer = (state:userState = INITIAL_STATE, action: UserDispatchTypes)
     case USERS_SUCCESS: 
       return {
         ...state,
-        users: action.payload
+        users: action.payload,
+        loading: false
       }
     case USERS_FAILED:
       return {
         ...state,
-        errorMsg: action.error
+        errorMsg: action.error,
+        loading: false
+      }
+    case LOGIN_LOADING: 
+      return {
+        ...state,
+        loading: true
+      }
+    case LOGIN_SUCCESS: 
+      return {
+        ...state,
+        loading: false,
+        token: action.token,
+      }
+    case LOGIN_FAILED:
+      return {
+        ...state,
+        loading: false
       }
     default:
        return state

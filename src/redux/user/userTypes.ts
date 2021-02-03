@@ -1,13 +1,19 @@
+import { OpenError, OpenSuccess } from "../snackbars/snackbarsTypes";
+
 export const USERS_LOADING = "USERS_LOADING";
 export const USERS_SUCCESS = "USERS_SUCCESS";
 export const USERS_FAILED = "USERS_FAILED"
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
+export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const REGISTRATION_START = "REGISTRATION_START";
 export const REGISTRATION_SUCCESS = "REGISTRATION_SUCCESS";
 export const REGISTRATION_FAILED = "REGISTRATION_FAILED";
+export const LOGIN_LOADING = "LOGIN_LOADING";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILED = "LOGIN_FAILED";
 
 export interface User {
-  user_id: number,
+  user_id?: number,
   name: string,
   email: string,
   password: string,
@@ -16,7 +22,13 @@ export interface User {
   zip: string,
   phone_number?: string,
   address?: string,
+  token?: string,
 };
+
+export interface UserLogin {
+  email: string,
+  password: string,
+}
 
 export interface UsersLoading {
   type: typeof USERS_LOADING
@@ -37,6 +49,11 @@ export interface SetCurrentUser {
   payload: User,
 };
 
+export interface LogoutCurrentUser {
+  type: typeof LOGOUT_CURRENT_USER,
+  token: string
+}
+
 export interface RegistrationStart {
   type: typeof REGISTRATION_START,
 };
@@ -51,11 +68,31 @@ export interface RegistrationFailed {
   error: string
 };
 
+export interface LoginLoading {
+  type: typeof LOGIN_LOADING,
+};
+
+export interface LoginSuccess {
+  type: typeof LOGIN_SUCCESS,
+  payload: UserLogin,
+  token: string,
+};
+
+export interface LoginFailed {
+  type: typeof LOGIN_FAILED
+}
+
 export type UserDispatchTypes = 
   UsersFailed |
   UsersLoading |
   UsersSuccess |
   SetCurrentUser | 
+  LogoutCurrentUser |
+  LoginFailed |
+  LoginSuccess |
+  LoginLoading |
   RegistrationFailed |
   RegistrationStart | 
-  RegistrationSuccess;
+  RegistrationSuccess |
+  OpenError |
+  OpenSuccess;

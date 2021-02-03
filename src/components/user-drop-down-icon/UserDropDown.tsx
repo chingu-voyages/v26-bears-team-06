@@ -9,12 +9,19 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+// Router:
+import { Link } from 'react-router-dom';
 // Redux:
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutCurrentUser } from '../../redux/user/userActions';
+import { RootStore } from '../../redux/store';
+import { userState } from '../../redux/user/userReducer';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
+      zIndex: 1
     },
     paper: {
       marginRight: theme.spacing(2),
@@ -23,14 +30,22 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function UserDropDown() {
-  
+
+  const dispatch = useDispatch();
+  const currentUser = useSelector<RootStore, userState["currentUser"]>(state => state.user.currentUser);
+
   const classes = useStyles();
+
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
+
+  const handleLogout = () => {
+    dispatch(logoutCurrentUser());
+  }
 
   const handleClose = (event: React.MouseEvent<EventTarget>) => {
     if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
@@ -78,9 +93,8 @@ export default function UserDropDown() {
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    <Link to={`/user/${currentUser?.user_id}`} style={{textDecoration: 'none', color: 'black'}}><MenuItem onClick={handleClose}>Profile</MenuItem></Link>
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

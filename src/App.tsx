@@ -12,6 +12,9 @@ import { categoryState } from "./redux/category/categoryReducer";
 import { useSelector, useDispatch } from 'react-redux';
 import { RootStore } from "./redux/store";
 import { getAllUsers } from "./redux/user/userActions";
+import UserProfile from "./pages/user-profile-page/UserProfile";
+import SnackbarSuccess from "./components/snackbar-feedback/SnackbarSuccess";
+import SnackBarError from "./components/snackbar-feedback/SnackbarError";
 
 function App() {
   const dispatch = useDispatch();
@@ -78,33 +81,38 @@ function App() {
   };
 
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Homepage} />
-        <Route exact path="/posts/new" component={CreatePostPage} />
-        <Route 
-            exact 
-            path='/posts/:postId' 
-            render={({match}) => 
-            <PostPage 
-              post={findPost(match.params.postId)}
-            />
-          }
-            />
-        <Route 
-          exact path="/:categoryId/"
-          render={(routeProps) => 
-            <CategoryResultsPage category={findCategory(routeProps.match.params.categoryId)}/>
-          } 
-         />
-         <Route 
-          exact path="/:categoryId/:subCategoryId"
-          render={(routeProps) => 
-            <SubCategoryResultsPage subCategory={findSubCategory(findCategory(routeProps.match.params.categoryId), routeProps.match.params.subCategoryId)}/>
-          } 
+    <div>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Homepage} />
+          <Route exact path="/user/:userId" component={UserProfile} />
+          <Route exact path="/posts/new" component={CreatePostPage} />
+          <Route 
+              exact 
+              path='/posts/:postId' 
+              render={({match}) => 
+              <PostPage 
+                post={findPost(match.params.postId)}
+              />
+            }
+              />
+          <Route 
+            exact path="/:categoryId/"
+            render={(routeProps) => 
+              <CategoryResultsPage category={findCategory(routeProps.match.params.categoryId)}/>
+            } 
           />
-      </Switch>
-    </Router>
+          <Route 
+            exact path="/:categoryId/:subCategoryId"
+            render={(routeProps) => 
+              <SubCategoryResultsPage subCategory={findSubCategory(findCategory(routeProps.match.params.categoryId), routeProps.match.params.subCategoryId)}/>
+            } 
+            />
+        </Switch>
+      </Router>
+      <SnackbarSuccess />
+      <SnackBarError />
+    </div>
   );
 }
 
