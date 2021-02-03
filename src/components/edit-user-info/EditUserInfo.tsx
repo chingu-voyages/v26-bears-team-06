@@ -3,54 +3,53 @@ import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import TextField from '@material-ui/core/TextField';
-import Divider from '@material-ui/core/Divider';
 // Material UI Form Validator:
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 // Styles:
-import { useStyles } from './SignInSignUp.styles';
+import { useStyles } from './EditUserInfo.styles';
 // Redux State Management:
-import { loginUser, registerAndSetNewUser, setCurrentUser } from '../../redux/user/userActions';
-import { User, UserLogin } from '../../redux/user/userTypes';
+import { registerAndSetNewUser, setCurrentUser } from '../../redux/user/userActions';
+import { User } from '../../redux/user/userTypes';
 import { useSelector, useDispatch } from 'react-redux';
 import { userState } from '../../redux/user/userReducer';
 import { RootStore } from '../../redux/store';
 
-const SignInSignUp:React.FC = () => {
+const EditUserInfo:React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   
   const users = useSelector<RootStore, userState["users"]>((state) => state.user.users);
-  console.log('USERS:', users);
+  const currentUser = useSelector<RootStore, userState["currentUser"]>((state) => state.user.currentUser);
+  const token = useSelector<RootStore, userState["token"]>(state => state.user.token);
+  console.log('token', token);
+  console.log('CU', currentUser);
   
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isEmailUnique', (value: string) => 
-      users.every(({email}) => email?.toLowerCase() !== value.toLowerCase())
+      users.every(({email}) => email.toLowerCase() !== value.toLowerCase())
     );
     ValidatorForm.addValidationRule('passwordsMustMatch', () => 
       password === passwordConfirmation 
+    );
+    ValidatorForm.addValidationRule('correctOldPassword', () => 
+      oldPassword ===  currentUser?.password
     );
   });
 
   const [openNameForm, setOpenNameForm] = useState<boolean>(false);
   const [user, setUser] = useState<User>({
-    name: '',
-    email: '',
+    name: currentUser ? currentUser.name : '',
+    email: currentUser ? currentUser.email : '',
     password: '',
-    city: '',
-    state: '',
-    zip: '',
+    city: currentUser ?  currentUser.city : '',
+    state: currentUser ? currentUser.state : '',
+    zip: currentUser ? currentUser.zip : '',
   }); 
 
-  const [userLogin, setUserLogin] = useState<UserLogin>({
-    email: '',
-    password: '',
-  })
-
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
+  const [oldPassword, setOldPassword] = useState<string>('');
 
   const { name, email, password, city, state, zip } = user;
 
@@ -65,22 +64,6 @@ const SignInSignUp:React.FC = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
-  const handleLoginChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserLogin({ ...userLogin, [event.target.name]: event.target.value });
-  };
-
-  const handleLogin = (event: any) => {
-    event.preventDefault();
-    dispatch(loginUser(userLogin));
-    
-    const verifiedUser = users.find(user => userLogin.password === user.password);
-    dispatch(setCurrentUser(verifiedUser));
-
-    setUserLogin({
-      email: '',
-      password: ''
-    });
-  }
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -96,12 +79,13 @@ const SignInSignUp:React.FC = () => {
       zip: '',
     });
     setPasswordConfirmation('');
+    setOldPassword('');
   };
 
   return (
     <div className={classes.root}>
-      <Button color="primary" onClick={handleOpenNameForm}>
-        Sign Up / Login
+      <Button color="primary" variant="contained" onClick={handleOpenNameForm}>
+        Edit Info
       </Button>
       <Dialog 
         open={openNameForm} 
@@ -109,41 +93,11 @@ const SignInSignUp:React.FC = () => {
         aria-labelledby="form-dialog-title" 
         className={classes.dialogContainer}
         fullWidth={true}
-        maxWidth='lg'
+        maxWidth='md'
         >
-          <DialogContentText className={classes.dialogContentText}>
-            Please fill out one of the forms below: 
-          </DialogContentText>
           <div className={classes.dialogForms}>
-            <form 
-              className={classes.signIn}
-              onSubmit={handleLogin}
-              >
-              <DialogTitle id="form-dialog-title">Sign In</DialogTitle>
-              <TextField 
-                className={classes.input} 
-                id="outlined-basic" 
-                label="Email"
-                name="email"
-                onChange={handleLoginChange}
-                value={userLogin.email} />
-              <TextField 
-                className={classes.input} 
-                id="outlined-basic" 
-                label="Password"
-                type="password"
-                name="password"
-                onChange={handleLoginChange}
-                value={userLogin.password} />
-              <DialogActions>
-                <Button type='submit' color="primary" variant='contained'>
-                  Sign In
-                </Button>
-              </DialogActions>
-            </form>
-            <Divider variant='middle' orientation='vertical' flexItem/>
             <ValidatorForm className={classes.signUp} onSubmit={handleSubmit}>
-              <DialogTitle id="form-dialog-title">Sign Up</DialogTitle>
+              <DialogTitle id="form-dialog-title">Update</DialogTitle>
               <TextValidator 
                 className={classes.input} 
                 id="outlined-basic" 
@@ -170,7 +124,19 @@ const SignInSignUp:React.FC = () => {
               <TextValidator 
                 className={classes.input} 
                 id="outlined-basic" 
-                label="Password" 
+                label="Old Password" 
+                name='oldPassword'
+                type='password' 
+                variant="outlined"
+                value={oldPassword} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setOldPassword(e.target.value)}
+                validators={['required']}
+                errorMessages={['Password Required']}
+                />
+              <TextValidator 
+                className={classes.input} 
+                id="outlined-basic" 
+                label="New Password" 
                 name='password'
                 type='password' 
                 variant="outlined"
@@ -182,7 +148,7 @@ const SignInSignUp:React.FC = () => {
               <TextValidator 
                 className={classes.input} 
                 id="outlined-basic" 
-                label="Confirm Password" 
+                label="Confirm New Password" 
                 name='passwordConfirmation'
                 type='password' 
                 variant="outlined"
@@ -220,7 +186,7 @@ const SignInSignUp:React.FC = () => {
                 />
               <DialogActions>
                 <Button type='submit' color="primary" variant='contained'>
-                  Join now!
+                  Update Profile
                 </Button>
               </DialogActions>
             </ValidatorForm>
@@ -230,4 +196,4 @@ const SignInSignUp:React.FC = () => {
   )
 };
 
-export default SignInSignUp;
+export default EditUserInfo;
