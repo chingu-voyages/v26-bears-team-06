@@ -17,8 +17,6 @@ import { User, UserLogin } from '../../redux/user/userTypes';
 import { useSelector, useDispatch } from 'react-redux';
 import { userState } from '../../redux/user/userReducer';
 import { RootStore } from '../../redux/store';
-import UserProfile from '../../pages/user-profile-page/UserProfile';
-
 
 const SignInSignUp:React.FC = () => {
   const classes = useStyles();
@@ -75,7 +73,7 @@ const SignInSignUp:React.FC = () => {
     event.preventDefault();
     dispatch(loginUser(userLogin));
     
-    const verifiedUser = users.find(user => userLogin.email === user.email);
+    const verifiedUser = users.find(user => userLogin.password === user.password);
     dispatch(setCurrentUser(verifiedUser));
 
     setUserLogin({

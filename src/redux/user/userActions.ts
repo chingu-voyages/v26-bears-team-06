@@ -86,7 +86,7 @@ export const loginUser = (userLogin : UserLogin) => async (dispatch: Dispatch<Us
 
     const loginInfo = await axios.post('https://craigs2list-dev.herokuapp.com/login', userLogin);
     console.log("LOGIN:", loginInfo);
-
+    
     dispatch({
       type: LOGIN_SUCCESS,
       payload: userLogin,
