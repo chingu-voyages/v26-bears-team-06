@@ -1,42 +1,34 @@
 import {
   SnackbarDispatchTypes,
-  OPEN_ERROR,
-  OPEN_SUCCESS,
-  CLOSE_ERROR,
-  CLOSE_SUCCESS
+  OPEN_SNACKBAR,
+  CLOSE_SNACKBAR
 } from './snackbarsTypes';
 
 export interface SnackbarState {
-  successOpen?: boolean,
-  errorOpen?: boolean
+  open: boolean,
+  message: string,
+  severity: "success" | "info" | "warning" | "error" | undefined
 };
 
 const INITIAL_STATE = {
-  successOpen: false,
-  errorOpen: false,
+  open: false,
+  message: '',
+  severity: undefined,
 };
 
 export const snackbarReducer = (state: SnackbarState = INITIAL_STATE, action: SnackbarDispatchTypes) => {
   switch(action.type){
-    case OPEN_SUCCESS: 
+    case OPEN_SNACKBAR: 
       return {
         ...state,
-        successOpen: true
+        open: true,
+        message: action.message,
+        severity: action.severity
       }
-    case CLOSE_SUCCESS: 
+    case CLOSE_SNACKBAR: 
       return {
         ...state,
-        successOpen: false
-      }
-    case OPEN_ERROR:
-      return {
-        ...state,
-        errorOpen: true
-      }
-    case CLOSE_ERROR: 
-      return {
-        ...state,
-        errorOpen: false
+        open: false
       }
     default:
        return state

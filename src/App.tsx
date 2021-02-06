@@ -13,8 +13,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootStore } from "./redux/store";
 import { getAllUsers } from "./redux/user/userActions";
 import UserProfile from "./pages/user-profile-page/UserProfile";
-import SnackbarSuccess from "./components/snackbar-feedback/SnackbarSuccess";
-import SnackBarError from "./components/snackbar-feedback/SnackbarError";
+import CustomSnackbar from "./components/snackbar-feedback/Snackbar";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -110,8 +110,7 @@ function App() {
             />
         </Switch>
       </Router>
-      <SnackbarSuccess />
-      <SnackBarError />
+      <CustomSnackbar />
     </div>
   );
 }

@@ -69,12 +69,9 @@ const SignInSignUp:React.FC = () => {
     setUserLogin({ ...userLogin, [event.target.name]: event.target.value });
   };
 
-  const handleLogin = (event: any) => {
+  const handleLogin = async (event: any) => {
     event.preventDefault();
     dispatch(loginUser(userLogin));
-    
-    const verifiedUser = users.find(user => userLogin.password === user.password);
-    dispatch(setCurrentUser(verifiedUser));
 
     setUserLogin({
       email: '',
@@ -86,7 +83,7 @@ const SignInSignUp:React.FC = () => {
     event.preventDefault();
     dispatch(registerAndSetNewUser(user));
     dispatch(setCurrentUser(user)); 
-    console.log(user);
+    
     setUser({
       name: '',
       email: '',

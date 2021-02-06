@@ -1,4 +1,5 @@
-import { OpenError, OpenSuccess } from "../snackbars/snackbarsTypes";
+import { Action } from "redux";
+import { OpenSnackbar } from "../snackbars/snackbarsTypes";
 
 export const USERS_LOADING = "USERS_LOADING";
 export const USERS_SUCCESS = "USERS_SUCCESS";
@@ -11,6 +12,8 @@ export const REGISTRATION_FAILED = "REGISTRATION_FAILED";
 export const LOGIN_LOADING = "LOGIN_LOADING";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILED = "LOGIN_FAILED";
+export const GET_USER = "GET_USER"
+export const UPDATE_USER = "UPDATE_USER"
 
 export interface User {
   user_id?: number,
@@ -24,11 +27,14 @@ export interface User {
   address?: string,
   token?: string,
 };
-
 export interface UserLogin {
   email: string,
   password: string,
-}
+};
+
+export interface GetUser {
+  type: typeof GET_USER 
+};
 
 export interface UsersLoading {
   type: typeof USERS_LOADING
@@ -80,9 +86,17 @@ export interface LoginSuccess {
 
 export interface LoginFailed {
   type: typeof LOGIN_FAILED
+};
+
+export interface UpdateUser {
+  type: typeof UPDATE_USER,
+  user: User
 }
 
+
+
 export type UserDispatchTypes = 
+  GetUser |
   UsersFailed |
   UsersLoading |
   UsersSuccess |
@@ -94,5 +108,5 @@ export type UserDispatchTypes =
   RegistrationFailed |
   RegistrationStart | 
   RegistrationSuccess |
-  OpenError |
-  OpenSuccess;
+  OpenSnackbar |
+  UpdateUser;

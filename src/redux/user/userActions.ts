@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { OPEN_ERROR, OPEN_SUCCESS } from '../snackbars/snackbarsTypes';
+import { OPEN_SNACKBAR } from '../snackbars/snackbarsTypes';
 import { 
   User, 
   UserDispatchTypes, 
@@ -15,7 +15,8 @@ import {
   UserLogin,
   LOGIN_LOADING,
   LOGIN_SUCCESS,
-  LOGIN_FAILED
+  LOGIN_FAILED,
+  UPDATE_USER
 } from './userTypes';
 
 export const registerAndSetNewUser = (user: User) => async (dispatch: Dispatch<UserDispatchTypes>) => {
@@ -25,7 +26,7 @@ export const registerAndSetNewUser = (user: User) => async (dispatch: Dispatch<U
     });
 
     const newUser = await axios.post('https://craigs2list-dev.herokuapp.com/users', user);
-    console.log(newUser);
+    console.log('NU:', newUser);
     dispatch({
       type: REGISTRATION_SUCCESS,
       response: "success"
@@ -33,14 +34,25 @@ export const registerAndSetNewUser = (user: User) => async (dispatch: Dispatch<U
 
     dispatch({
       type: SET_CURRENT_USER,
-      payload: user
+      payload: newUser.data
+    });
+
+    dispatch({
+      type: OPEN_SNACKBAR,
+      message: 'Registration Successful',
+      severity: 'success'
     });
 
   } catch (error) {
     dispatch({
       type: REGISTRATION_FAILED,
       error: error
-    })
+    });
+    dispatch({
+      type: OPEN_SNACKBAR,
+      message: 'Registration Failed',
+      severity: 'error'
+    });
   }
 };
 
@@ -65,17 +77,23 @@ export const getAllUsers = () => async (dispatch: Dispatch<UserDispatchTypes>) =
 };
 
 export const setCurrentUser = (user: User | undefined) => {
+  console.log('CU:', user);
   return {
     type: SET_CURRENT_USER,
     payload: user
   }
 };
 
-export const logoutCurrentUser = () => {
-  return {
+export const logoutCurrentUser = () => (dispatch: Dispatch<UserDispatchTypes>) => {
+  dispatch({
     type: LOGOUT_CURRENT_USER,
     token: '',
-  }
+  })
+  dispatch({
+    type: OPEN_SNACKBAR,
+    message: "Logout Successful",
+    severity: 'warning'
+  })
 };
 
 export const loginUser = (userLogin : UserLogin) => async (dispatch: Dispatch<UserDispatchTypes>) => {
@@ -86,22 +104,60 @@ export const loginUser = (userLogin : UserLogin) => async (dispatch: Dispatch<Us
 
     const loginInfo = await axios.post('https://craigs2list-dev.herokuapp.com/login', userLogin);
     console.log("LOGIN:", loginInfo);
+
+    const user = await axios.get(`https://craigs2list-dev.herokuapp.com/users/${loginInfo.data.user_id}`);
+    console.log("USER", user.data)
+
     
+    dispatch({
+      type: SET_CURRENT_USER,
+      payload: user.data
+    });
+
     dispatch({
       type: LOGIN_SUCCESS,
       payload: userLogin,
       token: loginInfo.data.token
     });
+
+
     dispatch({
-      type: OPEN_SUCCESS
+      type: OPEN_SNACKBAR,
+      message: 'Login Successful',
+      severity: 'success'
     });
+
+
 
   } catch (error) {
     dispatch({
       type: LOGIN_FAILED
     });
     dispatch({
-      type: OPEN_ERROR
+      type: OPEN_SNACKBAR,
+      message: 'Email and/or Password are incorrect',
+      severity: 'error'
     });
   }
-}
+};
+
+export const updateUser = (user: User, userId: number | undefined, token: string | undefined) => async (dispatch: Dispatch<UserDispatchTypes>) => {
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+    const updatedUser = await axios.post(`https://craigs2list-dev.herokuapp.com/users/${userId}`, user, config);
+    dispatch({
+      type: UPDATE_USER,
+      user: updatedUser.data
+    })
+  } catch (error) {
+    dispatch({
+      type: OPEN_SNACKBAR,
+      message: 'Error updating user info',
+      severity: 'error'
+    })
+  }
+};
