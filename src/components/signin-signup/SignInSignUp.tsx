@@ -23,9 +23,7 @@ const SignInSignUp:React.FC = () => {
   const dispatch = useDispatch();
   
   const users = useSelector<RootStore, userState["users"]>((state) => state.user.users);
-  console.log('USERS:', users);
   
-
   useEffect(() => {
     ValidatorForm.addValidationRule('isEmailUnique', (value: string) => 
       users.every(({email}) => email?.toLowerCase() !== value.toLowerCase())
@@ -82,7 +80,6 @@ const SignInSignUp:React.FC = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
     dispatch(registerAndSetNewUser(user));
-    dispatch(setCurrentUser(user)); 
     
     setUser({
       name: '',

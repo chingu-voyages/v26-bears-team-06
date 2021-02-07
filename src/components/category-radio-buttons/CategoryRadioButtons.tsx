@@ -22,7 +22,7 @@ const CategoryRadioButtons:React.FC<Props> = ({name, subCategories}) => {
         subCategories.map(({name, id, posts}) => (
           posts.length === 0 ?
           <FormControlLabel 
-            value={`/${name}/${id}`}  
+            value={`${name}`}  
             control={<Radio color='default' />} 
             label={name}
             key={id}
@@ -30,7 +30,7 @@ const CategoryRadioButtons:React.FC<Props> = ({name, subCategories}) => {
          />
          :
          <FormControlLabel 
-            value={`/${name}/${id}`} 
+            value={`${name}`} 
             control={<Radio color='default' />} 
             label={name}
             key={id}

@@ -21,15 +21,12 @@ const EditUserInfo:React.FC = () => {
 
   const currentUser = useSelector<RootStore, userState["currentUser"]>((state) => state.user.currentUser);
   const token = useSelector<RootStore, userState["token"]>(state => state.user.token);
-  console.log('token', token);
-  console.log('CU', currentUser);
 
   const [openNameForm, setOpenNameForm] = useState<boolean>(false);
 
   const [user, setUser] = useState<User>({
     name: '',
     email: '',
-    password: '',
     city: '',
     state: '',
     zip: '',
@@ -42,7 +39,6 @@ const EditUserInfo:React.FC = () => {
     setUser({
       name: currentUser ? currentUser.name : '',
       email: currentUser ? currentUser.email : '',
-      password: '',
       city: currentUser ?  currentUser.city : '',
       state: currentUser ? currentUser.state : '',
       zip: currentUser ? currentUser.zip : '',
@@ -58,18 +54,11 @@ const EditUserInfo:React.FC = () => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
-    const updatedUser = {...currentUser, ...user};
+    const updatedUser = user;
     dispatch(updateUser(updatedUser, currentUser?.user_id, currentUser?.token));
-    setUser({
-      name: '',
-      email: '',
-      password: '',
-      city: '',
-      state: '',
-      zip: '',
-    });
+    
     // setPasswordConfirmation('');
     // setOldPassword('');
   };
@@ -110,8 +99,8 @@ const EditUserInfo:React.FC = () => {
                 type="email"
                 value={user.email}
                 onChange={handleChange}
-                validators={['required', 'isEmailUnique']}
-                errorMessages={['Email Required', 'This email is already in use, please sign in']}
+                validators={['required']}
+                errorMessages={['Email Required']}
                 />
               {/* <TextValidator 
                 className={classes.input} 

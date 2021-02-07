@@ -26,7 +26,7 @@ export const registerAndSetNewUser = (user: User) => async (dispatch: Dispatch<U
     });
 
     const newUser = await axios.post('https://craigs2list-dev.herokuapp.com/users', user);
-    console.log('NU:', newUser);
+    
     dispatch({
       type: REGISTRATION_SUCCESS,
       response: "success"
@@ -77,7 +77,7 @@ export const getAllUsers = () => async (dispatch: Dispatch<UserDispatchTypes>) =
 };
 
 export const setCurrentUser = (user: User | undefined) => {
-  console.log('CU:', user);
+  
   return {
     type: SET_CURRENT_USER,
     payload: user
@@ -103,12 +103,9 @@ export const loginUser = (userLogin : UserLogin) => async (dispatch: Dispatch<Us
     });
 
     const loginInfo = await axios.post('https://craigs2list-dev.herokuapp.com/login', userLogin);
-    console.log("LOGIN:", loginInfo);
-
-    const user = await axios.get(`https://craigs2list-dev.herokuapp.com/users/${loginInfo.data.user_id}`);
-    console.log("USER", user.data)
-
     
+    const user = await axios.get(`https://craigs2list-dev.herokuapp.com/users/${loginInfo.data.user_id}`);
+
     dispatch({
       type: SET_CURRENT_USER,
       payload: user.data
@@ -148,11 +145,21 @@ export const updateUser = (user: User, userId: number | undefined, token: string
         Authorization: `Bearer ${token}`
       }
     }
-    const updatedUser = await axios.post(`https://craigs2list-dev.herokuapp.com/users/${userId}`, user, config);
+    const updatedUser = await axios.patch(`https://craigs2list-dev.herokuapp.com/users/${userId}`, user, config);
+
     dispatch({
       type: UPDATE_USER,
       user: updatedUser.data
-    })
+    });
+    dispatch({
+      type: SET_CURRENT_USER,
+      payload: updatedUser.data
+    });
+    dispatch({
+      type: OPEN_SNACKBAR,
+      message: 'Update successful',
+      severity: 'success'
+    });
   } catch (error) {
     dispatch({
       type: OPEN_SNACKBAR,
