@@ -1,30 +1,18 @@
 import {
-  OPEN_SUCCESS,
-  OPEN_ERROR,
-  CLOSE_SUCCESS,
-  CLOSE_ERROR
+  OPEN_SNACKBAR,
+  CLOSE_SNACKBAR,
 } from './snackbarsTypes';
 
-export const openSuccess = () => {
+export const openSnackbar = (message: string, severity: string) => {
   return {
-    type: OPEN_SUCCESS
+    type: OPEN_SNACKBAR,
+    message,
+    severity,
   }
 };
 
-export const closeSuccess = () => {
+export const closeSnackbar = () => {
   return {
-    type: CLOSE_SUCCESS
-  }
-};
-
-export const openError = () => {
-  return {
-    type: OPEN_ERROR
-  }
-};
-
-export const closeError = () => {
-  return {
-    type: CLOSE_ERROR
+    type: CLOSE_SNACKBAR
   }
 };

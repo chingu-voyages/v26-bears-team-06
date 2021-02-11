@@ -3,10 +3,8 @@ import React, { useState } from 'react';
 import { useStyles } from './CreatePostForm.styles';
 // Material UI:
 import FormControl from '@material-ui/core/FormControl';
-
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormLabel from '@material-ui/core/FormLabel';
-import { Post, seedCategories } from '../../seed/seedData';
 import CategoryRadioButtons from '../../components/category-radio-buttons/CategoryRadioButtons';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import { Button, TextField } from '@material-ui/core';
@@ -14,25 +12,32 @@ import { Button, TextField } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 // Redux State Management:
 import { createNewPost } from '../../redux/post/postActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Post } from '../../redux/post/postTypes';
+import { seedCategories } from '../../seed/seedData';
+import { RootStore } from '../../redux/store';
+import { userState } from '../../redux/user/userReducer';
+import { openSnackbar } from '../../redux/snackbars/snackbarsActions';
 
 const CreatePostForm: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-
+  const currentUser = useSelector<RootStore, userState["currentUser"]>((state) => state.user.currentUser);
+  
   const [radioValue, setRadioValue] = useState<string>('');
   const [post, setPost] = useState<Post>({
-    name: '',
-    id: '',
+    title: '',
     price: '',
     location: '',
     category: '',
-    subCategory: '',
+    subcategory: '',
     description: '',
     imageUrl: '',
-  })
+    author: currentUser
+  });
+  
 
-  const { name, price, location, description, category} = post;
+  const { title, price, location, description, category, imageUrl } = post;
 
   const categoryMap:any = {
     "Electronics": "Goods",
@@ -51,7 +56,7 @@ const CreatePostForm: React.FC = () => {
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRadioValue((event.target as HTMLInputElement).value);
-    setPost({...post, subCategory: event.target.value, category: categoryMap[event.target.value]});
+    setPost({...post, subcategory: event.target.value, category: categoryMap[event.target.value]});
   };
 
   const handleTextInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,17 +64,27 @@ const CreatePostForm: React.FC = () => {
   };
 
   const handleSubmit = (event: any) => {
-    event.preventDefault();
-    dispatch(createNewPost(post));
+    if(!currentUser){
+      dispatch(openSnackbar('You must login to create a post', 'warning'));
+      return
+    }
     setPost({
-      name: '',
-      id: '',
+      ...post,
+      author: currentUser,
+    });
+    event.preventDefault();
+    console.log('POST:', post)
+    console.log(currentUser.token);
+    dispatch(createNewPost(post, currentUser.token));
+    setPost({
+      title: '',
       price: '',
       location: '',
       category: '',
-      subCategory: '',
+      subcategory: '',
       description: '',
-      imageUrl: ''
+      imageUrl: '',
+      author: currentUser,
     })
   };
 
@@ -101,8 +116,8 @@ const CreatePostForm: React.FC = () => {
         <TextField
             id="outlined-textarea"
             label="Post Title"
-            name='name'
-            value={name}
+            name='title'
+            value={title}
             placeholder="Title"
             variant="outlined"
             className={classes.postTitleInput}
@@ -128,6 +143,18 @@ const CreatePostForm: React.FC = () => {
           name='location'
           value={location}
           placeholder="City, State"
+          multiline
+          variant="outlined"
+          className={classes.formInput}
+          onChange={handleTextInputChange}
+          required
+        />
+        <TextField
+          id="outlined-textarea"
+          label="Image Url"
+          name='imageUrl'
+          value={imageUrl}
+          placeholder="Image URL"
           multiline
           variant="outlined"
           className={classes.formInput}

@@ -16,16 +16,22 @@ const CategoryResultsPage: React.FC<Props> = ({ category }) => {
   return (
     <div>
       <Navbar />
-      <ReusableHeader text={name} fontSize="38px" />
-      {subCategories.map((subCategory: Subcategory) => (
-        <div className={classes.header}>
-          <PostListContainer
-            posts={subCategory.posts}
-            header={subCategory.name}
-            seeAllLink={`/${category.id}/${subCategory.id}`}
-          />
-        </div>
-      ))}
+        <ReusableHeader text={name} fontSize="38px" />
+          {
+          subCategories[0].posts.length === 0 ?
+          <h1>Coming Soon!</h1>
+          :
+          subCategories.map((subCategory: Subcategory) => (
+            <div className={classes.header}>
+              <PostListContainer
+                posts={subCategory.posts}
+                header={subCategory.name}
+                seeAllLink={`/${category.id}/${subCategory.id}`}
+              />
+            </div>
+          ))
+        }
+    
     </div>
   );
 };

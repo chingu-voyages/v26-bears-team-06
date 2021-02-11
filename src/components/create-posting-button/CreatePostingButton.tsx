@@ -9,7 +9,7 @@ const CreatePostingButton:React.FC = () => {
   const classes = useStyles();
 
   return (
-    <Link to='/posts/new' className={classes.link}><Button variant="contained">Create Post</Button></Link>
+    <Link to='/posts/new' className={classes.link}><Button variant="contained" className={classes.button}>Create Post</Button></Link>
   )
 };
 

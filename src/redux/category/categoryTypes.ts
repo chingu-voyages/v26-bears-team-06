@@ -4,7 +4,7 @@ export const CATEGORIES_FAILED = "CATEGORIES_FAILED";
 
 export interface Subcategory {
   subcategory_id: number,
-  name: string
+  name: string,
 };
 
 export interface CategoryType {

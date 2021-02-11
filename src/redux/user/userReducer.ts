@@ -11,7 +11,8 @@ import {
   LOGOUT_CURRENT_USER,
   LOGIN_LOADING,
   LOGIN_SUCCESS,
-  LOGIN_FAILED
+  LOGIN_FAILED,
+  UPDATE_USER
 } from './userTypes';
 
 
@@ -90,6 +91,11 @@ const userReducer = (state:userState = INITIAL_STATE, action: UserDispatchTypes)
       return {
         ...state,
         loading: false
+      }
+    case UPDATE_USER:
+      return {
+        ...state,
+        user: action.user
       }
     default:
        return state

@@ -12,7 +12,7 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 // Styles:
 import { useStyles } from './SignInSignUp.styles';
 // Redux State Management:
-import { loginUser, registerAndSetNewUser, setCurrentUser } from '../../redux/user/userActions';
+import { loginUser, registerAndSetNewUser } from '../../redux/user/userActions';
 import { User, UserLogin } from '../../redux/user/userTypes';
 import { useSelector, useDispatch } from 'react-redux';
 import { userState } from '../../redux/user/userReducer';
@@ -23,9 +23,7 @@ const SignInSignUp:React.FC = () => {
   const dispatch = useDispatch();
   
   const users = useSelector<RootStore, userState["users"]>((state) => state.user.users);
-  console.log('USERS:', users);
   
-
   useEffect(() => {
     ValidatorForm.addValidationRule('isEmailUnique', (value: string) => 
       users.every(({email}) => email?.toLowerCase() !== value.toLowerCase())
@@ -69,12 +67,9 @@ const SignInSignUp:React.FC = () => {
     setUserLogin({ ...userLogin, [event.target.name]: event.target.value });
   };
 
-  const handleLogin = (event: any) => {
+  const handleLogin = async (event: any) => {
     event.preventDefault();
     dispatch(loginUser(userLogin));
-    
-    const verifiedUser = users.find(user => userLogin.password === user.password);
-    dispatch(setCurrentUser(verifiedUser));
 
     setUserLogin({
       email: '',
@@ -85,8 +80,7 @@ const SignInSignUp:React.FC = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
     dispatch(registerAndSetNewUser(user));
-    dispatch(setCurrentUser(user)); 
-    console.log(user);
+    
     setUser({
       name: '',
       email: '',

@@ -1,29 +1,44 @@
 import React, {useEffect} from "react";
-import Homepage from "./pages/homepage/homepage";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// Pages
+import Homepage from "./pages/homepage/homepage";
 import CreatePostPage from "./pages/create-post-page/CreatePostPage";
 import CategoryResultsPage from "./pages/search-results-page/CategoryResultsPage";
 import SubCategoryResultsPage from './pages/search-results-page/SubCategoryResultsPage';
-import { Category, seedCategories, seedPosts } from "./seed/seedData";
 import PostPage from "./pages/post-page/PostPage";
+import UserProfile from "./pages/user-profile-page/UserProfile";
+// Components:
+import CustomSnackbar from "./components/snackbar-feedback/Snackbar";
+// React Router:
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// Seed Data:
+import { Category, seedCategories, seedPosts } from "./seed/seedData";
+// Redux State Management:
 import { getCategories } from "./redux/category/categoryActions";
 import { categoryState } from "./redux/category/categoryReducer";
 import { useSelector, useDispatch } from 'react-redux';
 import { RootStore } from "./redux/store";
 import { getAllUsers } from "./redux/user/userActions";
-import UserProfile from "./pages/user-profile-page/UserProfile";
-import SnackbarSuccess from "./components/snackbar-feedback/SnackbarSuccess";
-import SnackBarError from "./components/snackbar-feedback/SnackbarError";
+import { getAllPosts } from "./redux/post/postActions";
+import { userState } from "./redux/user/userReducer";
+import { postState } from "./redux/post/postReducer";
+
 
 function App() {
   const dispatch = useDispatch();
+  // Grabbing pieces of our state:
   const categories = useSelector<RootStore, categoryState["categories"]>(state => state.category.categories);
   console.log('CATEGORIES:', categories);
+  const users = useSelector<RootStore, userState["users"]>(state => state.user.users);
+  console.log('USERS:', users);
+  const posts = useSelector<RootStore, postState["posts"]>(state => state.post.posts);
+  console.log('POSTS:', posts);
 
+  // Making get requests to database to initialize state:
   useEffect(() => {
     dispatch(getCategories());
     dispatch(getAllUsers());
+    dispatch(getAllPosts());
   }, []);
 
   const findCategory = (id: string) => {
@@ -110,8 +125,7 @@ function App() {
             />
         </Switch>
       </Router>
-      <SnackbarSuccess />
-      <SnackBarError />
+      <CustomSnackbar />
     </div>
   );
 }

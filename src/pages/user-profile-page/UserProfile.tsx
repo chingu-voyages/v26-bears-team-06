@@ -7,6 +7,12 @@ import { userState } from '../../redux/user/userReducer';
 
 const UserProfile = () => {
   const currentUser = useSelector<RootStore, userState["currentUser"]>(state => state.user.currentUser);
+
+  const capitalize = (s: string | undefined) => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+  }
+
   return (
     <div>
       <Navbar />
@@ -16,8 +22,8 @@ const UserProfile = () => {
         <p>Name: {currentUser?.name}</p>
         <p>Email: {currentUser?.email}</p>
         <p>Address: {currentUser?.address ? currentUser.address : "N/A"}</p>
-        <p style={{textTransform: 'uppercase'}}>City: {currentUser?.city}</p>
-        <p style={{textTransform: 'uppercase'}}>State: {currentUser?.state}</p>
+        <p>City: {capitalize(currentUser?.city)}</p>
+        <p>State: {capitalize(currentUser?.state)}</p>
         <p>Zip: {currentUser?.zip}</p>
       </div>
       <EditUserInfo />

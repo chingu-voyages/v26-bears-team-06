@@ -40,33 +40,33 @@ export interface Post {
 
 export const seedPosts: Post[] = [
   {
-    name: "Something",
+    name: "IPad",
     id: "A",
     price: "100",
     location: "Boston, MA",
     category: "Goods",
     subCategory: "Electronics",
-    description: "great computer",
-    imageUrl: 'https://source.unsplash.com/800x600/?barrel'
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    imageUrl: 'https://source.unsplash.com/800x600/?IPad'
   },
   {
     name: "Hoodie",
     id: "B",
-    price: "100",
+    price: "20",
     location: "Boston, MA",
     category: "Goods",
     subCategory: "Electronics",
-    description: "great computer",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     imageUrl: 'https://source.unsplash.com/800x600/?hoodie'
   },
   {
     name: "Laptop",
     id: "C",
-    price: "100",
+    price: "500",
     location: "Boston, MA",
     category: "Goods",
     subCategory: "Electronics",
-    description: "great computer",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     imageUrl: 'https://source.unsplash.com/800x600/?macbook'
   },
   {
@@ -76,48 +76,48 @@ export const seedPosts: Post[] = [
     location: "Boston, MA",
     category: "Goods",
     subCategory: "Electronics",
-    description: "great computer",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     imageUrl: 'https://source.unsplash.com/800x600/?kitchen'
   },
   {
     name: "Desk",
     id: "E",
-    price: "100",
+    price: "150",
     location: "Boston, MA",
     category: "Goods",
     subCategory: "Electronics",
-    description: "great computer",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     imageUrl: 'https://source.unsplash.com/800x600/?desk'
   },
   {
     name: "Bulb",
     id: "F",
-    price: "100",
+    price: "10",
     location: "Boston, MA",
     category: "Goods",
     subCategory: "Electronics",
-    description: "great computer",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     imageUrl: 'https://source.unsplash.com/800x600/?bulb'
   },
   {
-    name: "Bulb",
+    name: "Sneakers",
     id: "G",
-    price: "100",
+    price: "80",
     location: "Boston, MA",
     category: "Goods",
     subCategory: "Electronics",
     description: "great computer",
-    imageUrl: 'https://source.unsplash.com/800x600/?bulb'
+    imageUrl: 'https://source.unsplash.com/800x600/?sneakers'
   },
   {
-    name: "Bulb",
+    name: "Hat",
     id: "H",
-    price: "100",
+    price: "10",
     location: "Boston, MA",
     category: "Goods",
     subCategory: "Electronics",
-    description: "great computer",
-    imageUrl: 'https://source.unsplash.com/800x600/?bulb'
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    imageUrl: 'https://source.unsplash.com/800x600/?hat'
   },
 ];
 
