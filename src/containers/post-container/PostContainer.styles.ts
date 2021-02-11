@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { findByLabelText } from '@testing-library/react';
 
 export const useStyles = makeStyles({
   root: {
@@ -6,8 +7,10 @@ export const useStyles = makeStyles({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
   },
   titleSection: {
+    width: '75%',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -17,13 +20,19 @@ export const useStyles = makeStyles({
     }
   },
   image: {
-    width: '100%',
+    width: '75%',
     borderRadius: '20px',
     margin: '1em 0',
   },
   locationPrice: {
+    width: '75%',
     display: 'flex',
     justifyContent: 'space-between',
     fontSize: '22px'
+  },
+  bottomSection: {
+    width: '75%',
+    display: 'flex',
+    flexDirection: 'column',
   }
 })

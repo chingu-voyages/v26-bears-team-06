@@ -46,10 +46,15 @@ export const getUsersPosts = () => async (dispatch: Dispatch<PostDispatchTypes>)
   }
 };
 
-export const createNewPost = (post: Post) => async (dispatch: Dispatch<PostDispatchTypes>) => {
+export const createNewPost = (post: Post, token: string | undefined) => async (dispatch: Dispatch<PostDispatchTypes>) => {
   try {
-    const res = await axios.post('https://craigs2list-dev.herokuapp.com/goods', post);
-    console.log('Post:', post);
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+    const res = await axios.post('https://craigs2list-dev.herokuapp.com/goods', post, config);
+    console.log('Post:', post, 'token:', token );
     console.log(res);
     dispatch({
       type: CREATE_NEW_POST,

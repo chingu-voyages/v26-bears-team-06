@@ -74,7 +74,8 @@ const CreatePostForm: React.FC = () => {
     });
     event.preventDefault();
     console.log('POST:', post)
-    dispatch(createNewPost(post));
+    console.log(currentUser.token);
+    dispatch(createNewPost(post, currentUser.token));
     setPost({
       title: '',
       price: '',

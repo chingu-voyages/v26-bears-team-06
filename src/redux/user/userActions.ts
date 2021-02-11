@@ -101,7 +101,7 @@ export const loginUser = (userLogin : UserLogin) => async (dispatch: Dispatch<Us
     dispatch({
       type: LOGIN_LOADING
     });
-
+    console.log("USER LOGIN:", userLogin);
     const loginInfo = await axios.post('https://craigs2list-dev.herokuapp.com/login', userLogin);
     
     const user = await axios.get(`https://craigs2list-dev.herokuapp.com/users/${loginInfo.data.user_id}`);

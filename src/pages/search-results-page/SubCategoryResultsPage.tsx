@@ -17,6 +17,9 @@ const SubCategoryResultsPage: React.FC<Props> = ({ subCategory }) => {
     <div>
       <Navbar />
       <ReusableHeader text={name} fontSize="38px" />
+      {posts.length === 0 ? 
+        <h1>Coming Soon!</h1>
+        :
         <div className={classes.header}>
           <PostListContainer
             posts={posts}
@@ -24,6 +27,7 @@ const SubCategoryResultsPage: React.FC<Props> = ({ subCategory }) => {
             seeAllLink=''
           />
         </div>
+      }
     </div>
   );
 };

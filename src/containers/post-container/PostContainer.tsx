@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 import { Post } from '../../seed/seedData';
 import { useStyles } from './PostContainer.styles';
 
@@ -14,7 +15,7 @@ const PostContainer: React.FC<Props> = ({post}) => {
     <div className={classes.root}>
       <div className={classes.titleSection}>
         <h1>{name}</h1>
-        <button>Contact Seller</button>
+        <Button variant='contained' color='primary'>Reply</Button>
       </div>
       <img 
         className={classes.image}
@@ -23,10 +24,13 @@ const PostContainer: React.FC<Props> = ({post}) => {
         <span>{location}</span>
         <span>${price}</span>
       </div>
-      <p>{description}</p>
-      <div>
-        <button>Go Back</button>
+      <div className={classes.bottomSection}>
+        <p>{description}</p>
+        <div>
+          <Button variant='contained' href='/'>Go Back</Button>
+        </div>
       </div>
+
     </div>
   )  
 };

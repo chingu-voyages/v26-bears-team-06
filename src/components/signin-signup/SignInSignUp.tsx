@@ -12,7 +12,7 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 // Styles:
 import { useStyles } from './SignInSignUp.styles';
 // Redux State Management:
-import { loginUser, registerAndSetNewUser, setCurrentUser } from '../../redux/user/userActions';
+import { loginUser, registerAndSetNewUser } from '../../redux/user/userActions';
 import { User, UserLogin } from '../../redux/user/userTypes';
 import { useSelector, useDispatch } from 'react-redux';
 import { userState } from '../../redux/user/userReducer';
