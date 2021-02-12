@@ -203,7 +203,7 @@ export const seedCategories: Category[] = [
   {
     name: "Goods",
     id: "1",
-    imageURL: 'https://images.unsplash.com/photo-1516762689617-e1cffcef479d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=654&q=80',
+    imageURL: 'https://images.unsplash.com/photo-1548082644-d30472ade6be?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjZ8fGNsb3RoZXN8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
     subCategories: [
       { name: "Electronics", id: "1", posts: seedPosts },
       { name: "Cars", id: "2", posts: seedPosts },
