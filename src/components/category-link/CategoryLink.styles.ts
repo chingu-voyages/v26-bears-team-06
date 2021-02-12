@@ -12,12 +12,12 @@ export const useStyles = makeStyles({
     alignItems: 'center',
     opacity: '0.85',
     zIndex: 0,
-    filter: 'grayscale(30%)',
+    filter: 'brightness(90%)',
     transition: 'all 0.3s ease',
 
     '&:hover': {
       opacity: '1',
-      filter: 'grayscale(0%)',
+      filter: 'brightness(100%)',
     },
     [sizes.down('md')]: {
       height: '100px'
@@ -26,7 +26,8 @@ export const useStyles = makeStyles({
   link: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    paddingTop: '50px',
     textDecoration: 'none',
     width: '100%',
     height: '100%',

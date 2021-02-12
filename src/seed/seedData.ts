@@ -35,6 +35,7 @@ export interface Post {
   subCategory: string,
   description: string,
   imageUrl: string,
+  author: User
   
 }
 
@@ -47,7 +48,15 @@ export const seedPosts: Post[] = [
     category: "Goods",
     subCategory: "Electronics",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: 'https://source.unsplash.com/800x600/?IPad'
+    imageUrl: 'https://source.unsplash.com/800x600/?IPad',
+    author: {
+      name: "Alicia D. Macomber",
+      email: "AliciaDMacomber@rhyta.com",
+      password: "mypassword",
+      city: "Haddonfield",
+      state: "NJ",
+      zip: "08033",
+    }
   },
   {
     name: "Hoodie",
@@ -57,7 +66,16 @@ export const seedPosts: Post[] = [
     category: "Goods",
     subCategory: "Electronics",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: 'https://source.unsplash.com/800x600/?hoodie'
+    imageUrl: 'https://source.unsplash.com/800x600/?hoodie',
+    author: {
+      name: "Alicia D. Macomber",
+      email: "AliciaDMacomber@rhyta.com",
+      password: "mypassword",
+      city: "Haddonfield",
+      state: "NJ",
+      zip: "08033",
+    }
+    
   },
   {
     name: "Laptop",
@@ -67,7 +85,15 @@ export const seedPosts: Post[] = [
     category: "Goods",
     subCategory: "Electronics",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: 'https://source.unsplash.com/800x600/?macbook'
+    imageUrl: 'https://source.unsplash.com/800x600/?macbook',
+    author: {
+      name: "Alicia D. Macomber",
+      email: "AliciaDMacomber@rhyta.com",
+      password: "mypassword",
+      city: "Haddonfield",
+      state: "NJ",
+      zip: "08033",
+    }
   },
   {
     name: "Kitchen",
@@ -77,7 +103,15 @@ export const seedPosts: Post[] = [
     category: "Goods",
     subCategory: "Electronics",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: 'https://source.unsplash.com/800x600/?kitchen'
+    imageUrl: 'https://source.unsplash.com/800x600/?kitchen',
+    author: {
+      name: "Alicia D. Macomber",
+      email: "AliciaDMacomber@rhyta.com",
+      password: "mypassword",
+      city: "Haddonfield",
+      state: "NJ",
+      zip: "08033",
+    }
   },
   {
     name: "Desk",
@@ -87,7 +121,15 @@ export const seedPosts: Post[] = [
     category: "Goods",
     subCategory: "Electronics",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: 'https://source.unsplash.com/800x600/?desk'
+    imageUrl: 'https://source.unsplash.com/800x600/?desk',
+    author: {
+      name: "Alicia D. Macomber",
+      email: "AliciaDMacomber@rhyta.com",
+      password: "mypassword",
+      city: "Haddonfield",
+      state: "NJ",
+      zip: "08033",
+    }
   },
   {
     name: "Bulb",
@@ -97,7 +139,15 @@ export const seedPosts: Post[] = [
     category: "Goods",
     subCategory: "Electronics",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: 'https://source.unsplash.com/800x600/?bulb'
+    imageUrl: 'https://source.unsplash.com/800x600/?bulb',
+    author: {
+      name: "Alicia D. Macomber",
+      email: "AliciaDMacomber@rhyta.com",
+      password: "mypassword",
+      city: "Haddonfield",
+      state: "NJ",
+      zip: "08033",
+    }
   },
   {
     name: "Sneakers",
@@ -107,7 +157,15 @@ export const seedPosts: Post[] = [
     category: "Goods",
     subCategory: "Electronics",
     description: "great computer",
-    imageUrl: 'https://source.unsplash.com/800x600/?sneakers'
+    imageUrl: 'https://source.unsplash.com/800x600/?sneakers',
+    author: {
+      name: "Alicia D. Macomber",
+      email: "AliciaDMacomber@rhyta.com",
+      password: "mypassword",
+      city: "Haddonfield",
+      state: "NJ",
+      zip: "08033",
+    }
   },
   {
     name: "Hat",
@@ -117,7 +175,15 @@ export const seedPosts: Post[] = [
     category: "Goods",
     subCategory: "Electronics",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: 'https://source.unsplash.com/800x600/?hat'
+    imageUrl: 'https://source.unsplash.com/800x600/?hat',
+    author: {
+      name: "Alicia D. Macomber",
+      email: "AliciaDMacomber@rhyta.com",
+      password: "mypassword",
+      city: "Haddonfield",
+      state: "NJ",
+      zip: "08033",
+    }
   },
 ];
 

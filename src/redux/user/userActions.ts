@@ -34,7 +34,8 @@ export const registerAndSetNewUser = (user: User) => async (dispatch: Dispatch<U
 
     dispatch({
       type: SET_CURRENT_USER,
-      payload: newUser.data
+      payload: newUser.data,
+      token: newUser.data.token
     });
 
     dispatch({
@@ -80,7 +81,8 @@ export const setCurrentUser = (user: User | undefined) => {
   
   return {
     type: SET_CURRENT_USER,
-    payload: user
+    payload: user,
+    token: ''
   }
 };
 
@@ -103,12 +105,13 @@ export const loginUser = (userLogin : UserLogin) => async (dispatch: Dispatch<Us
     });
     console.log("USER LOGIN:", userLogin);
     const loginInfo = await axios.post('https://craigs2list-dev.herokuapp.com/login', userLogin);
-    
+    console.log(loginInfo)
     const user = await axios.get(`https://craigs2list-dev.herokuapp.com/users/${loginInfo.data.user_id}`);
 
     dispatch({
       type: SET_CURRENT_USER,
-      payload: user.data
+      payload: user.data,
+      token: loginInfo.data.token
     });
 
     dispatch({
@@ -116,7 +119,7 @@ export const loginUser = (userLogin : UserLogin) => async (dispatch: Dispatch<Us
       payload: userLogin,
       token: loginInfo.data.token
     });
-
+    console.log('token assigned:')
 
     dispatch({
       type: OPEN_SNACKBAR,
@@ -151,10 +154,13 @@ export const updateUser = (user: User, userId: number | undefined, token: string
       type: UPDATE_USER,
       user: updatedUser.data
     });
+
     dispatch({
       type: SET_CURRENT_USER,
-      payload: updatedUser.data
+      payload: updatedUser.data,
+      token: ''
     });
+
     dispatch({
       type: OPEN_SNACKBAR,
       message: 'Update successful',

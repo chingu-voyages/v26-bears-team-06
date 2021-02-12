@@ -22,12 +22,11 @@ export interface userState {
   loading: boolean,
   successMsg?: string,
   errorMsg?: string,
-  token?: string,
 };
 
 export const INITIAL_STATE = {
   users: [],
-  currentUser: null,
+  currentUser: {} as User,
   loading: false,
 };
 
@@ -46,7 +45,10 @@ const userReducer = (state:userState = INITIAL_STATE, action: UserDispatchTypes)
     case SET_CURRENT_USER:
       return {
         ...state,
-        currentUser: action.payload
+        currentUser: {
+          ...action.payload,
+          token: action.token,
+        }
       }
     case LOGOUT_CURRENT_USER:
       return {
@@ -85,7 +87,8 @@ const userReducer = (state:userState = INITIAL_STATE, action: UserDispatchTypes)
       return {
         ...state,
         loading: false,
-        token: action.token,
+        token: action.token
+        
       }
     case LOGIN_FAILED:
       return {

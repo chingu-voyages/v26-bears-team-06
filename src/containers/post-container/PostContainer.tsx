@@ -2,6 +2,8 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { Post } from '../../seed/seedData';
 import { useStyles } from './PostContainer.styles';
+import { useDispatch } from 'react-redux';
+import { openSnackbar } from '../../redux/snackbars/snackbarsActions';
 
 interface Props {
   post: Post
@@ -9,13 +11,19 @@ interface Props {
 
 const PostContainer: React.FC<Props> = ({post}) => {
   const classes = useStyles();
-  const {name, imageUrl, location, description, price } = post;
+  const {name, imageUrl, location, description, price, author } = post;
+  const dispatch = useDispatch();
+  
+  const handleClick = () => {
+    dispatch(openSnackbar('Opening third party email service', 'success'));
+    window.location.href = `mailto:${author.email}`;
+  };
 
   return (
     <div className={classes.root}>
       <div className={classes.titleSection}>
         <h1>{name}</h1>
-        <Button variant='contained' color='primary'>Reply</Button>
+        <Button variant='contained' color='primary' onClick={handleClick}>Reply</Button>
       </div>
       <img 
         className={classes.image}

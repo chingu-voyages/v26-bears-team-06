@@ -53,6 +53,7 @@ export interface UsersFailed {
 export interface SetCurrentUser {
   type: typeof SET_CURRENT_USER,
   payload: User,
+  token: string,
 };
 
 export interface LogoutCurrentUser {

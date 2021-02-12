@@ -12,7 +12,7 @@ import CustomSnackbar from "./components/snackbar-feedback/Snackbar";
 // React Router:
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Seed Data:
-import { Category, seedCategories, seedPosts } from "./seed/seedData";
+import { Category, seedCategories, seedPosts, User } from "./seed/seedData";
 // Redux State Management:
 import { getCategories } from "./redux/category/categoryActions";
 import { categoryState } from "./redux/category/categoryReducer";
@@ -91,6 +91,7 @@ function App() {
         subCategory: '',
         description: '',
         imageUrl: '',
+        author: {} as User
       }
     }
   };

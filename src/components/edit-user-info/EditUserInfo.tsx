@@ -20,7 +20,6 @@ const EditUserInfo:React.FC = () => {
   const dispatch = useDispatch();
 
   const currentUser = useSelector<RootStore, userState["currentUser"]>((state) => state.user.currentUser);
-  const token = useSelector<RootStore, userState["token"]>(state => state.user.token);
 
   const [openNameForm, setOpenNameForm] = useState<boolean>(false);
 
@@ -57,6 +56,7 @@ const EditUserInfo:React.FC = () => {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const updatedUser = user;
+    console.log(currentUser?.token);
     dispatch(updateUser(updatedUser, currentUser?.user_id, currentUser?.token));
     
     // setPasswordConfirmation('');

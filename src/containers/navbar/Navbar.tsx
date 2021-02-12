@@ -42,7 +42,10 @@ const Navbar:React.FC = () => {
           <CustomSearchBar handleOpen={handleDrawerOpen}/>
         </div>
         <div className={classes.rightSide}>
+          {currentUser ? 
           <CreatePostingButton />
+          :
+          <div></div>}
           {currentUser ? 
           <UserDropDown />
           :

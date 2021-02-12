@@ -24,6 +24,7 @@ const CreatePostForm: React.FC = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector<RootStore, userState["currentUser"]>((state) => state.user.currentUser);
   
+  console.log('!!',currentUser)
   const [radioValue, setRadioValue] = useState<string>('');
   const [post, setPost] = useState<Post>({
     title: '',
@@ -73,8 +74,7 @@ const CreatePostForm: React.FC = () => {
       author: currentUser,
     });
     event.preventDefault();
-    console.log('POST:', post)
-    console.log(currentUser.token);
+    console.log('POST:', post, 'Token:', currentUser.token);
     dispatch(createNewPost(post, currentUser.token));
     setPost({
       title: '',
