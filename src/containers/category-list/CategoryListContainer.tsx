@@ -9,12 +9,15 @@ const CategoryListContainer:React.FC = () => {
 
   return (
     <div className={classes.section}>
-      <Grid container className={classes.root}>
+      <Grid container justify='center' className={classes.root} spacing={4}>
         {seedCategories.map(category => (
-          <CategoryLink 
-            category={category}
-            key={category.id}
-            />
+          <Grid item xs={12} md={4}>
+            <CategoryLink 
+              category={category}
+              key={category.id}
+              />
+          </Grid>
+
         ))}
       </Grid>
     </div>

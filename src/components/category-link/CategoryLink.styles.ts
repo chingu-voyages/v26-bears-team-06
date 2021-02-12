@@ -4,16 +4,16 @@ import sizes from '../../styles/constants/MediaQueries';
 export const useStyles = makeStyles({
   root: {
     height: '100%',
-    width: '250px',
     border: 'none',
     backgroundSize: 'cover',
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     opacity: '0.85',
     zIndex: 0,
     filter: 'brightness(90%)',
     transition: 'all 0.3s ease',
+    borderRadius: '15%',
 
     '&:hover': {
       opacity: '1',
@@ -35,7 +35,5 @@ export const useStyles = makeStyles({
     fontWeight: 'bold',
     textTransform: 'uppercase',
     color: 'black',
-
-
   },
 });
