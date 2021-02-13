@@ -18,7 +18,7 @@ import {
 
 export interface userState {
   users: User[],
-  currentUser: User | null,
+  currentUser: User,
   loading: boolean,
   successMsg?: string,
   errorMsg?: string,
@@ -53,7 +53,6 @@ const userReducer = (state:userState = INITIAL_STATE, action: UserDispatchTypes)
     case LOGOUT_CURRENT_USER:
       return {
         ...state,
-        currentUser: null,
         token: '',
       }
     case REGISTRATION_FAILED:

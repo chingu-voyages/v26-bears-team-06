@@ -58,7 +58,7 @@ const EditUserInfo:React.FC = () => {
     const updatedUser = user;
     console.log(currentUser?.token);
     dispatch(updateUser(updatedUser, currentUser?.user_id, currentUser?.token));
-    
+    setOpenNameForm(false);
     // setPasswordConfirmation('');
     // setOldPassword('');
   };

@@ -12,7 +12,7 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 // Styles:
 import { useStyles } from './SignInSignUp.styles';
 // Redux State Management:
-import { loginUser, registerAndSetNewUser } from '../../redux/user/userActions';
+import { loginUser, registerAndSetNewUser, getAllUsers } from '../../redux/user/userActions';
 import { User, UserLogin } from '../../redux/user/userTypes';
 import { useSelector, useDispatch } from 'react-redux';
 import { userState } from '../../redux/user/userReducer';
@@ -31,7 +31,8 @@ const SignInSignUp:React.FC = () => {
     ValidatorForm.addValidationRule('passwordsMustMatch', () => 
       password === passwordConfirmation 
     );
-  });
+    dispatch(getAllUsers());
+  }, []);
 
   const [openNameForm, setOpenNameForm] = useState<boolean>(false);
   const [user, setUser] = useState<User>({
@@ -79,6 +80,7 @@ const SignInSignUp:React.FC = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
+    
     dispatch(registerAndSetNewUser(user));
     
     setUser({

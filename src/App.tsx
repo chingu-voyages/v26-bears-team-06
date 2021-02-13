@@ -27,8 +27,6 @@ import { postState } from "./redux/post/postReducer";
 function App() {
   const dispatch = useDispatch();
   // Grabbing pieces of our state:
-  const categories = useSelector<RootStore, categoryState["categories"]>(state => state.category.categories);
-  console.log('CATEGORIES:', categories);
   const users = useSelector<RootStore, userState["users"]>(state => state.user.users);
   console.log('USERS:', users);
   const posts = useSelector<RootStore, postState["posts"]>(state => state.post.posts);
@@ -36,9 +34,7 @@ function App() {
 
   // Making get requests to database to initialize state:
   useEffect(() => {
-    dispatch(getCategories());
-    dispatch(getAllUsers());
-    dispatch(getAllPosts());
+   
   }, []);
 
   const findCategory = (id: string) => {

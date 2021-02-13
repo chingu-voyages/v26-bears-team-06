@@ -32,7 +32,6 @@ export interface GetUsersPosts {
 };
 export interface CreateNewPost {
   type: typeof CREATE_NEW_POST,
-  post: Post
 };
 
 export type PostDispatchTypes = 

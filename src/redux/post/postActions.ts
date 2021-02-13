@@ -47,6 +47,7 @@ export const getUsersPosts = () => async (dispatch: Dispatch<PostDispatchTypes>)
 };
 
 export const createNewPost = (post: Post, token: string | undefined) => async (dispatch: Dispatch<PostDispatchTypes>) => {
+  console.log('Post:', post, 'token:', token );
   try {
     const config = {
       headers: {
@@ -54,11 +55,10 @@ export const createNewPost = (post: Post, token: string | undefined) => async (d
       }
     }
     const res = await axios.post('https://craigs2list-dev.herokuapp.com/goods', post, config);
-    console.log('Post:', post, 'token:', token );
+    
     console.log(res);
     dispatch({
       type: CREATE_NEW_POST,
-      post: res.data
     });
     dispatch({
       type: OPEN_SNACKBAR,

@@ -94,7 +94,13 @@ export default function UserDropDown() {
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                     <Link to={`/user/${currentUser?.user_id}`} style={{textDecoration: 'none', color: 'black'}}><MenuItem onClick={handleClose}>Profile</MenuItem></Link>
-                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                    <MenuItem onClick={handleLogout}>
+                      <Link 
+                        to='/' 
+                        style={{color:'black', textDecoration: 'none'}}>
+                          Logout
+                      </Link>
+                    </MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

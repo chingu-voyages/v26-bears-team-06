@@ -77,7 +77,7 @@ export const getAllUsers = () => async (dispatch: Dispatch<UserDispatchTypes>) =
   }
 };
 
-export const setCurrentUser = (user: User | undefined) => {
+export const setCurrentUser = (user: User) => {
   
   return {
     type: SET_CURRENT_USER,
@@ -90,7 +90,14 @@ export const logoutCurrentUser = () => (dispatch: Dispatch<UserDispatchTypes>) =
   dispatch({
     type: LOGOUT_CURRENT_USER,
     token: '',
-  })
+  });
+
+  dispatch({
+    type: SET_CURRENT_USER,
+    payload: {} as User,
+    token: '',
+  });
+  
   dispatch({
     type: OPEN_SNACKBAR,
     message: "Logout Successful",

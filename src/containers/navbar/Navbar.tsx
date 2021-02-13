@@ -42,11 +42,11 @@ const Navbar:React.FC = () => {
           <CustomSearchBar handleOpen={handleDrawerOpen}/>
         </div>
         <div className={classes.rightSide}>
-          {currentUser ? 
+          {Object.keys(currentUser).length > 1 ? 
           <CreatePostingButton />
           :
           <div></div>}
-          {currentUser ? 
+          {Object.keys(currentUser).length > 1 ? 
           <UserDropDown />
           :
           <div className={classes.authLinksContainer}>

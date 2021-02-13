@@ -21,7 +21,6 @@ const UserProfile = () => {
         <h2>User Info:</h2>
         <p>Name: {currentUser?.name}</p>
         <p>Email: {currentUser?.email}</p>
-        <p>Address: {currentUser?.address ? currentUser.address : "N/A"}</p>
         <p>City: {capitalize(currentUser?.city)}</p>
         <p>State: {capitalize(currentUser?.state)}</p>
         <p>Zip: {currentUser?.zip}</p>
