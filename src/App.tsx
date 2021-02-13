@@ -34,7 +34,7 @@ function App() {
 
   // Making get requests to database to initialize state:
   useEffect(() => {
-   
+    dispatch(getAllPosts())
   }, []);
 
   const findCategory = (id: string) => {
@@ -96,7 +96,7 @@ function App() {
     <div>
       <Router>
         <Switch>
-          <Route exact path="/" component={Homepage} />
+          <Route exact path="/" render={() => <Homepage />} />
           <Route exact path="/user/:userId" component={UserProfile} />
           <Route exact path="/posts/new" component={CreatePostPage} />
           <Route 

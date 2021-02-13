@@ -1,4 +1,3 @@
-import { Action } from "redux";
 import { OpenSnackbar } from "../snackbars/snackbarsTypes";
 
 export const USERS_LOADING = "USERS_LOADING";
@@ -53,7 +52,7 @@ export interface UsersFailed {
 export interface SetCurrentUser {
   type: typeof SET_CURRENT_USER,
   payload: User,
-  token: string,
+  token?: string,
 };
 
 export interface LogoutCurrentUser {

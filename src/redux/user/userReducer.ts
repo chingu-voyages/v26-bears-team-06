@@ -22,6 +22,7 @@ export interface userState {
   loading: boolean,
   successMsg?: string,
   errorMsg?: string,
+  token?: string
 };
 
 export const INITIAL_STATE = {
@@ -87,7 +88,6 @@ const userReducer = (state:userState = INITIAL_STATE, action: UserDispatchTypes)
         ...state,
         loading: false,
         token: action.token
-        
       }
     case LOGIN_FAILED:
       return {

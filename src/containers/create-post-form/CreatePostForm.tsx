@@ -23,6 +23,7 @@ const CreatePostForm: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const currentUser = useSelector<RootStore, userState["currentUser"]>((state) => state.user.currentUser);
+  const token = useSelector<RootStore, userState["token"]>((state) => state.user.token);
   
   console.log('!!',currentUser)
   const [radioValue, setRadioValue] = useState<string>('');
@@ -33,12 +34,10 @@ const CreatePostForm: React.FC = () => {
     category: '',
     subcategory: '',
     description: '',
-    imageUrl: '',
-    author: currentUser
+    image_url: '',
   });
-  
 
-  const { title, price, location, description, category, imageUrl } = post;
+  const { title, price, location, description, category, image_url } = post;
 
   const categoryMap:any = {
     "Electronics": "Goods",
@@ -69,13 +68,10 @@ const CreatePostForm: React.FC = () => {
       dispatch(openSnackbar('You must login to create a post', 'warning'));
       return
     }
-    setPost({
-      ...post,
-      author: currentUser,
-    });
+
     event.preventDefault();
-    console.log('POST:', post, 'Token:', currentUser.token);
-    dispatch(createNewPost(post, currentUser.token));
+    
+    dispatch(createNewPost(post, token));
     setPost({
       title: '',
       price: '',
@@ -83,8 +79,7 @@ const CreatePostForm: React.FC = () => {
       category: '',
       subcategory: '',
       description: '',
-      imageUrl: '',
-      author: currentUser,
+      image_url: '',
     })
   };
 
@@ -152,8 +147,8 @@ const CreatePostForm: React.FC = () => {
         <TextField
           id="outlined-textarea"
           label="Image Url"
-          name='imageUrl'
-          value={imageUrl}
+          name='image_url'
+          value={image_url}
           placeholder="Image URL"
           multiline
           variant="outlined"

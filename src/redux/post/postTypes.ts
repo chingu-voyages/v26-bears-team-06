@@ -12,8 +12,8 @@ export interface Post {
   location: string,
   category: string,
   subcategory: string,
-  imageUrl: string,
-  author: User | null,
+  image_url: string,
+  id?: number,
 };
 
 export interface GetAllPosts {

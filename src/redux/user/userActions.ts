@@ -26,21 +26,10 @@ export const registerAndSetNewUser = (user: User) => async (dispatch: Dispatch<U
     });
 
     const newUser = await axios.post('https://craigs2list-dev.herokuapp.com/users', user);
-    
-    dispatch({
-      type: REGISTRATION_SUCCESS,
-      response: "success"
-    });
-
-    dispatch({
-      type: SET_CURRENT_USER,
-      payload: newUser.data,
-      token: newUser.data.token
-    });
 
     dispatch({
       type: OPEN_SNACKBAR,
-      message: 'Registration Successful',
+      message: 'Registration Successful, Please Login!',
       severity: 'success'
     });
 
@@ -110,11 +99,11 @@ export const loginUser = (userLogin : UserLogin) => async (dispatch: Dispatch<Us
     dispatch({
       type: LOGIN_LOADING
     });
-    console.log("USER LOGIN:", userLogin);
+    
     const loginInfo = await axios.post('https://craigs2list-dev.herokuapp.com/login', userLogin);
-    console.log(loginInfo)
+    
     const user = await axios.get(`https://craigs2list-dev.herokuapp.com/users/${loginInfo.data.user_id}`);
-
+    
     dispatch({
       type: SET_CURRENT_USER,
       payload: user.data,
@@ -142,7 +131,7 @@ export const loginUser = (userLogin : UserLogin) => async (dispatch: Dispatch<Us
     });
     dispatch({
       type: OPEN_SNACKBAR,
-      message: 'Email and/or Password are incorrect',
+      message: error.message,
       severity: 'error'
     });
   }
@@ -156,7 +145,7 @@ export const updateUser = (user: User, userId: number | undefined, token: string
       }
     }
     const updatedUser = await axios.patch(`https://craigs2list-dev.herokuapp.com/users/${userId}`, user, config);
-
+    console.log(updatedUser);
     dispatch({
       type: UPDATE_USER,
       user: updatedUser.data
@@ -165,7 +154,6 @@ export const updateUser = (user: User, userId: number | undefined, token: string
     dispatch({
       type: SET_CURRENT_USER,
       payload: updatedUser.data,
-      token: ''
     });
 
     dispatch({
@@ -176,7 +164,7 @@ export const updateUser = (user: User, userId: number | undefined, token: string
   } catch (error) {
     dispatch({
       type: OPEN_SNACKBAR,
-      message: 'Error updating user info',
+      message: error.message,
       severity: 'error'
     })
   }

@@ -68,7 +68,7 @@ export const createNewPost = (post: Post, token: string | undefined) => async (d
   } catch (error) {
     dispatch({
       type: OPEN_SNACKBAR,
-      message: 'Error creating post',
+      message: error.message,
       severity: 'error'
     })
     console.log(error)
