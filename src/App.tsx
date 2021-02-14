@@ -4,7 +4,6 @@ import "./App.css";
 import Homepage from "./pages/homepage/homepage";
 import CreatePostPage from "./pages/create-post-page/CreatePostPage";
 import CategoryResultsPage from "./pages/search-results-page/CategoryResultsPage";
-import SubCategoryResultsPage from './pages/search-results-page/SubCategoryResultsPage';
 import PostPage from "./pages/post-page/PostPage";
 import UserProfile from "./pages/user-profile-page/UserProfile";
 // Components:
@@ -14,27 +13,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Seed Data:
 import { Category, seedCategories, seedPosts, User } from "./seed/seedData";
 // Redux State Management:
-import { getCategories } from "./redux/category/categoryActions";
-import { categoryState } from "./redux/category/categoryReducer";
-import { useSelector, useDispatch } from 'react-redux';
-import { RootStore } from "./redux/store";
+import { useDispatch } from 'react-redux';
 import { getAllUsers } from "./redux/user/userActions";
-import { getAllPosts } from "./redux/post/postActions";
-import { userState } from "./redux/user/userReducer";
-import { postState } from "./redux/post/postReducer";
-
 
 function App() {
   const dispatch = useDispatch();
-  // Grabbing pieces of our state:
-  const users = useSelector<RootStore, userState["users"]>(state => state.user.users);
-  console.log('USERS:', users);
-  const posts = useSelector<RootStore, postState["posts"]>(state => state.post.posts);
-  console.log('POSTS:', posts);
 
   // Making get requests to database to initialize state:
   useEffect(() => {
-    dispatch(getAllPosts())
+    dispatch(getAllUsers());
   }, []);
 
   const findCategory = (id: string) => {
@@ -70,9 +57,9 @@ function App() {
     }
   };
 
-  const findPost = (id: string) => {
+  const findPost = (id: number | undefined) => {
     const foundPost = seedPosts.find(function(post){
-      return post.id === id;
+      return post.post_id === id;
     });
 
     if(foundPost) {
@@ -104,22 +91,16 @@ function App() {
               path='/posts/:postId' 
               render={({match}) => 
               <PostPage 
-                post={findPost(match.params.postId)}
+                match={match}
               />
             }
               />
           <Route 
             exact path="/:categoryId/"
-            render={(routeProps) => 
-              <CategoryResultsPage category={findCategory(routeProps.match.params.categoryId)}/>
+            render={({match}) => 
+              <CategoryResultsPage category={match.params.categoryId} match={match} />
             } 
           />
-          <Route 
-            exact path="/:categoryId/:subCategoryId"
-            render={(routeProps) => 
-              <SubCategoryResultsPage subCategory={findSubCategory(findCategory(routeProps.match.params.categoryId), routeProps.match.params.subCategoryId)}/>
-            } 
-            />
         </Switch>
       </Router>
       <CustomSnackbar />

@@ -1,37 +1,24 @@
 import React from "react";
-import ReusableHeader from "../../components/reusable-header/ReusableHeader";
 import Navbar from "../../containers/navbar/Navbar";
-import PostListContainer from "../../containers/post-list/PostListContainer";
 import { Category, Subcategory } from "../../seed/seedData";
 import { useStyles } from "./CategoryResultsPage.styles";
-
+import { Switch, Route } from 'react-router-dom';
+import CategoryOverview from '../../components/category-overview/CategoryOverview';
 interface Props {
-  category: Category,
-}
+  category: string,
+  match: any
+};
 
-const CategoryResultsPage: React.FC<Props> = ({ category }) => {
-  const classes = useStyles();
-  const { name, subCategories } = category;
+const CategoryResultsPage: React.FC<Props> = ({category, match}) => {
+  const classes = useStyles()
 
+  console.log(match);
   return (
     <div>
       <Navbar />
-        <ReusableHeader text={name} fontSize="38px" />
-          {
-          subCategories[0].posts.length === 0 ?
-          <h1>Coming Soon!</h1>
-          :
-          subCategories.map((subCategory: Subcategory) => (
-            <div className={classes.header}>
-              <PostListContainer
-                posts={subCategory.posts}
-                header={subCategory.name}
-                seeAllLink={`/${category.id}/${subCategory.id}`}
-              />
-            </div>
-          ))
-        }
-    
+      <Switch>
+        <Route exact path={`${match.path}`} component={CategoryOverview}/>
+      </Switch>
     </div>
   );
 };

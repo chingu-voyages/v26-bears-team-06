@@ -35,6 +35,7 @@ const CreatePostForm: React.FC = () => {
     subcategory: '',
     description: '',
     image_url: '',
+    author: currentUser
   });
 
   const { title, price, location, description, category, image_url } = post;
@@ -68,7 +69,10 @@ const CreatePostForm: React.FC = () => {
       dispatch(openSnackbar('You must login to create a post', 'warning'));
       return
     }
-
+    setPost({
+      ...post,
+      author: currentUser
+    })
     event.preventDefault();
     
     dispatch(createNewPost(post, token));
@@ -80,6 +84,7 @@ const CreatePostForm: React.FC = () => {
       subcategory: '',
       description: '',
       image_url: '',
+      author: currentUser
     })
   };
 

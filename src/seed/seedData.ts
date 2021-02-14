@@ -1,3 +1,4 @@
+import { Post } from '../redux/post/postTypes';
 export interface User {
   name: string;
   email: string;
@@ -26,29 +27,17 @@ export const seedUsers: User[] = [
   },
 ];
 
-export interface Post {
-  name: string,
-  id: string,
-  price: string,
-  location: string,
-  category: string,
-  subCategory: string,
-  description: string,
-  imageUrl: string,
-  author: User
-  
-}
-
 export const seedPosts: Post[] = [
   {
-    name: "IPad",
-    id: "A",
+    title: "IPad",
+    post_id: 1,
     price: "100",
     location: "Boston, MA",
     category: "Goods",
-    subCategory: "Electronics",
+    subcategory: "Electronics",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: 'https://source.unsplash.com/800x600/?IPad',
+    image_url: 'https://source.unsplash.com/800x600/?IPad',
+    user_id: 4,
     author: {
       name: "Alicia D. Macomber",
       email: "AliciaDMacomber@rhyta.com",
@@ -57,16 +46,18 @@ export const seedPosts: Post[] = [
       state: "NJ",
       zip: "08033",
     }
+
   },
   {
-    name: "Hoodie",
-    id: "B",
+    title: "Hoodie",
+    post_id: 2,
     price: "20",
     location: "Boston, MA",
     category: "Goods",
-    subCategory: "Electronics",
+    subcategory: "Electronics",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: 'https://source.unsplash.com/800x600/?hoodie',
+    image_url: 'https://source.unsplash.com/800x600/?hoodie',
+    user_id: 4,
     author: {
       name: "Alicia D. Macomber",
       email: "AliciaDMacomber@rhyta.com",
@@ -78,14 +69,15 @@ export const seedPosts: Post[] = [
     
   },
   {
-    name: "Laptop",
-    id: "C",
+    title: "Laptop",
+    post_id: 3,
     price: "500",
     location: "Boston, MA",
     category: "Goods",
-    subCategory: "Electronics",
+    subcategory: "Electronics",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: 'https://source.unsplash.com/800x600/?macbook',
+    image_url: 'https://source.unsplash.com/800x600/?macbook',
+    user_id: 4,
     author: {
       name: "Alicia D. Macomber",
       email: "AliciaDMacomber@rhyta.com",
@@ -96,14 +88,15 @@ export const seedPosts: Post[] = [
     }
   },
   {
-    name: "Kitchen",
-    id: "D",
+    title: "Kitchen",
+    post_id: 4,
     price: "100",
     location: "Boston, MA",
     category: "Goods",
-    subCategory: "Electronics",
+    subcategory: "Electronics",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: 'https://source.unsplash.com/800x600/?kitchen',
+    image_url: 'https://source.unsplash.com/800x600/?kitchen',
+    user_id: 4,
     author: {
       name: "Alicia D. Macomber",
       email: "AliciaDMacomber@rhyta.com",
@@ -114,14 +107,14 @@ export const seedPosts: Post[] = [
     }
   },
   {
-    name: "Desk",
-    id: "E",
+    title: "Desk",
+    post_id: 5,
     price: "150",
     location: "Boston, MA",
     category: "Goods",
-    subCategory: "Electronics",
+    subcategory: "Electronics",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: 'https://source.unsplash.com/800x600/?desk',
+    image_url: 'https://source.unsplash.com/800x600/?desk',
     author: {
       name: "Alicia D. Macomber",
       email: "AliciaDMacomber@rhyta.com",
@@ -132,14 +125,15 @@ export const seedPosts: Post[] = [
     }
   },
   {
-    name: "Bulb",
-    id: "F",
+    title: "Bulb",
+    post_id: 6,
     price: "10",
     location: "Boston, MA",
     category: "Goods",
-    subCategory: "Electronics",
+    subcategory: "Electronics",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: 'https://source.unsplash.com/800x600/?bulb',
+    image_url: 'https://source.unsplash.com/800x600/?bulb',
+    user_id: 4,
     author: {
       name: "Alicia D. Macomber",
       email: "AliciaDMacomber@rhyta.com",
@@ -150,14 +144,15 @@ export const seedPosts: Post[] = [
     }
   },
   {
-    name: "Sneakers",
-    id: "G",
+    title: "Sneakers",
+    post_id: 7,
     price: "80",
     location: "Boston, MA",
     category: "Goods",
-    subCategory: "Electronics",
+    subcategory: "Electronics",
     description: "great computer",
-    imageUrl: 'https://source.unsplash.com/800x600/?sneakers',
+    image_url: 'https://source.unsplash.com/800x600/?sneakers',
+    user_id: 4,
     author: {
       name: "Alicia D. Macomber",
       email: "AliciaDMacomber@rhyta.com",
@@ -168,14 +163,15 @@ export const seedPosts: Post[] = [
     }
   },
   {
-    name: "Hat",
-    id: "H",
+    title: "Hat",
+    post_id: 8,
     price: "10",
     location: "Boston, MA",
     category: "Goods",
-    subCategory: "Electronics",
+    subcategory: "Electronics",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: 'https://source.unsplash.com/800x600/?hat',
+    image_url: 'https://source.unsplash.com/800x600/?hat',
+    user_id: 4,
     author: {
       name: "Alicia D. Macomber",
       email: "AliciaDMacomber@rhyta.com",

@@ -1,20 +1,19 @@
 import React from 'react';
 import Navbar from '../../containers/navbar/Navbar';
 import PostContainer from '../../containers/post-container/PostContainer';
-import { Post } from '../../seed/seedData';
 import { useStyles } from './PostPage.styles';
 
 interface Props {
-  post: Post
+  match: any
 }
 
-const PostPage: React.FC<Props> = ({post}) => {
+const PostPage: React.FC<Props> = ({match}) => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Navbar />
-      <PostContainer post={post} />
+      <PostContainer match={match}/>
     </div>
   )
 };

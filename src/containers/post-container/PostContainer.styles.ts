@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { findByLabelText } from '@testing-library/react';
 
 export const useStyles = makeStyles({
   root: {
@@ -34,5 +33,11 @@ export const useStyles = makeStyles({
     width: '75%',
     display: 'flex',
     flexDirection: 'column',
+  },
+  postButtons: {
+    display: 'flex',
+    width: '100%',
+    marginTop: '10px',
+    justifyContent: 'space-between'
   }
 })

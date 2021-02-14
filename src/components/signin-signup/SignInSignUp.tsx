@@ -31,7 +31,6 @@ const SignInSignUp:React.FC = () => {
     ValidatorForm.addValidationRule('passwordsMustMatch', () => 
       password === passwordConfirmation 
     );
-    dispatch(getAllUsers());
   }, []);
 
   const [openNameForm, setOpenNameForm] = useState<boolean>(false);

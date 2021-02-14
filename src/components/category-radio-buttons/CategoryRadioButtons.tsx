@@ -2,7 +2,7 @@ import React from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import { useStyles } from './CategoryRadioButtons.styles';
-import { Post } from '../../seed/seedData';
+import { Post } from '../../redux/post/postTypes';
 interface Props {
   name: string,
   subCategories: {
