@@ -25,7 +25,7 @@ const ItemLink:React.FC<Props> = ({ imageUrl, title, price, id }) => {
         <Link to={`/posts/${id}`} className={classes.link}></Link>
       </div>
       <div className={classes.itemInfo}>
-        <p className={classes.name}>{title}</p>
+        <p className={classes.name}>{`${title}`}</p>
         <p className={classes.price}>${price}</p>
       </div>
     </Grid>

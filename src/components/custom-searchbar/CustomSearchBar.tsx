@@ -17,7 +17,7 @@ const CustomSearchBar:React.FC<Props> = ({ handleOpen }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} >
       <input 
         className={`${classes.searchInput} ${classes.searchBar}`} 
         type='text' 
