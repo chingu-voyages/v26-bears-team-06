@@ -11,6 +11,7 @@ import {
   UPDATE_POST,
   PostDispatchTypes,
   DELETE_POST,
+  GET_SEARCH_QUERY_POSTS,
 } from './postTypes';
 
 export const getPost = (postId: number | undefined) => async (dispatch: Dispatch<PostDispatchTypes>) => {
@@ -91,21 +92,46 @@ export const getAllPosts = () => async (dispatch: Dispatch<PostDispatchTypes>) =
       payload: res.data
     });
   } catch (error) {
-    console.log(error);
+    dispatch({
+      type: OPEN_SNACKBAR,
+      message: error.message,
+      severity: 'error'
+    });
   }
 };
 
 export const getSubcatPosts = (subcatId: number) => async (dispatch: Dispatch<PostDispatchTypes>) => {
-  console.log("INSUBCAT")
+  
   try {
     const res = await axios.get(`https://craigs2list-dev.herokuapp.com/goods?sc=${subcatId}`);
     dispatch({
       type: GET_SUBCAT_POSTS,
       payload: res.data
     });
-    console.log("INSUBCAT");
+    
   } catch (error) {
-    console.log(error);
+    dispatch({
+      type: OPEN_SNACKBAR,
+      message: error.message,
+      severity: 'error'
+    });
+  }
+};
+
+export const getSearchQueryPosts = (searchQuery: string) => async (dispatch: Dispatch<PostDispatchTypes>) => {
+  console.log('!!!',searchQuery);
+  try {
+    const res = await axios.get(`https://craigs2list-dev.herokuapp.com/goods?q=${searchQuery}`);
+    dispatch({
+      type: GET_SEARCH_QUERY_POSTS,
+      payload: res.data
+    });
+  } catch (error) {
+    dispatch({
+      type: OPEN_SNACKBAR,
+      message: error.message,
+      severity: 'error'
+    });
   }
 };
 
@@ -117,7 +143,11 @@ export const getUsersPosts = (userId: number | undefined, token: string | undefi
       payload: res.data
     });
   } catch (error) {
-    console.log(error);
+    dispatch({
+      type: OPEN_SNACKBAR,
+      message: error.message,
+      severity: 'error'
+    });
   }
 };
 

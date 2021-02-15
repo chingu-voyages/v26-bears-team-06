@@ -8,6 +8,7 @@ import { postState } from '../../redux/post/postReducer';
 import { RootStore } from '../../redux/store';
 import { userState } from '../../redux/user/userReducer';
 import ItemListContainer from '../../containers/post-list/PostListContainer';
+import { Button } from '@material-ui/core';
 
 const UserProfile = () => {
   const [hidden, setHidden] = useState(true);
@@ -52,7 +53,7 @@ const UserProfile = () => {
           <EditUserInfo />
         </div>
         <div className={classes.postContainer}>
-          <button onClick={handleClick}>{hidden ? 'Show' : 'Hide'} Your Posts</button>
+          <Button variant='contained' onClick={handleClick} className={classes.showPostsBtn}>{hidden ? 'Show' : 'Hide'} Your Posts</Button>
           <div hidden={hidden} >
             <ItemListContainer posts={userPosts} header='Your Posts' seeAllLink='' /> 
           </div>

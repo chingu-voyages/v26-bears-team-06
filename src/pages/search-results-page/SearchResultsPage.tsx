@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../containers/navbar/Navbar";
 import { useStyles } from "./CategoryResultsPage.styles";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,26 +6,32 @@ import { postState } from "../../redux/post/postReducer";
 import { RootStore } from "../../redux/store";
 import ReusableHeader from "../../components/reusable-header/ReusableHeader";
 import PostListContainer from "../../containers/post-list/PostListContainer";
+import { getSearchQueryPosts } from "../../redux/post/postActions";
+
 interface Props {
-  category: string,
-  match: any
+  searchQuery: string,
+  
 };
 
-const CategoryResultsPage: React.FC<Props> = ({category, match}) => {
-  const posts = useSelector<RootStore, postState['posts']>(state => state.post.posts);
+const SearchResultsPage: React.FC<Props> = ({searchQuery}) => {
+  const dispatch = useDispatch();
+  const posts = useSelector<RootStore, postState['searchQueryPosts']>(state => state.post.searchQueryPosts);
 
   const capitalize = (s: string | undefined) => {
     if (typeof s !== 'string') return ''
     return s.charAt(0).toUpperCase() + s.slice(1)
-  }
-  const classes = useStyles();
+  };
+
+
+  useEffect(() => {
+    dispatch(getSearchQueryPosts(searchQuery));
+  }, [searchQuery]);
 
   return (
     <div>
       <Navbar />
-      {category === 'goods' ?
       <div>
-        <ReusableHeader text={`All ${capitalize(category)}`} fontSize='38px' />
+        <ReusableHeader text={`Search Results: ${searchQuery}`} fontSize='38px' />
         <PostListContainer
               posts={posts}
               header=''
@@ -33,16 +39,8 @@ const CategoryResultsPage: React.FC<Props> = ({category, match}) => {
               isCategory
             />
       </div>
-      :
-      <div>
-        <ReusableHeader text={`${capitalize(category)}`} fontSize='38px' />
-        <h1>Coming Soon!</h1>
-      </div>
-
-      }
-
     </div>
   );
 };
 
-export default CategoryResultsPage;
+export default SearchResultsPage;

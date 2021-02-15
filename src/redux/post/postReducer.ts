@@ -3,6 +3,7 @@ import {
   GET_ALL_POSTS,
   GET_USERS_POSTS,
   GET_SUBCAT_POSTS,
+  GET_SEARCH_QUERY_POSTS,
   CREATE_NEW_POST,
   GET_POST,
   DELETE_POST,
@@ -13,6 +14,7 @@ export interface postState {
   posts: Post[],
   userPosts: Post[],
   subcatPosts: Post[],
+  searchQueryPosts: Post[],
   currentPost: Post,
 };
 
@@ -20,6 +22,7 @@ export const INITIAL_STATE = {
   posts: [],
   userPosts: [],
   subcatPosts: [],
+  searchQueryPosts: [],
   currentPost: {} as Post
 };
 
@@ -34,6 +37,11 @@ export const postReducer = (state:postState = INITIAL_STATE, action: PostDispatc
       return {
         ...state,
         subcatPosts: action.payload
+      }
+    case GET_SEARCH_QUERY_POSTS: 
+      return {
+        ...state,
+        searchQueryPosts: action.payload
       }
     case GET_USERS_POSTS:
       return {

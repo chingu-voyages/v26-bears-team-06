@@ -4,6 +4,7 @@ import "./App.css";
 import Homepage from "./pages/homepage/homepage";
 import CreatePostPage from "./pages/create-post-page/CreatePostPage";
 import CategoryResultsPage from "./pages/search-results-page/CategoryResultsPage";
+import SearchResultsPage from './pages/search-results-page/SearchResultsPage';
 import PostPage from "./pages/post-page/PostPage";
 import UserProfile from "./pages/user-profile-page/UserProfile";
 // Components:
@@ -40,17 +41,24 @@ function App() {
             }
               />
           <Route 
+            exact path="/search/:searchQuery"
+            render={({match}) => 
+              <SearchResultsPage searchQuery={match.params.searchQuery} />
+            } 
+          />
+          <Route 
             exact path="/:categoryId/"
             render={({match}) => 
               <CategoryResultsPage category={match.params.categoryId} match={match} />
             } 
           />
           <Route 
-            exact path="/:categoryId/:subcatId"
+            path="/:categoryId/:subcatId"
             render={({match}) => 
               <SubCategoryResultsPage subcatId={parseInt(match.params.subcatId)} />
             } 
           />
+
         </Switch>
       </Router>
       <CustomSnackbar />

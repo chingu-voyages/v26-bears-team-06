@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/styles';
 export const useStyles = makeStyles({
   root: {
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%'
   },
@@ -12,5 +11,8 @@ export const useStyles = makeStyles({
   },
   postContainer : {
     width: '75%'
+  },
+  showPostsBtn: {
+    marginTop: '20px'
   }
 })

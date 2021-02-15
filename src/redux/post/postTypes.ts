@@ -5,6 +5,7 @@ export const GET_ALL_POSTS = "GET_ALL_POSTS";
 export const CREATE_NEW_POST = "CREATE_NEW_POST";
 export const GET_SUBCAT_POSTS = "GET_SUBCAT_POSTS";
 export const GET_USERS_POSTS = "GET_USERS_POSTS"; 
+export const GET_SEARCH_QUERY_POSTS = "GET_SEARCH_QUERY_POSTS";
 export const GET_POST = "GET_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
@@ -45,6 +46,11 @@ export interface GetSubcatPosts {
   payload: Post[]
 };
 
+export interface GetSearchQueryPosts {
+  type: typeof GET_SEARCH_QUERY_POSTS,
+  payload: Post[]
+}
+
 export interface GetUsersPosts {
   type: typeof GET_USERS_POSTS,
   payload: Post[]
@@ -58,6 +64,7 @@ export type PostDispatchTypes =
   GetSubcatPosts |
   GetUsersPosts |
   CreateNewPost |
+  GetSearchQueryPosts |
   GetPost |
   UpdatePost |
   DeletePost |
