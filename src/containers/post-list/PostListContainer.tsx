@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
 import ItemLink from '../../components/item-link/ItemLink';
 import { Grid } from '@material-ui/core';
 import { useStyles } from './PostListContainer.styles';
@@ -10,10 +9,10 @@ interface Props {
   header: string,
   posts: Post[],
   seeAllLink: string,
+  isCategory?: boolean
 }
 
-const ItemListContainer:React.FC<Props> = ({header, posts, seeAllLink}) => {
-
+const ItemListContainer:React.FC<Props> = ({header, posts, seeAllLink, isCategory}) => {
   const classes = useStyles();
 
   return (
@@ -28,7 +27,7 @@ const ItemListContainer:React.FC<Props> = ({header, posts, seeAllLink}) => {
         container 
         spacing={3} 
         className={classes.root} 
-        style={seeAllLink.length > 0 ? {overflow: 'hidden'} : {}}>
+        style={isCategory ? {overflow: 'visible'} : {overflow: 'hidden'}}>
         { seeAllLink.length > 0 ?
           posts.slice(0, 6).map(post => (
             <ItemLink 

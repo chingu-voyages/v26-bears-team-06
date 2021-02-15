@@ -78,7 +78,7 @@ const DropDownMenu:React.FC<Props> = ({category}) => {
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                     {subCategories.map(({name, id}) => (
-                      <Link to={`/${category.id}/${id}`} className={classes.link}>
+                      <Link to={`/${category.name.toLowerCase()}/${id}`} className={classes.link}>
                         <MenuItem onClick={handleClose}>{name}</MenuItem>
                       </Link>
                     ))}

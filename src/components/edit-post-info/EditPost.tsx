@@ -29,10 +29,9 @@ const EditPostInfo:React.FC = () => {
   const [post, setPost] = useState<Post>({
     title: '',
     price: '',
-    location: '',
+    city: '',
+    state: '',
     image_url: '',
-    category: '',
-    subcategory: '',
     description: '',
   }); 
 
@@ -44,15 +43,13 @@ const EditPostInfo:React.FC = () => {
     setPost({
       title: currentPost ? currentPost.title : '',
       price: currentPost ? currentPost.price : '',
-      location: currentPost ?  currentPost.location : '',
+      city: currentPost ?  currentPost.city : '',
+      state: currentPost ?  currentPost.state : '',
       image_url: currentPost ?  currentPost.image_url : '',
-      category: currentPost ?  currentPost.category : '',
-      subcategory: currentPost ?  currentPost.subcategory : '',
       description: currentPost ? currentPost.description : '',
-      author: currentPost.author
     });
     setOpenNameForm(true);
-    console.log('POST:', post)
+    
   };
 
   const handleCloseNameForm = () => {
@@ -65,8 +62,9 @@ const EditPostInfo:React.FC = () => {
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    const updatedPost = post;
-    dispatch(updatePost(updatedPost, currentUser.user_id, token));
+    const updatedPost = post
+    console.log('UPDATED:', updatedPost);
+    dispatch(updatePost(updatedPost, currentPost.post_id, token));
     setOpenNameForm(false);
     // setPasswordConfirmation('');
     // setOldPassword('');
@@ -150,10 +148,19 @@ const EditPostInfo:React.FC = () => {
               <TextValidator 
                 className={classes.input} 
                 id="outlined-basic" 
-                label="Location" 
-                name='location'
+                label='City' 
+                name='city'
                 variant="outlined"
-                value={post.location}
+                value={post.city}
+                onChange={handleChange}
+                 />
+              <TextValidator 
+                className={classes.input} 
+                id="outlined-basic" 
+                label='State' 
+                name='state'
+                variant="outlined"
+                value={post.state}
                 onChange={handleChange}
                  />
               <TextValidator 

@@ -25,39 +25,39 @@ const CreatePostForm: React.FC = () => {
   const currentUser = useSelector<RootStore, userState["currentUser"]>((state) => state.user.currentUser);
   const token = useSelector<RootStore, userState["token"]>((state) => state.user.token);
   
-  console.log('!!',currentUser)
   const [radioValue, setRadioValue] = useState<string>('');
   const [post, setPost] = useState<Post>({
     title: '',
     price: '',
-    location: '',
-    category: '',
-    subcategory: '',
+    city: '',
+    state: '',
+    category_id: 0,
+    subcategory_id: 0,
     description: '',
     image_url: '',
-    author: currentUser
+    user: currentUser
   });
 
-  const { title, price, location, description, category, image_url } = post;
+  const { title, price, city, state, description, category_id, image_url } = post;
 
   const categoryMap:any = {
-    "Electronics": "Goods",
-    "Cars": "Goods",
-    "Garden": "Goods",
-    "Home": "Goods",
-    "For Rent": "Housing",
-    "For Sale": "Housing",
-    "Sublease": "Housing",
-    "Food and Bev": "Jobs",
-    "Tech": "Jobs",
-    "Education": "Jobs",
-    "Finance": "Jobs",
-    "General Labor": "Jobs"
+    1: 1,
+    2: 1,
+    3: 1,
+    4: 1,
+    5: 1,
+    6: 1,
+    7: 2,
+    8: 2,
+    9: 2,
+    10: 2,
+    11: 2,
+    12: 2
   };
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRadioValue((event.target as HTMLInputElement).value);
-    setPost({...post, subcategory: event.target.value, category: categoryMap[event.target.value]});
+    setPost({...post, subcategory_id: parseInt(event.target.value), category_id: categoryMap[event.target.value]});
   };
 
   const handleTextInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,7 +71,7 @@ const CreatePostForm: React.FC = () => {
     }
     setPost({
       ...post,
-      author: currentUser
+      user: currentUser
     })
     event.preventDefault();
     
@@ -79,13 +79,14 @@ const CreatePostForm: React.FC = () => {
     setPost({
       title: '',
       price: '',
-      location: '',
-      category: '',
-      subcategory: '',
+      city: '',
+      state: '',
+      category_id: 0,
+      subcategory_id: 0,
       description: '',
       image_url: '',
-      author: currentUser
-    })
+      user: currentUser
+    });
   };
 
   return (
@@ -106,7 +107,7 @@ const CreatePostForm: React.FC = () => {
           </RadioGroup>
         </FormControl>
       </div>
-      {category === 'Housing' && 
+      {category_id === 2 && 
       <div>
         <h1>Housing</h1>
       </div>}
@@ -126,7 +127,7 @@ const CreatePostForm: React.FC = () => {
           />
         <TextField
             id="outlined-textarea"
-            label={category === 'Jobs' ? 'Pay' : 'Price'}
+            label={category_id === 2 ? 'Pay' : 'Price'}
             name='price'
             value={`${price}`}
             placeholder="0"
@@ -139,10 +140,22 @@ const CreatePostForm: React.FC = () => {
       </div>
         <TextField
           id="outlined-textarea"
-          label="Location"
-          name='location'
-          value={location}
-          placeholder="City, State"
+          label="City"
+          name='city'
+          value={city}
+          placeholder="Sacramento"
+          multiline
+          variant="outlined"
+          className={classes.formInput}
+          onChange={handleTextInputChange}
+          required
+        />
+        <TextField
+          id="outlined-textarea"
+          label="State"
+          name='state'
+          value={state}
+          placeholder="CA"
           multiline
           variant="outlined"
           className={classes.formInput}

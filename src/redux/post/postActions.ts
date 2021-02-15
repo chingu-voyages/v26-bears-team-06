@@ -26,6 +26,7 @@ export const getPost = (postId: number | undefined) => async (dispatch: Dispatch
 };
 
 export const updatePost = (post: Post, postId: number | undefined, token: string | undefined) => async(dispatch: Dispatch<PostDispatchTypes>) => {
+  console.log('PostID:', postId);
   try {
     const config = {
       headers: {
@@ -95,12 +96,14 @@ export const getAllPosts = () => async (dispatch: Dispatch<PostDispatchTypes>) =
 };
 
 export const getSubcatPosts = (subcatId: number) => async (dispatch: Dispatch<PostDispatchTypes>) => {
+  console.log("INSUBCAT")
   try {
     const res = await axios.get(`https://craigs2list-dev.herokuapp.com/goods?sc=${subcatId}`);
     dispatch({
       type: GET_SUBCAT_POSTS,
       payload: res.data
     });
+    console.log("INSUBCAT");
   } catch (error) {
     console.log(error);
   }

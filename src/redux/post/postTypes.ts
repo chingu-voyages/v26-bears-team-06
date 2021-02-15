@@ -12,13 +12,14 @@ export interface Post {
   title: string,
   price: string,
   description: string,
-  location: string,
-  category: string,
-  subcategory: string,
+  city: string,
+  state: string,
+  category_id?: number,
+  subcategory_id?: number,
   image_url: string,
   post_id?: number,
   user_id?: number,
-  author?: User
+  user?: User
 };
 
 export interface DeletePost {

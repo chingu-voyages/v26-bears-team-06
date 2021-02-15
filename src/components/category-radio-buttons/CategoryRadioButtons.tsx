@@ -7,7 +7,7 @@ interface Props {
   name: string,
   subCategories: {
     name: string,
-    id: string,
+    id: number,
     posts: Post[]
   }[]
 }
@@ -22,7 +22,7 @@ const CategoryRadioButtons:React.FC<Props> = ({name, subCategories}) => {
         subCategories.map(({name, id, posts}) => (
           posts.length === 0 ?
           <FormControlLabel 
-            value={`${name}`}  
+            value={id}  
             control={<Radio color='default' />} 
             label={name}
             key={id}
@@ -30,8 +30,8 @@ const CategoryRadioButtons:React.FC<Props> = ({name, subCategories}) => {
          />
          :
          <FormControlLabel 
-            value={`${name}`} 
-            control={<Radio color='default' />} 
+            value={id.toString()} 
+            control={<Radio color='primary' />} 
             label={name}
             key={id}
           />

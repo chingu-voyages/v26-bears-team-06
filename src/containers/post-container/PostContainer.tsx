@@ -20,7 +20,7 @@ const PostContainer: React.FC<Props> = ({match}) => {
   const currentUser = useSelector<RootStore, userState['currentUser']>(state => state.user.currentUser);
   const token = useSelector<RootStore, userState["token"]>((state) => state.user.token);
   console.log('POST:', post)
-  const {title, image_url, location, description, price, author, user_id } = post;
+  const {title, image_url, city, state, description, price, user, user_id } = post;
   
   
   useEffect(() => {
@@ -29,7 +29,7 @@ const PostContainer: React.FC<Props> = ({match}) => {
 
   const handleClick = () => {
     dispatch(openSnackbar('Opening third party email service', 'success'));
-    window.location.href = `mailto:${author?.email}`;
+    window.location.href = `mailto:${user?.email}`;
   };
 
   const handleDelete = () => {
@@ -46,7 +46,7 @@ const PostContainer: React.FC<Props> = ({match}) => {
         className={classes.image}
         src={image_url} alt="" />
       <div className={classes.locationPrice}>
-        <span>{location}</span>
+        <span>{city}, {state}</span>
         <span>${price}</span>
       </div>
       <div className={classes.bottomSection}>
