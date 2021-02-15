@@ -16,7 +16,7 @@ const CategoryLink:React.FC<Props> = ({ category }) => {
 
   return (
       <Grid item className={classes.root} style={{backgroundImage: `url(${category.imageURL})`}}>
-        <Link to={`/${category.id}`} className={classes.link}>{category.name}</Link>
+        <Link to={`/${category.name.toLowerCase()}`} className={classes.link}>{category.name}</Link>
       </Grid>
   );
 };

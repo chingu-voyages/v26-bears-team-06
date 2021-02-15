@@ -70,4 +70,10 @@ export const useStyles = makeStyles({
       color: 'black',
     },
   },
+  searchLink: {
+    textDecoration: 'none',
+    color: '#666868',
+    display: 'flex',
+    alignItems: 'center'
+  }
 })

@@ -7,12 +7,12 @@ import { Grid } from '@material-ui/core';
 import { useStyles } from './ItemLink.styles';
 interface Props {
   imageUrl: string,
-  name: string,
+  title: string,
   price: string,
   id: string
 };
 
-const ItemLink:React.FC<Props> = ({ imageUrl, name, price, id }) => {
+const ItemLink:React.FC<Props> = ({ imageUrl, title, price, id }) => {
 
   const classes = useStyles();
 
@@ -25,7 +25,7 @@ const ItemLink:React.FC<Props> = ({ imageUrl, name, price, id }) => {
         <Link to={`/posts/${id}`} className={classes.link}></Link>
       </div>
       <div className={classes.itemInfo}>
-        <p className={classes.name}>{name}</p>
+        <p className={classes.name}>{`${title}`}</p>
         <p className={classes.price}>${price}</p>
       </div>
     </Grid>

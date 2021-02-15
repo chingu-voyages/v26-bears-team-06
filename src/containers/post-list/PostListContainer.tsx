@@ -4,15 +4,15 @@ import { Grid } from '@material-ui/core';
 import { useStyles } from './PostListContainer.styles';
 import ReusableHeader from '../../components/reusable-header/ReusableHeader';
 import { Link } from 'react-router-dom';
-import { Post } from '../../seed/seedData';
+import { Post } from '../../redux/post/postTypes';
 interface Props {
   header: string,
   posts: Post[],
   seeAllLink: string,
+  isCategory?: boolean
 }
 
-const ItemListContainer:React.FC<Props> = ({header, posts, seeAllLink}) => {
-
+const ItemListContainer:React.FC<Props> = ({header, posts, seeAllLink, isCategory}) => {
   const classes = useStyles();
 
   return (
@@ -27,24 +27,24 @@ const ItemListContainer:React.FC<Props> = ({header, posts, seeAllLink}) => {
         container 
         spacing={3} 
         className={classes.root} 
-        style={seeAllLink.length > 0 ? {overflow: 'hidden'} : {}}>
+        style={isCategory ? {overflow: 'visible'} : {overflow: 'hidden'}}>
         { seeAllLink.length > 0 ?
           posts.slice(0, 6).map(post => (
             <ItemLink 
-              imageUrl={post.imageUrl} 
-              name={post.name} 
+              imageUrl={post.image_url} 
+              title={post.title} 
               price={post.price}
-              key={post.id} 
-              id={post.id}
+              key={post.post_id} 
+              id={`${post.post_id}`}
             />
           )) : 
           posts.map(post => (
             <ItemLink 
-              imageUrl={post.imageUrl} 
-              name={post.name} 
+              imageUrl={post.image_url} 
+              title={post.title} 
               price={post.price}
-              key={post.id} 
-              id={post.id}
+              key={post.post_id} 
+              id={`${post.post_id}`}
             />
           ))
         }

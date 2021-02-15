@@ -1,33 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ReusableHeader from "../../components/reusable-header/ReusableHeader";
 import Navbar from "../../containers/navbar/Navbar";
 import PostListContainer from "../../containers/post-list/PostListContainer";
-import { Subcategory } from "../../seed/seedData";
+import { getSubcatPosts } from "../../redux/post/postActions";
+import { postState } from "../../redux/post/postReducer";
+import { RootStore } from "../../redux/store";
+import { seedCategories } from "../../seed/seedData";
 import { useStyles } from "./CategoryResultsPage.styles";
 
 interface Props {
-  subCategory: Subcategory,
+  subcatId: number
 }
 
-const SubCategoryResultsPage: React.FC<Props> = ({ subCategory }) => {
+const SubCategoryResultsPage: React.FC<Props> = ({ subcatId }) => {
+  const dispatch = useDispatch();
+  const name = seedCategories[0].subCategories[subcatId - 1] === undefined ? 'Coming Soon!' : seedCategories[0].subCategories[subcatId - 1].name;
+  const posts = useSelector<RootStore, postState['subcatPosts']>(state => state.post.subcatPosts);
   const classes = useStyles();
-  const { name, posts } = subCategory;
+  console.log(subcatId, posts);
+
+  useEffect(() => {
+    dispatch(getSubcatPosts(subcatId));
+  }, [subcatId]);
 
   return (
     <div>
       <Navbar />
       <ReusableHeader text={name} fontSize="38px" />
-      {posts.length === 0 ? 
-        <h1>Coming Soon!</h1>
-        :
         <div className={classes.header}>
           <PostListContainer
             posts={posts}
             header=''
             seeAllLink=''
+            isCategory
           />
         </div>
-      }
     </div>
   );
 };
