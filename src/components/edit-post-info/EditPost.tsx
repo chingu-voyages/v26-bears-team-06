@@ -6,6 +6,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 // Material UI Form Validator:
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+// React Router: 
+import { withRouter } from 'react-router-dom';
 // Styles:
 import { useStyles } from './EditPost.styles';
 // Redux State Management:
@@ -16,7 +18,11 @@ import { postState } from '../../redux/post/postReducer';
 import { userState } from '../../redux/user/userReducer';
 import { RootStore } from '../../redux/store';
 
-const EditPostInfo:React.FC = () => {
+interface Props {
+  history: any
+}
+
+const EditPostInfo:React.FC<Props> = ({ history }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -65,9 +71,7 @@ const EditPostInfo:React.FC = () => {
     const updatedPost = post
     console.log('UPDATED:', updatedPost);
     dispatch(updatePost(updatedPost, currentPost.post_id, token));
-    setOpenNameForm(false);
-    // setPasswordConfirmation('');
-    // setOldPassword('');
+    history.push(`/user/${currentUser.user_id}`)
   };
 
   return (
@@ -109,42 +113,6 @@ const EditPostInfo:React.FC = () => {
                 validators={['required']}
                 errorMessages={['Price Required']}
                 />
-              {/* <TextValidator 
-                className={classes.input} 
-                id="outlined-basic" 
-                label="Old Password" 
-                name='oldPassword'
-                type='password' 
-                variant="outlined"
-                value={oldPassword} 
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setOldPassword(e.target.value)}
-                validators={['required']}
-                errorMessages={['Password Required']}
-                />
-              <TextValidator 
-                className={classes.input} 
-                id="outlined-basic" 
-                label="New Password" 
-                name='password'
-                type='password' 
-                variant="outlined"
-                value={password}
-                onChange={handleChange} 
-                validators={['required']}
-                errorMessages={['Password Required']}
-                />
-              <TextValidator 
-                className={classes.input} 
-                id="outlined-basic" 
-                label="Confirm New Password" 
-                name='passwordConfirmation'
-                type='password' 
-                variant="outlined"
-                value={passwordConfirmation}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPasswordConfirmation(e.target.value)}
-                validators={['required', 'passwordsMustMatch']}
-                errorMessages={['Confirm Password', 'Passwords must match']}
-                /> */}
               <TextValidator 
                 className={classes.input} 
                 id="outlined-basic" 
@@ -193,4 +161,4 @@ const EditPostInfo:React.FC = () => {
   )
 };
 
-export default EditPostInfo;
+export default withRouter(EditPostInfo);

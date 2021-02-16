@@ -1,19 +1,22 @@
 import React, { useEffect } from 'react';
+// Components:
+import EditPostInfo from '../../components/edit-post-info/EditPost';
+// Material UI:
 import Button from '@material-ui/core/Button';
 import { useStyles } from './PostContainer.styles';
+// Redux:
 import { openSnackbar } from '../../redux/snackbars/snackbarsActions';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootStore } from '../../redux/store';
 import { postState } from '../../redux/post/postReducer';
 import { userState } from '../../redux/user/userReducer';
 import { deletePost, getPost } from '../../redux/post/postActions';
-import EditPostInfo from '../../components/edit-post-info/EditPost';
-
 interface Props {
-  match: any
+  match: any,
+  history: any
 }
 
-const PostContainer: React.FC<Props> = ({match}) => {
+const PostContainer: React.FC<Props> = ({match, history}) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const post = useSelector<RootStore, postState['currentPost']>(state => state.post.currentPost);
@@ -34,6 +37,7 @@ const PostContainer: React.FC<Props> = ({match}) => {
 
   const handleDelete = () => {
     dispatch(deletePost(post.post_id, token));
+    history.push(`/user/${currentUser.user_id}`)
   };
 
   return (

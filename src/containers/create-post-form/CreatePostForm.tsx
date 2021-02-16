@@ -9,7 +9,7 @@ import CategoryRadioButtons from '../../components/category-radio-buttons/Catego
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import { Button, TextField } from '@material-ui/core';
 // React Router
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 // Redux State Management:
 import { createNewPost } from '../../redux/post/postActions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,7 +19,11 @@ import { RootStore } from '../../redux/store';
 import { userState } from '../../redux/user/userReducer';
 import { openSnackbar } from '../../redux/snackbars/snackbarsActions';
 
-const CreatePostForm: React.FC = () => {
+interface Props {
+  history: any
+}
+
+const CreatePostForm: React.FC<Props> = ({ history }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const currentUser = useSelector<RootStore, userState["currentUser"]>((state) => state.user.currentUser);
@@ -87,6 +91,7 @@ const CreatePostForm: React.FC = () => {
       image_url: '',
       user: currentUser
     });
+    history.push(`/user/${currentUser.user_id}`);
   };
 
   return (
@@ -211,4 +216,4 @@ const CreatePostForm: React.FC = () => {
   )
 };
 
-export default CreatePostForm;
+export default withRouter(CreatePostForm);

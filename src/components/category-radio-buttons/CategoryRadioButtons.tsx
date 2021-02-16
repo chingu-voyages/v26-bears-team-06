@@ -1,7 +1,9 @@
 import React from 'react';
+// Material UI:
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import { useStyles } from './CategoryRadioButtons.styles';
+// Redux:
 import { Post } from '../../redux/post/postTypes';
 interface Props {
   name: string,

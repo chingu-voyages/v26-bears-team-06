@@ -34,9 +34,10 @@ function App() {
           <Route 
               exact 
               path='/posts/:postId' 
-              render={({match}) => 
+              render={({match, history}) => 
               <PostPage 
                 match={match}
+                history={history}
               />
             }
               />
@@ -58,7 +59,6 @@ function App() {
               <SubCategoryResultsPage subcatId={parseInt(match.params.subcatId)} />
             } 
           />
-
         </Switch>
       </Router>
       <CustomSnackbar />

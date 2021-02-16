@@ -1,8 +1,11 @@
 import React from 'react';
+// Components
 import ItemLink from '../../components/item-link/ItemLink';
+import ReusableHeader from '../../components/reusable-header/ReusableHeader';
+// Material UI: 
 import { Grid } from '@material-ui/core';
 import { useStyles } from './PostListContainer.styles';
-import ReusableHeader from '../../components/reusable-header/ReusableHeader';
+// React Router:
 import { Link } from 'react-router-dom';
 import { Post } from '../../redux/post/postTypes';
 interface Props {
@@ -14,7 +17,7 @@ interface Props {
 
 const ItemListContainer:React.FC<Props> = ({header, posts, seeAllLink, isCategory}) => {
   const classes = useStyles();
-
+  console.log('REVERSED:', posts.reverse())
   return (
     <div className={classes.section}>
       <div className={classes.header}>

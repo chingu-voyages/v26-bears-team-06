@@ -20,14 +20,6 @@ const UserProfile = () => {
 
   const classes = useStyles();
 
-  console.log(currentUser)
-  console.log(userPosts);
-
-  useEffect(() => {
-    
-  }, []);
-
-
   const handleClick = () => {
     dispatch(getUsersPosts(currentUser.user_id, token));
     setHidden(!hidden);
