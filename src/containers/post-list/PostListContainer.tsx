@@ -17,7 +17,7 @@ interface Props {
 
 const ItemListContainer:React.FC<Props> = ({header, posts, seeAllLink, isCategory}) => {
   const classes = useStyles();
-  console.log('REVERSED:', posts.reverse())
+  
   return (
     <div className={classes.section}>
       <div className={classes.header}>
