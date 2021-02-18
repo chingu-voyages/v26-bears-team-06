@@ -13,7 +13,7 @@ import CustomSnackbar from "./components/snackbar-feedback/Snackbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Redux State Management:
 import { useDispatch } from 'react-redux';
-import { getAllPosts } from "./redux/post/postActions";
+import { GetAllPostsSuccess } from "./redux/post/postActions";
 import SubCategoryResultsPage from "./pages/search-results-page/SubCategoryResultsPage";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
 
   // Making get requests to database to initialize state:
   useEffect(() => {
-    dispatch(getAllPosts());
+    dispatch(GetAllPostsSuccess());
   }, []);
 
   return (

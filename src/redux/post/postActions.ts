@@ -3,22 +3,26 @@ import { Dispatch } from 'redux';
 import { OPEN_SNACKBAR } from '../snackbars/snackbarsTypes';
 import {
   Post,
-  GET_ALL_POSTS,
+  GET_ALL_POSTS_SUCCESS,
   CREATE_NEW_POST,
-  GET_SUBCAT_POSTS,
-  GET_USERS_POSTS,
-  GET_POST,
+  GET_SUBCAT_POSTS_SUCCESS,
+  GET_USERS_POSTS_SUCCESS,
+  GET_POST_SUCCESS,
   UPDATE_POST,
   PostDispatchTypes,
   DELETE_POST,
-  GET_SEARCH_QUERY_POSTS,
+  GET_SEARCH_QUERY_POSTS_SUCCESS,
+  GET_POST_LOADING,
 } from './postTypes';
 
 export const getPost = (postId: number | undefined) => async (dispatch: Dispatch<PostDispatchTypes>) => {
   try {
+    dispatch({
+      type: GET_POST_LOADING
+    });
     const res = await axios.get(`https://craigs2list-dev.herokuapp.com/goods/${postId}`)
     dispatch({
-      type: GET_POST,
+      type: GET_POST_SUCCESS,
       payload: res.data
     })
   } catch (error) {
@@ -84,11 +88,14 @@ export const deletePost = (postId: number | undefined, token: string | undefined
   }
 };
 
-export const getAllPosts = () => async (dispatch: Dispatch<PostDispatchTypes>) => {
+export const GetAllPostsSuccess = () => async (dispatch: Dispatch<PostDispatchTypes>) => {
   try {
+    dispatch({
+      type: GET_POST_LOADING
+    });
     const res = await axios.get('https://craigs2list-dev.herokuapp.com/goods');
     dispatch({
-      type: GET_ALL_POSTS,
+      type: GET_ALL_POSTS_SUCCESS,
       payload: res.data
     });
   } catch (error) {
@@ -100,12 +107,15 @@ export const getAllPosts = () => async (dispatch: Dispatch<PostDispatchTypes>) =
   }
 };
 
-export const getSubcatPosts = (subcatId: number) => async (dispatch: Dispatch<PostDispatchTypes>) => {
+export const GetSubcatPostsSuccess = (subcatId: number) => async (dispatch: Dispatch<PostDispatchTypes>) => {
   
   try {
+    dispatch({
+      type: GET_POST_LOADING
+    });
     const res = await axios.get(`https://craigs2list-dev.herokuapp.com/goods?sc=${subcatId}`);
     dispatch({
-      type: GET_SUBCAT_POSTS,
+      type: GET_SUBCAT_POSTS_SUCCESS,
       payload: res.data
     });
     
@@ -118,12 +128,14 @@ export const getSubcatPosts = (subcatId: number) => async (dispatch: Dispatch<Po
   }
 };
 
-export const getSearchQueryPosts = (searchQuery: string) => async (dispatch: Dispatch<PostDispatchTypes>) => {
-  console.log('!!!',searchQuery);
+export const GetSearchQueryPostsSuccess = (searchQuery: string) => async (dispatch: Dispatch<PostDispatchTypes>) => {
   try {
+    dispatch({
+      type: GET_POST_LOADING
+    });
     const res = await axios.get(`https://craigs2list-dev.herokuapp.com/goods?q=${searchQuery}`);
     dispatch({
-      type: GET_SEARCH_QUERY_POSTS,
+      type: GET_SEARCH_QUERY_POSTS_SUCCESS,
       payload: res.data
     });
   } catch (error) {
@@ -135,11 +147,14 @@ export const getSearchQueryPosts = (searchQuery: string) => async (dispatch: Dis
   }
 };
 
-export const getUsersPosts = (userId: number | undefined, token: string | undefined) => async (dispatch: Dispatch<PostDispatchTypes>) => {
+export const GetUsersPostsSuccess = (userId: number | undefined, token: string | undefined) => async (dispatch: Dispatch<PostDispatchTypes>) => {
   try {
+    dispatch({
+      type: GET_POST_LOADING
+    });
     const res = await axios.get(`https://craigs2list-dev.herokuapp.com/goods?uid=${userId}`);
     dispatch({
-      type: GET_USERS_POSTS,
+      type: GET_USERS_POSTS_SUCCESS,
       payload: res.data
     });
   } catch (error) {

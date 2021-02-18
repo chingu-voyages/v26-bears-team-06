@@ -7,7 +7,7 @@ import PostListContainer from "../../containers/post-list/PostListContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { postState } from "../../redux/post/postReducer";
 import { RootStore } from "../../redux/store";
-import { getSearchQueryPosts } from "../../redux/post/postActions";
+import { GetSearchQueryPostsSuccess } from "../../redux/post/postActions";
 interface Props {
   searchQuery: string,
 };
@@ -17,7 +17,7 @@ const SearchResultsPage: React.FC<Props> = ({searchQuery}) => {
   const posts = useSelector<RootStore, postState['searchQueryPosts']>(state => state.post.searchQueryPosts);
 
   useEffect(() => {
-    dispatch(getSearchQueryPosts(searchQuery));
+    dispatch(GetSearchQueryPostsSuccess(searchQuery));
   }, [searchQuery]);
 
   return (

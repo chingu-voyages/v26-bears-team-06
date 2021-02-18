@@ -1,12 +1,13 @@
 import { OpenSnackbar } from "../snackbars/snackbarsTypes";
 import { User } from "../user/userTypes";
 
-export const GET_ALL_POSTS = "GET_ALL_POSTS";
+export const GET_POST_LOADING = "GET_POST_LOADING";
+export const GET_ALL_POSTS_SUCCESS = "GET_ALL_POSTS_SUCCESS";
 export const CREATE_NEW_POST = "CREATE_NEW_POST";
-export const GET_SUBCAT_POSTS = "GET_SUBCAT_POSTS";
-export const GET_USERS_POSTS = "GET_USERS_POSTS"; 
-export const GET_SEARCH_QUERY_POSTS = "GET_SEARCH_QUERY_POSTS";
-export const GET_POST = "GET_POST";
+export const GET_SUBCAT_POSTS_SUCCESS = "GET_SUBCAT_POSTS_SUCCESS";
+export const GET_USERS_POSTS_SUCCESS = "GET_USERS_POSTS_SUCCESS"; 
+export const GET_SEARCH_QUERY_POSTS_SUCCESS = "GET_SEARCH_QUERY_POSTS_SUCCESS";
+export const GET_POST_SUCCESS = "GET_POST_SUCCESS";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
 export interface Post {
@@ -27,7 +28,7 @@ export interface DeletePost {
   type: typeof DELETE_POST
 };
 export interface GetPost {
-  type: typeof GET_POST,
+  type: typeof GET_POST_SUCCESS,
   payload: Post
 };
 
@@ -36,23 +37,26 @@ export interface UpdatePost {
   payload: Post
 }
 
-export interface GetAllPosts {
-  type: typeof GET_ALL_POSTS,
+export interface GetPostsLoading {
+  type: typeof GET_POST_LOADING
+}
+export interface GetAllPostsSuccess {
+  type: typeof GET_ALL_POSTS_SUCCESS,
   payload: Post[]
 };
 
-export interface GetSubcatPosts {
-  type: typeof GET_SUBCAT_POSTS,
+export interface GetSubcatPostsSuccess {
+  type: typeof GET_SUBCAT_POSTS_SUCCESS,
   payload: Post[]
 };
 
-export interface GetSearchQueryPosts {
-  type: typeof GET_SEARCH_QUERY_POSTS,
+export interface GetSearchQueryPostsSuccess {
+  type: typeof GET_SEARCH_QUERY_POSTS_SUCCESS,
   payload: Post[]
 }
 
-export interface GetUsersPosts {
-  type: typeof GET_USERS_POSTS,
+export interface GetUsersPostsSuccess {
+  type: typeof GET_USERS_POSTS_SUCCESS,
   payload: Post[]
 };
 export interface CreateNewPost {
@@ -60,11 +64,12 @@ export interface CreateNewPost {
 };
 
 export type PostDispatchTypes = 
-  GetAllPosts |
-  GetSubcatPosts |
-  GetUsersPosts |
+  GetAllPostsSuccess |
+  GetPostsLoading |
+  GetSubcatPostsSuccess |
+  GetUsersPostsSuccess |
   CreateNewPost |
-  GetSearchQueryPosts |
+  GetSearchQueryPostsSuccess |
   GetPost |
   UpdatePost |
   DeletePost |

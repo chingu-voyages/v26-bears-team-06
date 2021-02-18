@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ReusableHeader from "../../components/reusable-header/ReusableHeader";
 import Navbar from "../../containers/navbar/Navbar";
 import PostListContainer from "../../containers/post-list/PostListContainer";
-import { getSubcatPosts } from "../../redux/post/postActions";
+import { GetSubcatPostsSuccess } from "../../redux/post/postActions";
 import { postState } from "../../redux/post/postReducer";
 import { RootStore } from "../../redux/store";
 import { seedCategories } from "../../seed/seedData";
@@ -21,7 +21,7 @@ const SubCategoryResultsPage: React.FC<Props> = ({ subcatId }) => {
   console.log(subcatId, posts);
 
   useEffect(() => {
-    dispatch(getSubcatPosts(subcatId));
+    dispatch(GetSubcatPostsSuccess(subcatId));
   }, [subcatId]);
 
   return (

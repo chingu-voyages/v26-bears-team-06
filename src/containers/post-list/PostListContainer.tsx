@@ -5,9 +5,15 @@ import ReusableHeader from '../../components/reusable-header/ReusableHeader';
 // Material UI: 
 import { Grid } from '@material-ui/core';
 import { useStyles } from './PostListContainer.styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 // React Router:
 import { Link } from 'react-router-dom';
 import { Post } from '../../redux/post/postTypes';
+// Redux;
+import { useSelector } from 'react-redux';
+import { RootStore } from '../../redux/store';
+import { postState } from '../../redux/post/postReducer';
+
 interface Props {
   header: string,
   posts: Post[],
@@ -17,7 +23,7 @@ interface Props {
 
 const ItemListContainer:React.FC<Props> = ({header, posts, seeAllLink, isCategory}) => {
   const classes = useStyles();
-  
+  const isLoading = useSelector<RootStore, postState['loading']>(state => state.post.loading);
   return (
     <div className={classes.section}>
       <div className={classes.header}>
@@ -26,6 +32,9 @@ const ItemListContainer:React.FC<Props> = ({header, posts, seeAllLink, isCategor
           <Link to={seeAllLink} className={classes.link}>See all...</Link>
         }
       </div>
+      {isLoading ? 
+      <CircularProgress />
+      :
       <Grid 
         container 
         spacing={3} 
@@ -52,6 +61,7 @@ const ItemListContainer:React.FC<Props> = ({header, posts, seeAllLink, isCategor
           ))
         }
       </Grid>
+      }
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useStyles } from './UserProfile.styles';
 import { useDispatch, useSelector } from 'react-redux';
 import EditUserInfo from '../../components/edit-user-info/EditUserInfo';
 import Navbar from '../../containers/navbar/Navbar';
-import { getUsersPosts } from '../../redux/post/postActions';
+import { GetUsersPostsSuccess } from '../../redux/post/postActions';
 import { postState } from '../../redux/post/postReducer';
 import { RootStore } from '../../redux/store';
 import { userState } from '../../redux/user/userReducer';
@@ -21,7 +21,7 @@ const UserProfile = () => {
   const classes = useStyles();
 
   const handleClick = () => {
-    dispatch(getUsersPosts(currentUser.user_id, token));
+    dispatch(GetUsersPostsSuccess(currentUser.user_id, token));
     setHidden(!hidden);
   }
 

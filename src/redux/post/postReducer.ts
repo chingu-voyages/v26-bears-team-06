@@ -1,11 +1,12 @@
 import {
   Post,
-  GET_ALL_POSTS,
-  GET_USERS_POSTS,
-  GET_SUBCAT_POSTS,
-  GET_SEARCH_QUERY_POSTS,
+  GET_POST_LOADING,
+  GET_ALL_POSTS_SUCCESS,
+  GET_USERS_POSTS_SUCCESS,
+  GET_SUBCAT_POSTS_SUCCESS,
+  GET_SEARCH_QUERY_POSTS_SUCCESS,
   CREATE_NEW_POST,
-  GET_POST,
+  GET_POST_SUCCESS,
   DELETE_POST,
   PostDispatchTypes
 } from './postTypes'
@@ -16,6 +17,7 @@ export interface postState {
   subcatPosts: Post[],
   searchQueryPosts: Post[],
   currentPost: Post,
+  loading: boolean
 };
 
 export const INITIAL_STATE = {
@@ -23,39 +25,50 @@ export const INITIAL_STATE = {
   userPosts: [],
   subcatPosts: [],
   searchQueryPosts: [],
-  currentPost: {} as Post
+  currentPost: {} as Post,
+  loading: false
 };
 
 export const postReducer = (state:postState = INITIAL_STATE, action: PostDispatchTypes) => {
   switch(action.type) {
-    case GET_ALL_POSTS: 
-      return {
+    case GET_POST_LOADING:
+     return {
         ...state,
-        posts: action.payload
+        loading: true
       }
-    case GET_SUBCAT_POSTS: 
+    case GET_ALL_POSTS_SUCCESS: 
       return {
         ...state,
-        subcatPosts: action.payload
+        posts: action.payload,
+        loading: false
       }
-    case GET_SEARCH_QUERY_POSTS: 
+    case GET_SUBCAT_POSTS_SUCCESS: 
       return {
         ...state,
-        searchQueryPosts: action.payload
+        subcatPosts: action.payload,
+        loading: false
       }
-    case GET_USERS_POSTS:
+    case GET_SEARCH_QUERY_POSTS_SUCCESS: 
       return {
         ...state,
-        userPosts: action.payload
+        searchQueryPosts: action.payload,
+        loading: false
+      }
+    case GET_USERS_POSTS_SUCCESS:
+      return {
+        ...state,
+        userPosts: action.payload,
+        loading: false
       }
     case CREATE_NEW_POST: 
       return {
         ...state,
       }
-    case GET_POST:
+    case GET_POST_SUCCESS:
       return {
         ...state,
-        currentPost: action.payload
+        currentPost: action.payload,
+        loading: false
       }
     case DELETE_POST:
       return {

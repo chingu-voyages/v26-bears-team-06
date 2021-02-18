@@ -10,7 +10,7 @@ import { postState } from '../../redux/post/postReducer';
 
 const Homepage: React.FC = () => {
   const posts = useSelector<RootStore, postState['posts']>(state => state.post.posts);
-  console.log('!!', posts);
+  
   return (
     <div>
       <Navbar />
