@@ -128,12 +128,13 @@ export const GetSubcatPostsSuccess = (subcatId: number) => async (dispatch: Disp
   }
 };
 
-export const GetSearchQueryPostsSuccess = (searchQuery: string) => async (dispatch: Dispatch<PostDispatchTypes>) => {
+export const GetSearchQueryPostsSuccess = (searchQuery: string, location: string, subcatSearchQuery: string) => async (dispatch: Dispatch<PostDispatchTypes>) => {
+  console.log(`https://craigs2list-dev.herokuapp.com/goods?q=${searchQuery}&loc=${location}&sc=${subcatSearchQuery}`);
   try {
     dispatch({
       type: GET_POST_LOADING
     });
-    const res = await axios.get(`https://craigs2list-dev.herokuapp.com/goods?q=${searchQuery}`);
+    const res = await axios.get(`https://craigs2list-dev.herokuapp.com/goods?q=${searchQuery}&loc=${location}&${subcatSearchQuery}`);
     dispatch({
       type: GET_SEARCH_QUERY_POSTS_SUCCESS,
       payload: res.data

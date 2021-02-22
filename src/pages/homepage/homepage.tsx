@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import { RootStore } from '../../redux/store';
 import { postState } from '../../redux/post/postReducer';
 
-const Homepage: React.FC = () => {
+const Homepage: React.FC= () => {
   const posts = useSelector<RootStore, postState['posts']>(state => state.post.posts);
   
   return (

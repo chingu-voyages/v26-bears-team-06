@@ -28,7 +28,7 @@ function App() {
     <div>
       <Router>
         <Switch>
-          <Route exact path="/" render={() => <Homepage />} />
+          <Route exact path="/" render={() => <Homepage  />} />
           <Route exact path="/user/:userId" component={UserProfile} />
           <Route exact path="/posts/new" component={CreatePostPage} />
           <Route 
@@ -54,7 +54,7 @@ function App() {
             } 
           />
           <Route 
-            path="/:categoryId/:subcatId"
+            exact path="/:categoryId/:subcatId"
             render={({match}) => 
               <SubCategoryResultsPage subcatId={parseInt(match.params.subcatId)} />
             } 

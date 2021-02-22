@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useStyles } from './UserProfile.styles';
 import { useDispatch, useSelector } from 'react-redux';
 import EditUserInfo from '../../components/edit-user-info/EditUserInfo';

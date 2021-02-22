@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // Material UI Components
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,6 +12,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import { useStyles } from './CustomDrawer.styles';
 // Seed Data: 
 import { seedCategories } from '../../seed/seedData';
+// Redux:
+import { useDispatch } from 'react-redux';
+import { setSubcatQuery } from '../../redux/drawer/drawerActions';
 
 // Props interface (types):
 interface Props {
@@ -20,10 +23,32 @@ interface Props {
 }
 
 const CustomDrawer:React.FC<Props> = ({ open, handleClose}) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const Goods = seedCategories[0];
   const Housing = seedCategories[1];
   const Jobs = seedCategories[2];
+  const [subcats, setSubcats] = useState({
+    Electronics: '',
+    Cars: '',
+    Furniture: '',
+    Office: '',
+    Appliances: '',
+    Clothing: ''
+  });
+
+  useEffect(() => {
+    dispatch(setSubcatQuery(Object.values(subcats).join('')));
+  }, [subcats]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if(event.target.checked) {
+      setSubcats({ ...subcats, [event.target.name]: event.target.value });
+    } else {
+      setSubcats({...subcats, [event.target.name]: ''});
+    }
+  };
+
   return (
       <Drawer
         className={classes.drawer}
@@ -49,9 +74,10 @@ const CustomDrawer:React.FC<Props> = ({ open, handleClose}) => {
                 key={subCategory.id}
                 control={
                   <Checkbox
-                    name="checkedB"
+                    name={subCategory.name}
                     color="primary"
-                    value='Goods/id'
+                    value={`sc=${subCategory.id}&`}
+                    onChange={handleChange}
                   />
                 }
                 label={subCategory.name}
@@ -66,6 +92,7 @@ const CustomDrawer:React.FC<Props> = ({ open, handleClose}) => {
                       name="checkedB"
                       color="primary"
                       value='Housing/id'
+                      disabled
                     />
                 }
                 label={subCategory.name}
@@ -80,6 +107,7 @@ const CustomDrawer:React.FC<Props> = ({ open, handleClose}) => {
                       name="checkedB"
                       color="primary"
                       value='Jobs/id'
+                      disabled
                     />
                   }
                   label={subCategory.name}
