@@ -47,7 +47,7 @@ const UserProfile = () => {
         <div className={classes.postContainer}>
           <Button variant='contained' onClick={handleClick} className={classes.showPostsBtn}>{hidden ? 'Show' : 'Hide'} Your Posts</Button>
           <div hidden={hidden} >
-            <ItemListContainer posts={userPosts} header='Your Posts' seeAllLink='' /> 
+            <ItemListContainer posts={userPosts} header='Your Posts' seeAllLink='' isCategory /> 
           </div>
         </div>
       </div>

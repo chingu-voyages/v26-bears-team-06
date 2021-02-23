@@ -27,7 +27,16 @@ export const useStyles = makeStyles({
     borderTop: '1px solid #b8b7b6',
     borderBottom: '1px solid #b8b7b6',
     padding: '5px 0',
-    height: '30%'
+    height: '30%',
+    [sizes.down('sm')]: {
+      flexDirection: 'column',
+      height: '100%',
+      marginTop: '-40px',
+      borderTop: 'none',
+      borderBottom: 'none',
+      marginBottom: '10px',
+    }
+
   },
   leftSide: {
     display: 'flex',
@@ -62,8 +71,8 @@ export const useStyles = makeStyles({
       justifyContent: 'space-between'
     },
     [sizes.down('sm')]: {
-      flexDirection: 'row',
-      justifyContent:'space-around',
+      flexDirection: 'column',
+      justifyContent:'flex-end',
       width: '100%',
     }
   },
@@ -99,6 +108,10 @@ export const useStyles = makeStyles({
     listStyle: 'none',
     width: '25%',
     justifyContent: 'space-between',
-    padding: '0'
+    padding: '0',
+    [sizes.down('sm')]: {
+      flexDirection: 'column',
+      justifyContent: 'flex-start'
+    }
   },
 });

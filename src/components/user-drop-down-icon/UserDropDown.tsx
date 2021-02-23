@@ -16,16 +16,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logoutCurrentUser } from '../../redux/user/userActions';
 import { RootStore } from '../../redux/store';
 import { userState } from '../../redux/user/userReducer';
+import sizes from '../../styles/constants/MediaQueries';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
-      zIndex: 1
+      zIndex: 1,
+
     },
     paper: {
       marginRight: theme.spacing(2),
     },
+    button: {
+      [sizes.down('sm')]: {
+        marginLeft: '85px'
+      }
+    }
   }),
 );
 
@@ -80,6 +87,7 @@ export default function UserDropDown() {
           aria-controls={open ? 'menu-list-grow' : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
+          className={classes.button}
         >
           <AccountCircleIcon />
           Signed In

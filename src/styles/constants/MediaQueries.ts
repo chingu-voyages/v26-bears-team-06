@@ -1,8 +1,7 @@
 const sizes = {
   down(size: any){
     const sizes: any = {
-      xs: '576px',
-      sm: '768px',
+      sm: '450px',
       md: '960px',
       lg: '1200px',
     }

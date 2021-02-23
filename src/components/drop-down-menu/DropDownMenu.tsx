@@ -74,9 +74,9 @@ const DropDownMenu:React.FC<Props> = ({category}) => {
               {...TransitionProps}
               style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
             >
-              <Paper>
+              <Paper style={{zIndex: 20}}> 
                 <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                  <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown} style={{zIndex: 30}}>
                     {subCategories.map(({name, id}) => (
                       <Link to={`/${category.name.toLowerCase()}/${id}`} className={classes.link}>
                         <MenuItem onClick={handleClose}>{name}</MenuItem>

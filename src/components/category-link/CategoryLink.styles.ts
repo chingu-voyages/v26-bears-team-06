@@ -35,5 +35,10 @@ export const useStyles = makeStyles({
     fontWeight: 'bold',
     textTransform: 'uppercase',
     color: 'black',
+
+    [sizes.down('sm')]: {
+      fontSize: '1.5em',
+      paddingTop: '30px',
+    },
   },
 });

@@ -25,6 +25,9 @@ export const useStyles = makeStyles({
     outline: 'none',
     fontSize: '18px',
     paddingLeft: '10px',
+    [sizes.down('sm')]: {
+      fontSize: '12px',
+    }
   },
   divider: {
     border: '1px rgba(213, 216, 216, 1) solid',
@@ -34,7 +37,11 @@ export const useStyles = makeStyles({
   },
   searchBar: {
     borderRadius: '35px 0 0 35px',
-    width: '100%'
+    width: '100%',
+    [sizes.down('sm')]: {
+      fontSize: '12px',
+      
+    }
   },
   searchButton: {
     display: 'flex',
@@ -52,6 +59,9 @@ export const useStyles = makeStyles({
     },
     '&:active': {
       transform: 'scale(0.975)'
+    },
+    [sizes.down('sm')]: {
+      fontSize: '12px'
     }
   },
   filterButton: {
@@ -69,6 +79,9 @@ export const useStyles = makeStyles({
       opacity: '1',
       color: 'black',
     },
+    [sizes.down('sm')]: {
+      fontSize: '12px'
+    }
   },
   searchLink: {
     textDecoration: 'none',

@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import sizes from '../../styles/constants/MediaQueries';
 
 export const useStyles = makeStyles({
   section: {
@@ -23,5 +24,8 @@ export const useStyles = makeStyles({
     width: '90px',
     paddingBottom: '1px',
     fontSize: '18px',
+    [sizes.down('sm')]: {
+      fontSize: '15px',
+    }
   }
 });

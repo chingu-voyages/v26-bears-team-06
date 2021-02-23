@@ -54,7 +54,7 @@ const PostContainer: React.FC<Props> = ({match, history}) => {
         <span>${price}</span>
       </div>
       <div className={classes.bottomSection}>
-        <p>{description}</p>
+        <p className={classes.description}>{description}</p>
         <div>
           <Button variant='contained' href='/'>Go Back</Button>
           {

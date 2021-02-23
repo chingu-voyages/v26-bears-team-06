@@ -95,7 +95,7 @@ const SignInSignUp:React.FC = () => {
 
   return (
     <div className={classes.root}>
-      <Button color="primary" onClick={handleOpenNameForm}>
+      <Button color="primary" onClick={handleOpenNameForm} className={classes.button}>
         Sign Up / Login
       </Button>
       <Dialog 

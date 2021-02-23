@@ -1,10 +1,14 @@
 import { makeStyles } from "@material-ui/core";
+import sizes from "../../styles/constants/MediaQueries";
 
 export const useStyles = makeStyles({
   root: {
     display: 'flex',
     justifyContent:'center',
     width: 'fit-content',
+    [sizes.down('sm')]: {
+      flexDirection: 'column'
+    }
   },
   dialogContainer: {
     display: 'flex',
@@ -16,6 +20,9 @@ export const useStyles = makeStyles({
   dialogForms: {
     display: 'flex',
     justifyContent: 'space-between',
+    [sizes.down('sm')]: {
+      flexDirection: 'column'
+    }
   },
   signIn: {
     display: 'flex',
@@ -29,6 +36,14 @@ export const useStyles = makeStyles({
   },
   input: {
     width: '480px',
-    marginBottom: '0.5em'
+    marginBottom: '0.5em',
+    [sizes.down('sm')]: {
+      width: '100%'
+    }
+  },
+  button: {
+    [sizes.down('sm')]: {
+      marginLeft: '105px'
+    }
   }
 })

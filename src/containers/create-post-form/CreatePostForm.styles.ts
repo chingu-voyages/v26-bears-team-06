@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import sizes from '../../styles/constants/MediaQueries';
 
 export const useStyles = makeStyles({
   root: {
@@ -6,6 +7,9 @@ export const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    [sizes.down('sm')]: {
+      width: '100%'
+    }
   },
   formInput: {
     width: '100%',
@@ -28,7 +32,7 @@ export const useStyles = makeStyles({
     marginTop: '1rem',
   },
   postTitleInput: {
-    width: '77.25%'
+    width: '77.25%',
   },
   priceInput: {
     width: '22%',

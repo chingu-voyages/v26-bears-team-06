@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core";
+import sizes from "../../styles/constants/MediaQueries";
 
 export const useStyles = makeStyles({
   root: {
@@ -29,6 +30,9 @@ export const useStyles = makeStyles({
   },
   input: {
     width: '480px',
-    marginBottom: '0.5em'
+    marginBottom: '0.5em',
+    [sizes.down('sm')]: {
+      width: '100%'
+    }
   }
 })
