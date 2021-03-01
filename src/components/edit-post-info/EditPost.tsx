@@ -20,7 +20,7 @@ import { RootStore } from '../../redux/store';
 
 interface Props {
   history: any
-}
+};
 
 const EditPostInfo:React.FC<Props> = ({ history }) => {
   const classes = useStyles();

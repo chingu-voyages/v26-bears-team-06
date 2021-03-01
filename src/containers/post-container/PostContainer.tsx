@@ -40,6 +40,11 @@ const PostContainer: React.FC<Props> = ({match, history}) => {
     history.push(`/user/${currentUser.user_id}`)
   };
 
+  const capitalize = (s: string | undefined) => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+  }
+
   return (
     <div className={classes.root}>
       <div className={classes.titleSection}>
@@ -50,8 +55,8 @@ const PostContainer: React.FC<Props> = ({match, history}) => {
         className={classes.image}
         src={image_url} alt="" />
       <div className={classes.locationPrice}>
-        <span>{city}, {state}</span>
-        <span>${price}</span>
+        <span>{capitalize(city)} {capitalize(state)}</span>
+        <span>{price}</span>
       </div>
       <div className={classes.bottomSection}>
         <p className={classes.description}>{description}</p>
