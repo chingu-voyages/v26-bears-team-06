@@ -22,7 +22,7 @@ To register or sign in click the button in the top right hand corner to open a d
 
 Search for specific items in a specific location.
 
-![](https://giphy.com/embed/MFJKJVcGyZWsygso7e)
+<img src="https://media.giphy.com/media/MFJKJVcGyZWsygso7e/giphy.gif" />
 
 ## Live Version:
 
