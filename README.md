@@ -8,7 +8,7 @@ This project was created for the Chingu Voyage 26. It is a full stack craigslist
 
 ###### Homepage:
 
-![Homepage](https://live.staticflickr.com/65535/51143366645_46b449ed6f_k.jpg/)
+<img src="https://live.staticflickr.com/65535/51143366645_46b449ed6f_k.jpg" width=800 />
 
 ## Live Version:
 
