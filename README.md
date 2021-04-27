@@ -1,5 +1,13 @@
 # CraigsSecondList
 
+## TECH STACK
+
+- React 
+- Redux + Redux Thunk
+- Node 
+- Express
+- Postgres
+
 ## Overview
 
 This project was created for the Chingu Voyage 26. It is a full stack craigslist clone for users to sell and buy goods across the US.
@@ -65,6 +73,5 @@ https://craigs-second-list.herokuapp.com/
 - Node
 - Jest
 - Dotenv
--
 
 | Voyage-26 | https://chingu.io/ | Twitter: https://twitter.com/ChinguCollabs
