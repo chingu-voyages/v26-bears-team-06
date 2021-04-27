@@ -12,6 +12,18 @@ The homepage loads recently uploaded posts and the 3 major categories for easy b
 
 <img src="https://live.staticflickr.com/65535/51143366645_46b449ed6f_k.jpg" width=800 />
 
+###### Sign In/Register:
+
+To register or sign in click the button in the top right hand corner to open a dialog which contains both forms, passwords are hashed using __ and a JWT token is sent after login to authorize user actions.
+
+<img src="https://live.staticflickr.com/65535/51142263571_ac438aeea3_k.jpg" width=800 />
+
+###### Search:
+
+Search for specific items in a specific location.
+
+<iframe src="https://giphy.com/embed/MFJKJVcGyZWsygso7e" width="480" height="319" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
 ## Live Version:
 
 https://craigs-second-list.herokuapp.com/
