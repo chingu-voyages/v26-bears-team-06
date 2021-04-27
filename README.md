@@ -4,13 +4,11 @@
 
 This project was created for the Chingu Voyage 26. It is a full stack craigslist clone for users to sell and buy goods across the US.
 
-## Features
+## Using the app:
 
-- Create, Read, Update and Delete Posts
-- Registration and Sign in features
-- Persistance and local storage for created posts
-- Authentication for updating posts and user info
-- Search functionality for post title, body, location and subcategories
+###### Homepage:
+
+![Homepage](https://www.flickr.com/photos/191971486@N08/51143366645/in/album-72157719040580469/" )
 
 ## Live Version:
 
