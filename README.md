@@ -40,7 +40,7 @@ Post an item by navigating to the appropriate form and filling out all the neces
 
 Edit any personal information or posts you have posted by accessing you profile page.
 
-<img src"https://media.giphy.com/media/5TcQz6R5MjVgzAbfEy/giphy.gif" alt="Profile page gif"/>
+<img src="https://media.giphy.com/media/5TcQz6R5MjVgzAbfEy/giphy.gif" alt="Profile page gif"/>
 
 ## Live Version:
 
