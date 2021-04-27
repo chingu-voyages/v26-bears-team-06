@@ -46,7 +46,7 @@ Edit any personal information or posts you have posted by accessing you profile 
 
 https://craigs-second-list.herokuapp.com/
 
-## Dependencies
+## Technologies/Dependencies
 
 - React-DOM
 - React
@@ -57,5 +57,14 @@ https://craigs-second-list.herokuapp.com/
 - Redux Persist
 - React Router
 - TypeScript
+- Jsonwebtoken
+- PostgreSQL
+- Knex
+- Objection
+- Express
+- Node
+- Jest
+- Dotenv
+-
 
 | Voyage-26 | https://chingu.io/ | Twitter: https://twitter.com/ChinguCollabs
