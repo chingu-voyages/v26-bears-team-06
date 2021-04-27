@@ -7,6 +7,7 @@
 - Node 
 - Express
 - Postgres
+- Typescript
 
 ## Overview
 
