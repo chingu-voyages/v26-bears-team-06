@@ -3,7 +3,7 @@
 ## TECH STACK
 
 - React 
-- Redux + Redux Thunk
+- Redux
 - Node 
 - Express
 - Postgres
